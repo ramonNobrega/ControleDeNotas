@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<DataDicSchema>
+<class>com.egen.tool.datadic.DataDicSchema</class>
+<mainSchema>true</mainSchema>
+<componentDescription></componentDescription>
+<componentName>controledenotas</componentName>
+<lastChange>1423079696066</lastChange>
+<dataDicViews>
+</dataDicViews>
+<dataDicTables>
+</dataDicTables>
+<dataDicProcedures>
+</dataDicProcedures>
+<dataDicSequences>
+</dataDicSequences>
+<dataDicGrants>
+</dataDicGrants>
+<dataDicComponentSetProperties>
+</dataDicComponentSetProperties>
+</DataDicSchema>
