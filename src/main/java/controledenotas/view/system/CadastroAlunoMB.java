@@ -20,13 +20,13 @@ import controledenotas.business.process.*;
 import controledenotas.constant.*;
 import controledenotas.exception.*;
 
-import controledenotas.domain.entity.Professor;
-import controledenotas.business.entity.ProfessorBC;
+import controledenotas.domain.entity.Aluno;
+import controledenotas.business.entity.AlunoBC;
 
 @ViewController
-@PreviousView("/system/cadastro.xhtml")
-@NextView("/system/cadastro.xhtml")
-public class CadastroMB extends AbstractPageBean {
+@PreviousView("/system/cadastroAluno.xhtml")
+@NextView("/system/cadastroAluno.xhtml")
+public class CadastroAlunoMB extends AbstractPageBean {
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,29 +37,29 @@ public class CadastroMB extends AbstractPageBean {
 	@Name("messages")
 	private ResourceBundle bundle;
 
-	private Professor professor = new Professor(0, getNextView(), getNextView(), getNextView());
+	private Aluno aluno = new Aluno(0, getNextView(), getNextView(), null);
 	
-	public Professor getProfessor() {
-		return this.professor;
+	public Aluno getAluno() {
+		return this.aluno;
 	}
 	
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 	
 	@Inject
-	private ProfessorBC professorBC;
+	private AlunoBC alunoBC;
 	
 	@Transactional
 	public String insert() {
-		this.professorBC.insert(getProfessor());
+		this.alunoBC.insert(getAluno());
 		messageContext.add(new DefaultMessage("{pages.msg.insertsuccess}"));
 		return getPreviousView();
 	}
 	
 	@Transactional
 	public String save() {
-		this.professorBC.update(getProfessor());
+		this.alunoBC.update(getAluno());
 		messageContext.add(new DefaultMessage("{pages.msg.updatesuccess}"));
 		return getCurrentView();
 	}
