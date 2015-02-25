@@ -28,6 +28,7 @@
 <template_file>standard.xhtml</template_file>
 <addImportAction>import controledenotas.domain.entity.Aluno;
 import controledenotas.business.entity.AlunoBC;
+import controledenotas.business.entity.ProfessorBC;
 </addImportAction>
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
@@ -131,6 +132,13 @@ import controledenotas.business.entity.AlunoBC;
 		</ui:include>
 	</p:toolbarGroup>
 </p:toolbar>
+</$value>
+</blockSetProperty_item>
+<blockSetProperty_item>
+<$key>blockAttributes</$key>
+<$value>@Inject
+private ProfessorBC professorBC;
+
 </$value>
 </blockSetProperty_item>
 <blockSetProperty_item>
@@ -475,7 +483,7 @@ import controledenotas.business.entity.AlunoBC;
 <maxlength>32</maxlength>
 </fields_item>
 <fields_item>
-<class>com.egen.develop.generator.form.Text</class>
+<class>com.egen.develop.generator.form.Select</class>
 <name>professor</name>
 <help></help>
 <i18nHelp></i18nHelp>
@@ -577,13 +585,51 @@ import controledenotas.business.entity.AlunoBC;
 <$value>text-input</$value>
 </fieldSetProperty_item>
 <fieldSetProperty_item>
+<$key>converter</$key>
+<$value>#{professorConverter}</$value>
+</fieldSetProperty_item>
+<fieldSetProperty_item>
 <$key>value</$key>
-<$value></$value>
+<$value>#{cadastroAlunoMB.aluno.professor}</$value>
 </fieldSetProperty_item>
 </fieldSetProperty>
 <codeItem></codeItem>
-<readonly>false</readonly>
-<maxlength>10</maxlength>
+<selectSize></selectSize>
+<multiple></multiple>
+<options>
+<class>com.egen.develop.generator.form.Options</class>
+<property></property>
+<labelProperty></labelProperty>
+<style></style>
+<styleClass></styleClass>
+<db_object>Professor</db_object>
+<db_value>matricula</db_value>
+<db_label>nome</db_label>
+<template>StandardSelectOptionsTemplate</template>
+<listCode>@Inject
+private ProfessorBC professorBC;
+
+public List<Professor> getProfessorList() {
+	List<Professor> list = professorBC.findAll();
+	if (list == null) {
+		list = new ArrayList<Professor>();
+	}
+	return list;
+}
+
+</listCode>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<fileName></fileName>
+<initialValue></initialValue>
+<i18nInitialValue></i18nInitialValue>
+<excludeInitialValue>false</excludeInitialValue>
+<optionsSetProperty>
+</optionsSetProperty>
+</options>
 </fields_item>
 </fields>
 <buttons>

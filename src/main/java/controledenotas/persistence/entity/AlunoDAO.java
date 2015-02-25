@@ -18,7 +18,7 @@ public class AlunoDAO extends JPACrud<Aluno, Integer> {
 	@Override
 	public List<Aluno> findByExample(Aluno example) {
 		if (example == null) {
-			example = new Aluno(0, null, null, null);
+			example = new Aluno();
 		}
 		return super.findByExample(example);
 	}

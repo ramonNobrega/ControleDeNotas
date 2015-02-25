@@ -30,7 +30,7 @@ public class ProfessorDAOTest {
 
 	@Test
 	public void insert() {
-		Professor professor = new Professor(0, null, null, null);
+		Professor professor = new Professor();
 		professor.setMatricula(new Integer("1"));
 		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
 		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
@@ -42,7 +42,7 @@ public class ProfessorDAOTest {
 
 	@Test
 	public void update() {
-		Professor professor = new Professor(0, null, null, null);
+		Professor professor = new Professor();
 		professor.setMatricula(new Integer("1"));
 		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
 		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
@@ -61,7 +61,7 @@ public class ProfessorDAOTest {
 
 	@Test
 	public void delete() {
-		Professor professor = new Professor(0, null, null, null);
+		Professor professor = new Professor();
 		professor.setMatricula(new Integer("1"));
 		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
 		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");

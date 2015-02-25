@@ -22,6 +22,7 @@ import controledenotas.exception.*;
 
 import controledenotas.domain.entity.Aluno;
 import controledenotas.business.entity.AlunoBC;
+import controledenotas.business.entity.ProfessorBC;
 
 @ViewController
 @PreviousView("/system/cadastroAluno.xhtml")
@@ -37,7 +38,7 @@ public class CadastroAlunoMB extends AbstractPageBean {
 	@Name("messages")
 	private ResourceBundle bundle;
 
-	private Aluno aluno = new Aluno(0, getNextView(), getNextView(), null);
+	private Aluno aluno = new Aluno();
 	
 	public Aluno getAluno() {
 		return this.aluno;
@@ -49,6 +50,17 @@ public class CadastroAlunoMB extends AbstractPageBean {
 	
 	@Inject
 	private AlunoBC alunoBC;
+	
+	@Inject
+	private ProfessorBC professorBC;
+	
+	public List<Professor> getProfessorList() {
+		List<Professor> list = professorBC.findAll();
+		if (list == null) {
+			list = new ArrayList<Professor>();
+		}
+		return list;
+	}
 	
 	@Transactional
 	public String insert() {

@@ -39,8 +39,10 @@
 				<div class="formrow">
 					<div id="professorformcell" class="formcell">
 						<p:outputLabel id="professorLabel" value="Professor" for="professor" styleClass="text-input"></p:outputLabel>
-						<p:inputText id="professor" value="#{cadastroAlunoMB.aluno.professor}" maxlength="10" size="10">
-						</p:inputText>
+						<p:selectOneMenu id="professor" value="#{cadastroAlunoMB.aluno.professor}" converter="#{professorConverter}">
+							<f:selectItem itemLabel="" itemValue=""/>
+							<f:selectItems itemLabel="#{professorItem.nome}" itemValue="#{professorItem}" value="#{cadastroAlunoMB.professorList}" var="professorItem"/>
+						</p:selectOneMenu>
 					</div>
 				</div>
 			</p:outputPanel>

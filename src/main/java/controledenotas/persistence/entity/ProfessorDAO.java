@@ -18,7 +18,7 @@ public class ProfessorDAO extends JPACrud<Professor, Integer> {
 	@Override
 	public List<Professor> findByExample(Professor example) {
 		if (example == null) {
-			example = new Professor(0, null, null, null);
+			example = new Professor();
 		}
 		return super.findByExample(example);
 	}

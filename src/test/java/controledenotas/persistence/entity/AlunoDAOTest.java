@@ -30,7 +30,7 @@ public class AlunoDAOTest {
 
 	@Test
 	public void insert() {
-		Aluno aluno = new Aluno(0, null, null, null);
+		Aluno aluno = new Aluno();
 		aluno.setMatricula(new Integer("1"));
 		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
 		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
@@ -42,7 +42,7 @@ public class AlunoDAOTest {
 
 	@Test
 	public void update() {
-		Aluno aluno = new Aluno(0, null, null, null);
+		Aluno aluno = new Aluno();
 		aluno.setMatricula(new Integer("1"));
 		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
 		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
@@ -61,7 +61,7 @@ public class AlunoDAOTest {
 
 	@Test
 	public void delete() {
-		Aluno aluno = new Aluno(0, null, null, null);
+		Aluno aluno = new Aluno();
 		aluno.setMatricula(new Integer("1"));
 		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
 		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");

@@ -23,12 +23,16 @@ public class Professor implements Serializable {
 	@Column(name="disciplina", length=100)
 	private String disciplina;
 
-	public Professor(int matricula, String nome, String senha, String disciplina){
-	super();
-	this.matricula = matricula;
-	this.nome = nome;
-	this.senha = senha;
-	this.disciplina = disciplina;
+	public Professor() {
+		super();
+	}
+
+	public Professor(Integer matricula, String nome, String senha, String disciplina) {
+		this();
+		this.matricula = matricula;
+		this.nome = nome;
+		this.senha = senha;
+		this.disciplina = disciplina;
 	}
 
 	public Integer getMatricula() {

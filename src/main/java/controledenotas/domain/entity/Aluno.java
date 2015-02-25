@@ -25,12 +25,16 @@ public class Aluno implements Serializable {
 	@JoinColumn(name="professor", referencedColumnName="id_professor")
 	private Professor professor;
 
-	public Aluno(int matricula, String nome, String senha, Professor professor){
-	super();
-	this.matricula = matricula;
-	this.nome = nome;
-	this.senha = senha;
-	this.professor = professor;
+	public Aluno() {
+		super();
+	}
+
+	public Aluno(Integer matricula, String nome, String senha, Professor professor) {
+		this();
+		this.matricula = matricula;
+		this.nome = nome;
+		this.senha = senha;
+		this.professor = professor;
 	}
 
 	public Integer getMatricula() {
