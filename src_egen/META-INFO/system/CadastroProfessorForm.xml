@@ -2,7 +2,7 @@
 <generator>
 <VERSION>v 4</VERSION>
 <module>system</module>
-<file_name>CadastroAluno</file_name>
+<file_name>CadastroProfessor</file_name>
 <app_type>Form</app_type>
 <css></css>
 <table_size>100%</table_size>
@@ -26,8 +26,7 @@
 <version></version>
 <since></since>
 <template_file>standard.xhtml</template_file>
-<addImportAction>import controledenotas.domain.entity.Aluno;
-import controledenotas.business.entity.AlunoBC;
+<addImportAction>import controledenotas.domain.entity.Professor;
 import controledenotas.business.entity.ProfessorBC;
 </addImportAction>
 <addImportActionForm></addImportActionForm>
@@ -37,11 +36,11 @@ import controledenotas.business.entity.ProfessorBC;
 <blocks>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
-<name>cadastraAluno</name>
+<name>cadastraProfessor</name>
 <title></title>
 <i18n>messages</i18n>
 <database>pool</database>
-<db_object>Aluno</db_object>
+<db_object>Professor</db_object>
 <blockTemplate>StandardFormTemplate</blockTemplate>
 <isModelCodeCustomized>false</isModelCodeCustomized>
 <modelCode></modelCode>
@@ -53,7 +52,7 @@ import controledenotas.business.entity.ProfessorBC;
 <script_template></script_template>
 <obs></obs>
 <maxRows>0</maxRows>
-<resultSetName>alunoResultList</resultSetName>
+<resultSetName>professorResultList</resultSetName>
 <select_clause></select_clause>
 <where_clause></where_clause>
 <order_by></order_by>
@@ -97,7 +96,7 @@ import controledenotas.business.entity.ProfessorBC;
 <formSetProperty>
 <formSetProperty_item>
 <$key>focus_id</$key>
-<$value>cadastraAlunoFocus</$value>
+<$value>cadastraProfessorFocus</$value>
 </formSetProperty_item>
 </formSetProperty>
 </form>
@@ -108,7 +107,7 @@ import controledenotas.business.entity.ProfessorBC;
 </blockSetProperty_item>
 <blockSetProperty_item>
 <$key>toolbar_id</$key>
-<$value>cadastraAlunoToolbar</$value>
+<$value>cadastraProfessorToolbar</$value>
 </blockSetProperty_item>
 <blockSetProperty_item>
 <$key>toolbarIsCustomized</$key>
@@ -120,25 +119,18 @@ import controledenotas.business.entity.ProfessorBC;
 </blockSetProperty_item>
 <blockSetProperty_item>
 <$key>toolbarCode</$key>
-<$value><p:toolbar id="cadastraAlunoToolbar">
-	<p:toolbarGroup id="cadastraAlunoLeftToolbarGroup" align="left">
-		<p:commandButton id="back" value="#{messages['button.back']}" action="#{cadastroAlunoMB.getPreviousView}" immediate="true" ajax="false" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
-		<p:commandButton id="insert" value="#{messages['button.insert']}" action="#{cadastroAlunoMB.insert}" ajax="false" title="#{messages['button.insert']}" icon="ui-icon-disk"></p:commandButton>
-		<p:commandButton id="save" value="#{messages['button.save']}" action="#{cadastroAlunoMB.save}" ajax="false" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
+<$value><p:toolbar id="cadastraProfessorToolbar">
+	<p:toolbarGroup id="cadastraProfessorLeftToolbarGroup" align="left">
+		<p:commandButton id="back" value="#{messages['button.back']}" action="#{cadastroProfessorMB.getPreviousView}" immediate="true" ajax="false" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
+		<p:commandButton id="insert" value="#{messages['button.insert']}" action="#{cadastroProfessorMB.insert}" ajax="false" title="#{messages['button.insert']}" icon="ui-icon-disk"></p:commandButton>
+		<p:commandButton id="save" value="#{messages['button.save']}" action="#{cadastroProfessorMB.save}" ajax="false" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
 	</p:toolbarGroup>
-	<p:toolbarGroup id="cadastraAlunoRightToolbarGroup" align="right">
+	<p:toolbarGroup id="cadastraProfessorRightToolbarGroup" align="right">
 		<ui:include src="/template/exportToolbar.xhtml">
-			<ui:param name="target" value="cadastraAlunoDataTable" />
+			<ui:param name="target" value="cadastraProfessorDataTable" />
 		</ui:include>
 	</p:toolbarGroup>
 </p:toolbar>
-</$value>
-</blockSetProperty_item>
-<blockSetProperty_item>
-<$key>blockAttributes</$key>
-<$value>@Inject
-private ProfessorBC professorBC;
-
 </$value>
 </blockSetProperty_item>
 <blockSetProperty_item>
@@ -480,18 +472,18 @@ private ProfessorBC professorBC;
 </fieldSetProperty>
 <codeItem></codeItem>
 <readonly>false</readonly>
-<maxlength>32</maxlength>
+<maxlength></maxlength>
 <redisplay></redisplay>
 </fields_item>
 <fields_item>
-<class>com.egen.develop.generator.form.Select</class>
-<name>professor</name>
+<class>com.egen.develop.generator.form.Text</class>
+<name>disciplina</name>
 <help></help>
 <i18nHelp></i18nHelp>
 <develHelp></develHelp>
 <block_name></block_name>
 <role_item></role_item>
-<database_column>professor</database_column>
+<database_column>disciplina</database_column>
 <roleinclude>false</roleinclude>
 <open_form>false</open_form>
 <close_form>false</close_form>
@@ -511,8 +503,8 @@ private ProfessorBC professorBC;
 <domainReference></domainReference>
 <property></property>
 <value></value>
-<size>10</size>
-<label>Professor</label>
+<size>100</size>
+<label>Disciplina</label>
 <label_pos></label_pos>
 <label_bg_color></label_bg_color>
 <label_fg_color></label_fg_color>
@@ -524,7 +516,7 @@ private ProfessorBC professorBC;
 <label_italic>false</label_italic>
 <justification></justification>
 <not_null>false</not_null>
-<type>controledenotas.domain.entity.Professor</type>
+<type>java.lang.String</type>
 <validate_message></validate_message>
 <validate_message_user></validate_message_user>
 <case_restriction></case_restriction>
@@ -533,7 +525,7 @@ private ProfessorBC professorBC;
 <lowest_value></lowest_value>
 <highest_value></highest_value>
 <validate_value>false</validate_value>
-<validate_type>true</validate_type>
+<validate_type>false</validate_type>
 <validate_group>false</validate_group>
 <validate_email>false</validate_email>
 <validate_not_null>false</validate_not_null>
@@ -586,51 +578,13 @@ private ProfessorBC professorBC;
 <$value>text-input</$value>
 </fieldSetProperty_item>
 <fieldSetProperty_item>
-<$key>converter</$key>
-<$value>#{professorConverter}</$value>
-</fieldSetProperty_item>
-<fieldSetProperty_item>
 <$key>value</$key>
-<$value>#{cadastroAlunoMB.aluno.professor}</$value>
+<$value></$value>
 </fieldSetProperty_item>
 </fieldSetProperty>
 <codeItem></codeItem>
-<selectSize></selectSize>
-<multiple></multiple>
-<options>
-<class>com.egen.develop.generator.form.Options</class>
-<property></property>
-<labelProperty></labelProperty>
-<style></style>
-<styleClass></styleClass>
-<db_object>Professor</db_object>
-<db_value>matricula</db_value>
-<db_label>nome</db_label>
-<template>StandardSelectOptionsTemplate</template>
-<listCode>@Inject
-private ProfessorBC professorBC;
-
-public List<Professor> getProfessorList() {
-	List<Professor> list = professorBC.findAll();
-	if (list == null) {
-		list = new ArrayList<Professor>();
-	}
-	return list;
-}
-
-</listCode>
-<select_clause></select_clause>
-<where_clause></where_clause>
-<order_by></order_by>
-<group_by></group_by>
-<having></having>
-<fileName></fileName>
-<initialValue></initialValue>
-<i18nInitialValue></i18nInitialValue>
-<excludeInitialValue>false</excludeInitialValue>
-<optionsSetProperty>
-</optionsSetProperty>
-</options>
+<readonly>false</readonly>
+<maxlength>100</maxlength>
 </fields_item>
 </fields>
 <buttons>
@@ -700,11 +654,11 @@ public List<Professor> getProfessorList() {
 <onmouseup></onmouseup>
 <baseButtonSetProperty>
 <baseButtonSetProperty_item>
-<$key>actionListener</$key>
+<$key>update</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
-<$key>update</$key>
+<$key>actionListener</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
@@ -713,7 +667,7 @@ public List<Professor> getProfessorList() {
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
 <$key>action</$key>
-<$value>#{cadastroAlunoMB.getPreviousView}</$value>
+<$value>#{cadastroProfessorMB.getPreviousView}</$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
 <$key>type</$key>
@@ -787,11 +741,11 @@ public List<Professor> getProfessorList() {
 <onmouseup></onmouseup>
 <baseButtonSetProperty>
 <baseButtonSetProperty_item>
-<$key>actionListener</$key>
+<$key>update</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
-<$key>update</$key>
+<$key>actionListener</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
@@ -804,7 +758,7 @@ public List<Professor> getProfessorList() {
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
 <$key>action</$key>
-<$value>#{cadastroAlunoMB.insert}</$value>
+<$value>#{cadastroProfessorMB.insert}</$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
 <$key>annotations</$key>
@@ -882,11 +836,11 @@ public List<Professor> getProfessorList() {
 <onmouseup></onmouseup>
 <baseButtonSetProperty>
 <baseButtonSetProperty_item>
-<$key>actionListener</$key>
+<$key>update</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
-<$key>update</$key>
+<$key>actionListener</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
@@ -899,7 +853,7 @@ public List<Professor> getProfessorList() {
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
 <$key>action</$key>
-<$value>#{cadastroAlunoMB.save}</$value>
+<$value>#{cadastroProfessorMB.save}</$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
 <$key>annotations</$key>
@@ -934,7 +888,7 @@ public List<Professor> getProfessorList() {
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>entity</$key>
-<$value>Aluno</$value>
+<$value>Professor</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>implements</$key>
@@ -942,19 +896,19 @@ public List<Professor> getProfessorList() {
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>MB_REFERENCE</$key>
-<$value>CadastroAlunoMB</$value>
-</generatorSetProperty_item>
-<generatorSetProperty_item>
-<$key>XHTML_REFERENCE</$key>
-<$value>/system/cadastroAluno.xhtml</$value>
-</generatorSetProperty_item>
-<generatorSetProperty_item>
-<$key>PREVIOUS_VIEW</$key>
-<$value>/system/cadastroAluno.xhtml</$value>
+<$value>CadastroProfessorMB</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>NEXT_VIEW</$key>
-<$value>/system/cadastroAluno.xhtml</$value>
+<$value>/system/cadastroProfessor.xhtml</$value>
+</generatorSetProperty_item>
+<generatorSetProperty_item>
+<$key>PREVIOUS_VIEW</$key>
+<$value>/system/cadastroProfessor.xhtml</$value>
+</generatorSetProperty_item>
+<generatorSetProperty_item>
+<$key>XHTML_REFERENCE</$key>
+<$value>/system/cadastroProfessor.xhtml</$value>
 </generatorSetProperty_item>
 </generatorSetProperty>
 </generator>
