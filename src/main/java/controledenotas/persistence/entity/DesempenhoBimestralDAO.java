@@ -18,7 +18,7 @@ public class DesempenhoBimestralDAO extends JPACrud<DesempenhoBimestral, Integer
 	@Override
 	public List<DesempenhoBimestral> findByExample(DesempenhoBimestral example) {
 		if (example == null) {
-			example = new DesempenhoBimestral(0, null, null);
+			example = new DesempenhoBimestral();
 		}
 		return super.findByExample(example);
 	}

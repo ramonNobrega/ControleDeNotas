@@ -31,7 +31,7 @@ public class DesempenhoBCTest {
 
 	@Test
 	public void insert() {
-		Desempenho desempenho = new Desempenho(0, null);
+		Desempenho desempenho = new Desempenho();
 		desempenho.setMatricula(new Integer("1"));
 		desempenhoBC.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoBC.findAll();
@@ -41,7 +41,7 @@ public class DesempenhoBCTest {
 
 	@Test
 	public void update() {
-		Desempenho desempenho = new Desempenho(0, null);
+		Desempenho desempenho = new Desempenho();
 		desempenho.setMatricula(new Integer("1"));
 		desempenho.setMediaParcial(new Integer("1"));
 		desempenhoBC.insert(desempenho);
@@ -59,7 +59,7 @@ public class DesempenhoBCTest {
 
 	@Test
 	public void delete() {
-		Desempenho desempenho = new Desempenho(0, null);
+		Desempenho desempenho = new Desempenho();
 		desempenho.setMatricula(new Integer("1"));
 		desempenhoBC.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoBC.findAll();

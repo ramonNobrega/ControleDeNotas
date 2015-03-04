@@ -30,7 +30,7 @@ public class DesempenhoDAOTest {
 
 	@Test
 	public void insert() {
-		Desempenho desempenho = new Desempenho(0, null);
+		Desempenho desempenho = new Desempenho();
 		desempenho.setMatricula(new Integer("1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
@@ -40,7 +40,7 @@ public class DesempenhoDAOTest {
 
 	@Test
 	public void update() {
-		Desempenho desempenho = new Desempenho(0, null);
+		Desempenho desempenho = new Desempenho();
 		desempenho.setMatricula(new Integer("1"));
 		desempenho.setMediaParcial(new Integer("1"));
 		desempenhoDAO.insert(desempenho);
@@ -58,7 +58,7 @@ public class DesempenhoDAOTest {
 
 	@Test
 	public void delete() {
-		Desempenho desempenho = new Desempenho(0, null);
+		Desempenho desempenho = new Desempenho();
 		desempenho.setMatricula(new Integer("1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();

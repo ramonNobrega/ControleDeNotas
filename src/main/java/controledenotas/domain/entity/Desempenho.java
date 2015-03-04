@@ -31,10 +31,18 @@ public class Desempenho implements Serializable {
 	@JoinColumn(name="aluno", referencedColumnName="id_aluno")
 	private Aluno aluno;
 
-	public Desempenho(int matricula, Aluno aluno){
-	super();
-	this.matricula = matricula;
-	this.aluno = aluno;
+	public Desempenho() {
+		super();
+	}
+
+	public Desempenho(Integer matricula, Integer mediaParcial, Integer provaFinal, Integer mediaFinal, String situacao, Aluno aluno) {
+		this();
+		this.matricula = matricula;
+		this.mediaParcial = mediaParcial;
+		this.provaFinal = provaFinal;
+		this.mediaFinal = mediaFinal;
+		this.situacao = situacao;
+		this.aluno = aluno;
 	}
 
 	public Integer getMatricula() {

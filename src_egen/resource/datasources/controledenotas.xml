@@ -4,8 +4,8 @@
 <name>jdbc/controledenotas</name>
 <factory>org.apache.commons.dbcp.BasicDataSourceFactory</factory>
 <driver>com.mysql.jdbc.Driver</driver>
-<username>root</username>
-<password>malthus</password>
+<password></password>
 <url>jdbc:mysql://localhost:3306/controledenotas</url>
 <databaseProduct>MySQL</databaseProduct>
+<username>root</username>
 </ToolsDataSource>

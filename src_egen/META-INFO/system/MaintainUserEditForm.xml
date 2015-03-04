@@ -34,9 +34,6 @@ import org.primefaces.model.DualListModel;
 </addImportAction>
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
-<creationDate></creationDate>
-<lastModifyDate></lastModifyDate>
-<userGenerate></userGenerate>
 <scope_storage>request</scope_storage>
 <generatorMasterTemplate>CrudEditPresentationMasterTemplate</generatorMasterTemplate>
 <blocks>
@@ -58,7 +55,7 @@ import org.primefaces.model.DualListModel;
 <script_template></script_template>
 <obs></obs>
 <maxRows>0</maxRows>
-<resultSetName></resultSetName>
+<resultSetName>userResultList</resultSetName>
 <select_clause></select_clause>
 <where_clause></where_clause>
 <order_by></order_by>
@@ -106,7 +103,7 @@ import org.primefaces.model.DualListModel;
 <message_type>message</message_type>
 <message_text></message_text>
 <banner_type>titletoolbar</banner_type>
-<role_item></role_item>
+<role_item>admin</role_item>
 <roleinclude>false</roleinclude>
 <i18n_obs></i18n_obs>
 <tab_pos>tab0</tab_pos>
@@ -129,8 +126,8 @@ import org.primefaces.model.DualListModel;
 <type></type>
 <disabled>false</disabled>
 <readonly>false</readonly>
-<open_form>true</open_form>
-<close_form>true</close_form>
+<open_form>false</open_form>
+<close_form>false</close_form>
 <formDisplayCondition></formDisplayCondition>
 <formSetProperty>
 <formSetProperty_item>
@@ -1564,7 +1561,6 @@ public void rolesPickListValueChangeListener(javax.faces.event.ValueChangeEvent 
 <pluggableValidators></pluggableValidators>
 <hasModelAjax>false</hasModelAjax>
 <hasActionAjax>false</hasActionAjax>
-<workingTime>886664</workingTime>
 <id_task></id_task>
 <generatorSetProperty>
 <generatorSetProperty_item>

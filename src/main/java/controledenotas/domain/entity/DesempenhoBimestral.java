@@ -36,11 +36,19 @@ public class DesempenhoBimestral implements Serializable {
 	@JoinColumn(name="desempenho", referencedColumnName="id_desempenho")
 	private Desempenho desempenho;
 
-	public DesempenhoBimestral(int id, Aluno aluno, Desempenho desempenho){
-	super();
-	this.id = id;
-	this.aluno = aluno;
-	this.desempenho = desempenho;
+	public DesempenhoBimestral() {
+		super();
+	}
+
+	public DesempenhoBimestral(Integer id, Integer nota1, Integer nota2, Integer nota3, Integer mediaBimestre, Aluno aluno, Desempenho desempenho) {
+		this();
+		this.id = id;
+		this.nota1 = nota1;
+		this.nota2 = nota2;
+		this.nota3 = nota3;
+		this.mediaBimestre = mediaBimestre;
+		this.aluno = aluno;
+		this.desempenho = desempenho;
 	}
 
 	public Integer getId() {

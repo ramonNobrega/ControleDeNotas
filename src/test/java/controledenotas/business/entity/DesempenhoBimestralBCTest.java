@@ -31,7 +31,7 @@ public class DesempenhoBimestralBCTest {
 
 	@Test
 	public void insert() {
-		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral(0, null, null);
+		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
 		desempenhoBimestral.setId(new Integer("1"));
 		desempenhoBimestralBC.insert(desempenhoBimestral);
 		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralBC.findAll();
@@ -41,7 +41,7 @@ public class DesempenhoBimestralBCTest {
 
 	@Test
 	public void update() {
-		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral(0, null, null);
+		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
 		desempenhoBimestral.setId(new Integer("1"));
 		desempenhoBimestral.setNota1(new Integer("1"));
 		desempenhoBimestralBC.insert(desempenhoBimestral);
@@ -59,7 +59,7 @@ public class DesempenhoBimestralBCTest {
 
 	@Test
 	public void delete() {
-		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral(0, null, null);
+		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
 		desempenhoBimestral.setId(new Integer("1"));
 		desempenhoBimestralBC.insert(desempenhoBimestral);
 		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralBC.findAll();

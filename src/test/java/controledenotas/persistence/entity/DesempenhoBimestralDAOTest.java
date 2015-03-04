@@ -30,7 +30,7 @@ public class DesempenhoBimestralDAOTest {
 
 	@Test
 	public void insert() {
-		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral(0, null, null);
+		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
 		desempenhoBimestral.setId(new Integer("1"));
 		desempenhoBimestralDAO.insert(desempenhoBimestral);
 		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralDAO.findAll();
@@ -40,7 +40,7 @@ public class DesempenhoBimestralDAOTest {
 
 	@Test
 	public void update() {
-		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral(0, null, null);
+		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
 		desempenhoBimestral.setId(new Integer("1"));
 		desempenhoBimestral.setNota1(new Integer("1"));
 		desempenhoBimestralDAO.insert(desempenhoBimestral);
@@ -58,7 +58,7 @@ public class DesempenhoBimestralDAOTest {
 
 	@Test
 	public void delete() {
-		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral(0, null, null);
+		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
 		desempenhoBimestral.setId(new Integer("1"));
 		desempenhoBimestralDAO.insert(desempenhoBimestral);
 		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralDAO.findAll();

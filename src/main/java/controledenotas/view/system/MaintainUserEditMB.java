@@ -21,6 +21,7 @@ import controledenotas.constant.*;
 import controledenotas.exception.*;
 
 import controledenotas.business.entity.UserBC;
+import br.gov.frameworkdemoiselle.security.RequiredRole;
 import controledenotas.domain.entity.User;
 import controledenotas.business.entity.RoleBC;
 import org.primefaces.model.DualListModel;

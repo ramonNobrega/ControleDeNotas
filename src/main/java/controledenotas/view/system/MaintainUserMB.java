@@ -22,6 +22,7 @@ import controledenotas.exception.*;
 
 import controledenotas.business.entity.UserBC;
 import javax.faces.model.SelectItem;
+import br.gov.frameworkdemoiselle.security.RequiredRole;
 import controledenotas.domain.entity.User;
 
 @ViewController

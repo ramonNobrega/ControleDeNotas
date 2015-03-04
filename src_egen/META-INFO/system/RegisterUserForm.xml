@@ -754,11 +754,11 @@ public String registerNewUser() {
 <$value>/template/public.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
-<$key>NEXT_VIEW</$key>
+<$key>PREVIOUS_VIEW</$key>
 <$value>/system/home.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
-<$key>PREVIOUS_VIEW</$key>
+<$key>NEXT_VIEW</$key>
 <$value>/system/home.xhtml</$value>
 </generatorSetProperty_item>
 </generatorSetProperty>

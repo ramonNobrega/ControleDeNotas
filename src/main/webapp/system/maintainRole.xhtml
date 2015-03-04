@@ -1,7 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
 	<ui:define name="body">
 		<div id="pagetitle" class="pagetitle">#{messages['system.maintainrole.app.title']}</div>
-		<h:form id="listForm">
+		<h:form id="listForm" rendered="#{securityContext.hasRole('admin')}">
 			<p:focus id="listFocus"/>
 			<div id="listTitle" class="blocktitle">#{messages['pages.app.list']}</div>
 			<p:toolbar id="listToolbar">
@@ -22,8 +22,8 @@
 			<div id="listFormMessages" class="formmessages">
 				<p:messages id="listMessages" autoUpdate="true" closable="true"/>
 			</div>
-			<p:outputPanel id="listPanel">
-				<p:dataTable id="listDataTable" value="#{maintainRoleMB.resultList}" var="bean" rows="5" paginator="true" rowsPerPageTemplate="5,10,15,20,50,100" rowIndexVar="rowIndexVar" resizableColumns="true" tableStyle="width:100%">
+			<p:outputPanel id="listPanel" rendered="#{securityContext.hasRole('admin')}">
+				<p:dataTable id="listDataTable" rendered="#{securityContext.hasRole('admin')}" value="#{maintainRoleMB.resultList}" var="bean" rows="5" paginator="true" rowsPerPageTemplate="5,10,15,20,50,100" rowIndexVar="rowIndexVar" resizableColumns="true" tableStyle="width:100%">
 					<p:column id="selectionFieldDTColumn" style="text-align:center;" styleClass="gridstandardcolumn" exportable="false">
 						<h:selectBooleanCheckbox id="selectionField" value="#{maintainRoleMB.selection[bean.name]}"></h:selectBooleanCheckbox>
 					</p:column>

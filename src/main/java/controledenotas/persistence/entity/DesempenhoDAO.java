@@ -18,7 +18,7 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 	@Override
 	public List<Desempenho> findByExample(Desempenho example) {
 		if (example == null) {
-			example = new Desempenho(0, null);
+			example = new Desempenho();
 		}
 		return super.findByExample(example);
 	}

@@ -21,13 +21,14 @@ import controledenotas.constant.*;
 import controledenotas.exception.*;
 
 import controledenotas.business.entity.RoleBC;
+import br.gov.frameworkdemoiselle.security.RequiredRole;
 import controledenotas.domain.entity.Role;
 
 @ViewController
 @PreviousView("/system/maintainRole.xhtml")
 @NextView("/system/maintainRoleEdit.xhtml")
 public class MaintainRoleEditMB extends AbstractEditPageBean<Role, String> {
- 
+
 	private static final long serialVersionUID = 1L;
 
 	@Inject

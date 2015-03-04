@@ -90,8 +90,8 @@ import br.gov.frameworkdemoiselle.security.SecurityContext;
 <type></type>
 <disabled>false</disabled>
 <readonly>false</readonly>
-<open_form>true</open_form>
-<close_form>true</close_form>
+<open_form>false</open_form>
+<close_form>false</close_form>
 <formDisplayCondition></formDisplayCondition>
 <formSetProperty>
 <formSetProperty_item>

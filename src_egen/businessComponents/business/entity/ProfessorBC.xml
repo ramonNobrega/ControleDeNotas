@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.egen.tool.business.BusinessComponent>
 <class>com.egen.tool.business.BusinessComponent</class>
-<businessComponentMasterTemplate>EntityCrudBCTemplate</businessComponentMasterTemplate>
+<businessComponentAlias>ProfessorBC</businessComponentAlias>
 <businessComponentName>ProfessorBC</businessComponentName>
 <businessComponentModule>business/entity</businessComponentModule>
-<businessComponentAlias>ProfessorBC</businessComponentAlias>
+<businessComponentMasterTemplate>EntityCrudBCTemplate</businessComponentMasterTemplate>
 <variables>
 <variables_item>
 <class>com.egen.tool.business.BusinessVariable</class>
 <businessVariableName>professor</businessVariableName>
 <businessVariableType>@entity(controledenotas.domain.entity.Professor)</businessVariableType>
 <variableComponentType></variableComponentType>
-<businessVariableDomainReference></businessVariableDomainReference>
 <businessVariableInitialization></businessVariableInitialization>
 <businessVariableDescription></businessVariableDescription>
+<businessVariableDomainReference></businessVariableDomainReference>
 <businessVariableSetProperties>
 </businessVariableSetProperties>
 </variables_item>
@@ -26,7 +26,6 @@
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>BC</businessCodeUnitIdentification>
-<businessCodeUnitTemplate>EntityBCUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.business.entity;
 
 import controledenotas.domain.entity.Professor;
@@ -53,22 +52,22 @@ public class ProfessorBC extends DelegateCrud<Professor, Integer, ProfessorDAO> 
 }
 
 </businessCodeUnitContent>
+<businessCodeUnitTemplate>EntityBCUnit</businessCodeUnitTemplate>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>package controledenotas.business.entity;
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>package</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCImportBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>import controledenotas.domain.entity.Professor;
 import controledenotas.persistence.entity.ProfessorDAO;
 import java.util.*;
@@ -78,15 +77,16 @@ import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.template.DelegateCrud;
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCImportBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>import</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 <intraCodeBlocks>
 <intraCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate></businessCodeBlockTemplate>
 <businessCodeBlockContent>import br.gov.frameworkdemoiselle.template.DelegateCrud;</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
 <businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
@@ -95,75 +95,75 @@ import br.gov.frameworkdemoiselle.template.DelegateCrud;
 <setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </intraCodeBlocks_item>
 </intraCodeBlocks>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCClassDefinitionBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>@BusinessController
 public class ProfessorBC extends DelegateCrud<Professor, Integer, ProfessorDAO> {
 
 	private static final long serialVersionUID = 1L;
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCClassDefinitionBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 <intraCodeBlocks>
 <intraCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>	private static final long serialVersionUID = 1L;
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 <intraCodeBlocks>
 </intraCodeBlocks>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
 </intraCodeBlocks_item>
 </intraCodeBlocks>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCFindByExampleBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>	public List<Professor> findByExample(Professor example) {
 		return getDelegate().findByExample(example);
 	}
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCFindByExampleBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>findByExample</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>	public List<Professor> findByCriteria(java.util.Map<String, Object> parameters) {
 		return getDelegate().findByCriteria(parameters);
 	}
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>findByCriteria</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
 <businessCodeUnitSetProperty>
@@ -184,7 +184,6 @@ public class ProfessorBC extends DelegateCrud<Professor, Integer, ProfessorDAO> 
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>BCTest</businessCodeUnitIdentification>
-<businessCodeUnitTemplate>EntityBCTestUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.business.entity;
 
 import controledenotas.domain.entity.Professor;
@@ -265,22 +264,22 @@ public class ProfessorBCTest {
 }
 
 </businessCodeUnitContent>
+<businessCodeUnitTemplate>EntityBCTestUnit</businessCodeUnitTemplate>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>package controledenotas.business.entity;
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>package</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestImportBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>import controledenotas.domain.entity.Professor;
 import controledenotas.business.entity.ProfessorBC;
 import static org.junit.Assert.assertEquals;
@@ -293,41 +292,41 @@ import org.junit.runner.RunWith;
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestImportBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>import</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>@RunWith(DemoiselleRunner.class)
 public class ProfessorBCTest {
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestAttributesBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>	@Inject
 	private ProfessorBC professorBC;
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestAttributesBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>attributes</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestSetupBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>	@Before
 	public void before() {
 		for (Professor professor : professorBC.findAll()) {
@@ -341,15 +340,15 @@ public class ProfessorBCTest {
 	}
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestSetupBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>setup</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestInsertBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>	@Test
 	public void insert() {
 		Professor professor = new Professor();
@@ -363,15 +362,15 @@ public class ProfessorBCTest {
 	}
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestInsertBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>insert</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestUpdateBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>	@Test
 	public void update() {
 		Professor professor = new Professor();
@@ -392,15 +391,15 @@ public class ProfessorBCTest {
 	}
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestUpdateBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>update</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestDeleteBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>	@Test
 	public void delete() {
 		Professor professor = new Professor();
@@ -417,21 +416,22 @@ public class ProfessorBCTest {
 	}
 
 </businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestDeleteBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>delete</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
 <businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
-<intraCodeBlocks>
-</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 </businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
 <businessCodeUnitSetProperty>
