@@ -38,8 +38,8 @@ import controledenotas.business.entity.ProfessorBC;
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
 <name>cadastraAluno</name>
-<title></title>
-<i18n>messages</i18n>
+<title>Cadastra Novo Aluno</title>
+<i18n></i18n>
 <database>pool</database>
 <db_object>Aluno</db_object>
 <blockTemplate>StandardFormTemplate</blockTemplate>
@@ -700,11 +700,11 @@ public List<Professor> getProfessorList() {
 <onmouseup></onmouseup>
 <baseButtonSetProperty>
 <baseButtonSetProperty_item>
-<$key>actionListener</$key>
+<$key>update</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
-<$key>update</$key>
+<$key>actionListener</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
@@ -787,11 +787,11 @@ public List<Professor> getProfessorList() {
 <onmouseup></onmouseup>
 <baseButtonSetProperty>
 <baseButtonSetProperty_item>
-<$key>actionListener</$key>
+<$key>update</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
-<$key>update</$key>
+<$key>actionListener</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
@@ -882,11 +882,11 @@ public List<Professor> getProfessorList() {
 <onmouseup></onmouseup>
 <baseButtonSetProperty>
 <baseButtonSetProperty_item>
-<$key>actionListener</$key>
+<$key>update</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
-<$key>update</$key>
+<$key>actionListener</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
@@ -945,7 +945,7 @@ public List<Professor> getProfessorList() {
 <$value>CadastroAlunoMB</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
-<$key>XHTML_REFERENCE</$key>
+<$key>NEXT_VIEW</$key>
 <$value>/system/cadastroAluno.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
@@ -953,7 +953,7 @@ public List<Professor> getProfessorList() {
 <$value>/system/cadastroAluno.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
-<$key>NEXT_VIEW</$key>
+<$key>XHTML_REFERENCE</$key>
 <$value>/system/cadastroAluno.xhtml</$value>
 </generatorSetProperty_item>
 </generatorSetProperty>
