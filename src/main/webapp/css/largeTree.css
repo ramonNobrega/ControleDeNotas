@@ -1,0 +1,78 @@
+.largeMenuTd {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666;
+	white-space: nowrap;
+}
+
+.largeUlBase {
+	display:block;
+	padding:5px 2px 1px 35px; 	
+	margin:5px 1px 5px 0px; 		
+}
+
+.largeLiBase {
+	list-style-image:url(../img/base.gif);
+}
+
+.largeFirstLevelUl {
+	display:block;
+	padding-left: 19px; 					
+	margin:3px 1px 1px 0px; 				
+}
+
+.largeUl {
+	display:none;
+	padding-left: 19px; 					
+	margin:3px 1px 1px 0px;				
+}
+
+.largeLiFolder {
+
+}
+
+.largeLiPage {
+	margin:1px 1px 1px 0px;	
+}
+
+.largeMenuTd img {
+	border: 0px;
+	vertical-align: middle;
+	margin-right:-9px; 				
+	margin-left:2px;
+}
+
+.largeMenuTd a {
+	color: #333;
+	text-decoration: none;
+}
+.largeMenuTd a, .largeMenuTd a {
+	white-space: nowrap;
+	padding: 1px 1px 1px 0px;			
+	margin-left: 0px;
+}
+.largeMenuTd a:hover, .largeMenuTd a:hover {
+	color: #000;
+	text-decoration: underline;
+	cursor:pointer;
+}
+
+.largeMenuTd .clip {
+	overflow: hidden;
+}
+
+td {
+font-size: 11px; 
+}
+
+.menuBar {
+  background-color: #ece9d8;
+  border: 2px solid;
+  border-color: #f0f0f0 #909090 #909090 #f0f0f0;
+  text-align: left;
+  font-family: "MS Sans Serif", Arial, sans-serif;
+  font-size: 8pt;
+  font-style: normal;
+  font-weight: normal;
+  background:url("../img/menu.jpg") repeat top;
+}
