@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Context path="/ControleDeNotas" reloadable="false" source="org.eclipse.jst.jee.server:ControleDeNotas">
-	<ResourceLink name="jdbc/controledenotas" global="jdbc/controledenotas" type="javax.sql.DataSource" />
-</Context>
