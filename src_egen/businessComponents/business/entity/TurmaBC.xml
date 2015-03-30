@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.egen.tool.business.BusinessComponent>
+<class>com.egen.tool.business.BusinessComponent</class>
+<businessComponentMasterTemplate>EntityCrudBCTemplate</businessComponentMasterTemplate>
+<businessComponentAlias>TurmaBC</businessComponentAlias>
+<businessComponentModule>business/entity</businessComponentModule>
+<businessComponentName>TurmaBC</businessComponentName>
+<variables>
+<variables_item>
+<class>com.egen.tool.business.BusinessVariable</class>
+<variableComponentType></variableComponentType>
+<businessVariableType>@entity(controledenotas.domain.entity.Turma)</businessVariableType>
+<businessVariableDomainReference></businessVariableDomainReference>
+<businessVariableDescription></businessVariableDescription>
+<businessVariableInitialization></businessVariableInitialization>
+<businessVariableName>turma</businessVariableName>
+<businessVariableSetProperties>
+</businessVariableSetProperties>
+</variables_item>
+</variables>
+<inputParameters>
+</inputParameters>
+<outputParameters>
+</outputParameters>
+<businessCodeUnits>
+<businessCodeUnits_item>
+<class>com.egen.tool.business.BusinessCodeUnit</class>
+<businessCodeUnitContent>package controledenotas.business.entity;
+
+import controledenotas.domain.entity.Turma;
+import controledenotas.persistence.entity.TurmaDAO;
+import java.util.*;
+import javax.inject.Inject;
+import br.gov.frameworkdemoiselle.stereotype.BusinessController;
+import br.gov.frameworkdemoiselle.transaction.Transactional;
+import br.gov.frameworkdemoiselle.template.DelegateCrud;
+
+@BusinessController
+public class TurmaBC extends DelegateCrud<Turma, Object, TurmaDAO> {
+
+	private static final long serialVersionUID = 1L;
+
+	public List<Turma> findByExample(Turma example) {
+		return getDelegate().findByExample(example);
+	}
+
+	public List<Turma> findByCriteria(java.util.Map<String, Object> parameters) {
+		return getDelegate().findByCriteria(parameters);
+	}
+
+}
+
+</businessCodeUnitContent>
+<businessCodeUnitTemplate>EntityBCUnit</businessCodeUnitTemplate>
+<businessCodeUnitIdentification>BC</businessCodeUnitIdentification>
+<businessCodeBlocks>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>package controledenotas.business.entity;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>import controledenotas.domain.entity.Turma;
+import controledenotas.persistence.entity.TurmaDAO;
+import java.util.*;
+import javax.inject.Inject;
+import br.gov.frameworkdemoiselle.stereotype.BusinessController;
+import br.gov.frameworkdemoiselle.transaction.Transactional;
+import br.gov.frameworkdemoiselle.template.DelegateCrud;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCImportBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>import br.gov.frameworkdemoiselle.template.DelegateCrud;
+</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyValue>custom</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>@BusinessController
+public class TurmaBC extends DelegateCrud<Turma, Object, TurmaDAO> {
+
+	private static final long serialVersionUID = 1L;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	private static final long serialVersionUID = 1L;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	public List<Turma> findByExample(Turma example) {
+		return getDelegate().findByExample(example);
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCFindByExampleBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>findByExample</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	public List<Turma> findByCriteria(java.util.Map<String, Object> parameters) {
+		return getDelegate().findByCriteria(parameters);
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>findByCriteria</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+</businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>extends</setPropertyKey>
+<setPropertyValue>br.gov.frameworkdemoiselle.template.DelegateCrud<[ENTITY], [ID_TYPE], [DAO]></setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyValue>src/main/java/controledenotas/business/entity/TurmaBC.java</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
+</businessCodeUnits_item>
+<businessCodeUnits_item>
+<class>com.egen.tool.business.BusinessCodeUnit</class>
+<businessCodeUnitContent>package controledenotas.business.entity;
+
+import controledenotas.domain.entity.Turma;
+import controledenotas.business.entity.TurmaBC;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import java.util.*;
+import javax.inject.Inject;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+import controledenotas.domain.entity.Aluno;
+
+@RunWith(DemoiselleRunner.class)
+public class TurmaBCTest {
+
+	@Inject
+	private TurmaBC turmaBC;
+
+	@Inject
+	private ObjectBC objectBC;
+
+	@Inject
+	private AlunoBC alunoBC;
+
+	@Before
+	public void before() {
+		for (Turma turma : turmaBC.findAll()) {
+		  turmaBC.delete(turma.getIdTurma());
+		}
+	}
+
+	@After
+	public void after() {
+		before();
+	}
+
+	@Test
+	public void insert() {
+		Turma turma = new Turma();
+		Object idTurma = new Object();
+		objectBC.insert(idTurma);
+		turma.setIdTurma(idTurma);
+		turmaBC.insert(turma);
+		List<Turma> turmaList = turmaBC.findAll();
+		assertNotNull(turmaList);
+		assertEquals(1, turmaList.size());
+	}
+
+	@Test
+	public void update() {
+		Turma turma = new Turma();
+		Object idTurma = new Object();
+		objectBC.insert(idTurma);
+		turma.setIdTurma(idTurma);
+		Aluno matriculaDoAluno = new Aluno();
+		Object matriculaDoAluno = new Object();
+		objectBC.insert(matriculaDoAluno);
+		matriculaDoAluno.setMatriculaDoAluno(matriculaDoAluno);
+		matriculaDoAluno.setNomeDoAluno("XXXXXXXXXXXXXXXXXXXX");
+		matriculaDoAluno.setSenhaDoAluno("XXXXXXXXXXXXXXXXXXXX");
+		alunoBC.insert(matriculaDoAluno);
+		turma.setMatriculaDoAluno(matriculaDoAluno);
+		turmaBC.insert(turma);
+		List<Turma> turmaList = turmaBC.findAll();
+		assertNotNull(turmaList);
+		assertTrue(turmaList.size()>0);
+	}
+
+	@Test
+	public void delete() {
+		Turma turma = new Turma();
+		Object idTurma = new Object();
+		objectBC.insert(idTurma);
+		turma.setIdTurma(idTurma);
+		turmaBC.insert(turma);
+		List<Turma> turmaList = turmaBC.findAll();
+		assertNotNull(turmaList);
+		assertEquals(1, turmaList.size());
+		  turmaBC.delete(turma.getIdTurma());
+		turmaList = turmaBC.findAll();
+		assertEquals(0, turmaList.size());
+	}
+
+}
+
+</businessCodeUnitContent>
+<businessCodeUnitTemplate>EntityBCTestUnit</businessCodeUnitTemplate>
+<businessCodeUnitIdentification>BCTest</businessCodeUnitIdentification>
+<businessCodeBlocks>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>package controledenotas.business.entity;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>import controledenotas.domain.entity.Turma;
+import controledenotas.business.entity.TurmaBC;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import java.util.*;
+import javax.inject.Inject;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+import controledenotas.domain.entity.Aluno;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestImportBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>import controledenotas.domain.entity.Aluno;</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyValue>custom</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>@RunWith(DemoiselleRunner.class)
+public class TurmaBCTest {
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Inject
+	private TurmaBC turmaBC;
+
+	@Inject
+	private ObjectBC objectBC;
+
+	@Inject
+	private AlunoBC alunoBC;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestAttributesBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>attributes</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Inject
+	private ObjectBC objectBC;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockIdentification>extraBC</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyValue>custom</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</intraCodeBlocks_item>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Inject
+	private AlunoBC alunoBC;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockIdentification>extraBC_1</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyValue>custom</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Before
+	public void before() {
+		for (Turma turma : turmaBC.findAll()) {
+		  turmaBC.delete(turma.getIdTurma());
+		}
+	}
+
+	@After
+	public void after() {
+		before();
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestSetupBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>setup</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Test
+	public void insert() {
+		Turma turma = new Turma();
+		Object idTurma = new Object();
+		objectBC.insert(idTurma);
+		turma.setIdTurma(idTurma);
+		turmaBC.insert(turma);
+		List<Turma> turmaList = turmaBC.findAll();
+		assertNotNull(turmaList);
+		assertEquals(1, turmaList.size());
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestInsertBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>insert</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Test
+	public void update() {
+		Turma turma = new Turma();
+		Object idTurma = new Object();
+		objectBC.insert(idTurma);
+		turma.setIdTurma(idTurma);
+		Aluno matriculaDoAluno = new Aluno();
+		Object matriculaDoAluno = new Object();
+		objectBC.insert(matriculaDoAluno);
+		matriculaDoAluno.setMatriculaDoAluno(matriculaDoAluno);
+		matriculaDoAluno.setNomeDoAluno("XXXXXXXXXXXXXXXXXXXX");
+		matriculaDoAluno.setSenhaDoAluno("XXXXXXXXXXXXXXXXXXXX");
+		alunoBC.insert(matriculaDoAluno);
+		turma.setMatriculaDoAluno(matriculaDoAluno);
+		turmaBC.insert(turma);
+		List<Turma> turmaList = turmaBC.findAll();
+		assertNotNull(turmaList);
+		assertTrue(turmaList.size()>0);
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestUpdateBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>update</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Test
+	public void delete() {
+		Turma turma = new Turma();
+		Object idTurma = new Object();
+		objectBC.insert(idTurma);
+		turma.setIdTurma(idTurma);
+		turmaBC.insert(turma);
+		List<Turma> turmaList = turmaBC.findAll();
+		assertNotNull(turmaList);
+		assertEquals(1, turmaList.size());
+		  turmaBC.delete(turma.getIdTurma());
+		turmaList = turmaBC.findAll();
+		assertEquals(0, turmaList.size());
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestDeleteBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>delete</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+</businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyValue>src/test/java/controledenotas/business/entity/TurmaBCTest.java</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
+</businessCodeUnits_item>
+</businessCodeUnits>
+<businessComponentSetProperties>
+</businessComponentSetProperties>
+</com.egen.tool.business.BusinessComponent>

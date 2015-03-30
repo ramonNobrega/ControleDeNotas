@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.egen.tool.business.BusinessComponent>
+<class>com.egen.tool.business.BusinessComponent</class>
+<businessComponentMasterTemplate>EntityCrudBCTemplate</businessComponentMasterTemplate>
+<businessComponentAlias>DesempenhoBC</businessComponentAlias>
+<businessComponentModule>business/entity</businessComponentModule>
+<businessComponentName>DesempenhoBC</businessComponentName>
+<variables>
+<variables_item>
+<class>com.egen.tool.business.BusinessVariable</class>
+<variableComponentType></variableComponentType>
+<businessVariableType>@entity(controledenotas.domain.entity.Desempenho)</businessVariableType>
+<businessVariableDomainReference></businessVariableDomainReference>
+<businessVariableDescription></businessVariableDescription>
+<businessVariableInitialization></businessVariableInitialization>
+<businessVariableName>desempenho</businessVariableName>
+<businessVariableSetProperties>
+</businessVariableSetProperties>
+</variables_item>
+</variables>
+<inputParameters>
+</inputParameters>
+<outputParameters>
+</outputParameters>
+<businessCodeUnits>
+<businessCodeUnits_item>
+<class>com.egen.tool.business.BusinessCodeUnit</class>
+<businessCodeUnitContent>package controledenotas.business.entity;
+
+import controledenotas.domain.entity.Desempenho;
+import controledenotas.persistence.entity.DesempenhoDAO;
+import java.util.*;
+import javax.inject.Inject;
+import br.gov.frameworkdemoiselle.stereotype.BusinessController;
+import br.gov.frameworkdemoiselle.transaction.Transactional;
+import br.gov.frameworkdemoiselle.template.DelegateCrud;
+
+@BusinessController
+public class DesempenhoBC extends DelegateCrud<Desempenho, Object, DesempenhoDAO> {
+
+	private static final long serialVersionUID = 1L;
+
+	public List<Desempenho> findByExample(Desempenho example) {
+		return getDelegate().findByExample(example);
+	}
+
+	public List<Desempenho> findByCriteria(java.util.Map<String, Object> parameters) {
+		return getDelegate().findByCriteria(parameters);
+	}
+
+}
+
+</businessCodeUnitContent>
+<businessCodeUnitTemplate>EntityBCUnit</businessCodeUnitTemplate>
+<businessCodeUnitIdentification>BC</businessCodeUnitIdentification>
+<businessCodeBlocks>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>package controledenotas.business.entity;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>import controledenotas.domain.entity.Desempenho;
+import controledenotas.persistence.entity.DesempenhoDAO;
+import java.util.*;
+import javax.inject.Inject;
+import br.gov.frameworkdemoiselle.stereotype.BusinessController;
+import br.gov.frameworkdemoiselle.transaction.Transactional;
+import br.gov.frameworkdemoiselle.template.DelegateCrud;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCImportBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>import br.gov.frameworkdemoiselle.template.DelegateCrud;
+</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyValue>custom</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>@BusinessController
+public class DesempenhoBC extends DelegateCrud<Desempenho, Object, DesempenhoDAO> {
+
+	private static final long serialVersionUID = 1L;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	private static final long serialVersionUID = 1L;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	public List<Desempenho> findByExample(Desempenho example) {
+		return getDelegate().findByExample(example);
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCFindByExampleBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>findByExample</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	public List<Desempenho> findByCriteria(java.util.Map<String, Object> parameters) {
+		return getDelegate().findByCriteria(parameters);
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>findByCriteria</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+</businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>extends</setPropertyKey>
+<setPropertyValue>br.gov.frameworkdemoiselle.template.DelegateCrud<[ENTITY], [ID_TYPE], [DAO]></setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyValue>src/main/java/controledenotas/business/entity/DesempenhoBC.java</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
+</businessCodeUnits_item>
+<businessCodeUnits_item>
+<class>com.egen.tool.business.BusinessCodeUnit</class>
+<businessCodeUnitContent>package controledenotas.business.entity;
+
+import controledenotas.domain.entity.Desempenho;
+import controledenotas.business.entity.DesempenhoBC;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import java.util.*;
+import javax.inject.Inject;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+
+@RunWith(DemoiselleRunner.class)
+public class DesempenhoBCTest {
+
+	@Inject
+	private DesempenhoBC desempenhoBC;
+
+	@Inject
+	private ObjectBC objectBC;
+
+	@Before
+	public void before() {
+		for (Desempenho desempenho : desempenhoBC.findAll()) {
+		  desempenhoBC.delete(desempenho.getIdDesempenho());
+		}
+	}
+
+	@After
+	public void after() {
+		before();
+	}
+
+	@Test
+	public void insert() {
+		Desempenho desempenho = new Desempenho();
+		Object idDesempenho = new Object();
+		objectBC.insert(idDesempenho);
+		desempenho.setIdDesempenho(idDesempenho);
+		desempenhoBC.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoBC.findAll();
+		assertNotNull(desempenhoList);
+		assertEquals(1, desempenhoList.size());
+	}
+
+	@Test
+	public void update() {
+		Desempenho desempenho = new Desempenho();
+		Object idDesempenho = new Object();
+		objectBC.insert(idDesempenho);
+		desempenho.setIdDesempenho(idDesempenho);
+		Object mediaParcial = new Object();
+		objectBC.insert(mediaParcial);
+		desempenho.setMediaParcial(mediaParcial);
+		desempenhoBC.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoBC.findAll();
+		assertNotNull(desempenhoList);
+		assertTrue(desempenhoList.size()>0);
+		Desempenho beforeUpdate = desempenhoList.get(0);
+		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSituacao());
+		beforeUpdate.setSituacao("YYYYYYYYYYYYYYYYYYYY");
+		desempenhoBC.update(beforeUpdate);
+		desempenhoList = desempenhoBC.findAll();
+		Desempenho afterUpdate = desempenhoList.get(0);
+		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSituacao());
+	}
+
+	@Test
+	public void delete() {
+		Desempenho desempenho = new Desempenho();
+		Object idDesempenho = new Object();
+		objectBC.insert(idDesempenho);
+		desempenho.setIdDesempenho(idDesempenho);
+		desempenhoBC.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoBC.findAll();
+		assertNotNull(desempenhoList);
+		assertEquals(1, desempenhoList.size());
+		  desempenhoBC.delete(desempenho.getIdDesempenho());
+		desempenhoList = desempenhoBC.findAll();
+		assertEquals(0, desempenhoList.size());
+	}
+
+}
+
+</businessCodeUnitContent>
+<businessCodeUnitTemplate>EntityBCTestUnit</businessCodeUnitTemplate>
+<businessCodeUnitIdentification>BCTest</businessCodeUnitIdentification>
+<businessCodeBlocks>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>package controledenotas.business.entity;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>import controledenotas.domain.entity.Desempenho;
+import controledenotas.business.entity.DesempenhoBC;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import java.util.*;
+import javax.inject.Inject;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestImportBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>@RunWith(DemoiselleRunner.class)
+public class DesempenhoBCTest {
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Inject
+	private DesempenhoBC desempenhoBC;
+
+	@Inject
+	private ObjectBC objectBC;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestAttributesBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>attributes</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Inject
+	private ObjectBC objectBC;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockIdentification>extraBC</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyValue>custom</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Before
+	public void before() {
+		for (Desempenho desempenho : desempenhoBC.findAll()) {
+		  desempenhoBC.delete(desempenho.getIdDesempenho());
+		}
+	}
+
+	@After
+	public void after() {
+		before();
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestSetupBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>setup</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Test
+	public void insert() {
+		Desempenho desempenho = new Desempenho();
+		Object idDesempenho = new Object();
+		objectBC.insert(idDesempenho);
+		desempenho.setIdDesempenho(idDesempenho);
+		desempenhoBC.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoBC.findAll();
+		assertNotNull(desempenhoList);
+		assertEquals(1, desempenhoList.size());
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestInsertBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>insert</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Test
+	public void update() {
+		Desempenho desempenho = new Desempenho();
+		Object idDesempenho = new Object();
+		objectBC.insert(idDesempenho);
+		desempenho.setIdDesempenho(idDesempenho);
+		Object mediaParcial = new Object();
+		objectBC.insert(mediaParcial);
+		desempenho.setMediaParcial(mediaParcial);
+		desempenhoBC.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoBC.findAll();
+		assertNotNull(desempenhoList);
+		assertTrue(desempenhoList.size()>0);
+		Desempenho beforeUpdate = desempenhoList.get(0);
+		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSituacao());
+		beforeUpdate.setSituacao("YYYYYYYYYYYYYYYYYYYY");
+		desempenhoBC.update(beforeUpdate);
+		desempenhoList = desempenhoBC.findAll();
+		Desempenho afterUpdate = desempenhoList.get(0);
+		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSituacao());
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestUpdateBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>update</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>	@Test
+	public void delete() {
+		Desempenho desempenho = new Desempenho();
+		Object idDesempenho = new Object();
+		objectBC.insert(idDesempenho);
+		desempenho.setIdDesempenho(idDesempenho);
+		desempenhoBC.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoBC.findAll();
+		assertNotNull(desempenhoList);
+		assertEquals(1, desempenhoList.size());
+		  desempenhoBC.delete(desempenho.getIdDesempenho());
+		desempenhoList = desempenhoBC.findAll();
+		assertEquals(0, desempenhoList.size());
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityBCTestDeleteBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>delete</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+<intraCodeBlocks>
+</intraCodeBlocks>
+</businessCodeBlocks_item>
+</businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyValue>src/test/java/controledenotas/business/entity/DesempenhoBCTest.java</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
+</businessCodeUnits_item>
+</businessCodeUnits>
+<businessComponentSetProperties>
+</businessComponentSetProperties>
+</com.egen.tool.business.BusinessComponent>

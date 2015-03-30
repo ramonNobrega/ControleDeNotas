@@ -3,10 +3,14 @@
 <class>com.egen.tool.datadic.DataDicTable</class>
 <componentName>tb_aluno</componentName>
 <componentDescription></componentDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
 <lastChange>1427738119108</lastChange>
+=======
+<lastChange>1427742916805</lastChange>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
 <dataDicTableConstraintPk><class>com.egen.tool.datadic.DataDicTableConstraintPk</class>
-<constraintName>pk_aluno</constraintName>
 <constraintDescription></constraintDescription>
+<constraintName>PRIMARY</constraintName>
 <lastChange>0</lastChange>
 <referencedColumnReferences>
 <referencedColumnReferences_item>
@@ -19,10 +23,20 @@
 </dataDicTableConstraintPk>
 <dataDicTableConstraintChecks>
 </dataDicTableConstraintChecks>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+=======
+<dataDicTableConstraintFks>
+</dataDicTableConstraintFks>
+<dataDicTableConstraintUks>
+</dataDicTableConstraintUks>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
 <dataDicTableColumns>
 <dataDicTableColumns_item>
 <class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
 <columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
 <columnSize>0</columnSize>
 <dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
 <columnNotnull>true</columnNotnull>
@@ -31,13 +45,39 @@
 <columnName>id_aluno</columnName>
 <columnDefaultValue></columnDefaultValue>
 <columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnName>id_aluno</columnName>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>true</columnNotnull>
+<columnScale>0</columnScale>
+<columnType>INT</columnType>
+<columnSize>10</columnSize>
 <lastChange>0</lastChange>
 <dataDicTableColumnSetProperties>
 </dataDicTableColumnSetProperties>
 </dataDicTableColumns_item>
 <dataDicTableColumns_item>
 <class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
 <columnDescription></columnDescription>
+<columnName>nome_aluno</columnName>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnScale>0</columnScale>
+<columnType>VARCHAR</columnType>
+<columnSize>100</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
 <columnSize>100</columnSize>
 <dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
 <columnNotnull>false</columnNotnull>
@@ -61,15 +101,26 @@
 <columnName>senha</columnName>
 <columnDefaultValue></columnDefaultValue>
 <columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnName>senha</columnName>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>true</columnNotnull>
+<columnScale>0</columnScale>
+<columnType>VARCHAR</columnType>
+<columnSize>32</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
 <lastChange>0</lastChange>
 <dataDicTableColumnSetProperties>
 </dataDicTableColumnSetProperties>
 </dataDicTableColumns_item>
 </dataDicTableColumns>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
 <dataDicTableConstraintFks>
 </dataDicTableConstraintFks>
 <dataDicTableConstraintUks>
 </dataDicTableConstraintUks>
+=======
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
 <dataDicTableTriggers>
 </dataDicTableTriggers>
 <dataDicTableIndexes>

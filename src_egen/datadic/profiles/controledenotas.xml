@@ -1,9 +1,15 @@
 <?xml version="1.0" ?>
 <DataDicGeneratorProfile>
 <class>com.egen.tool.datadic.DataDicGeneratorProfile</class>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
 <doNotUseSchema>true</doNotUseSchema>
+=======
+<defaultProfile>true</defaultProfile>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
 <defaultDataSource>jdbc/controledenotas</defaultDataSource>
+<doNotUseSchema>true</doNotUseSchema>
 <usedSchema>false</usedSchema>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
 <defaultProfile>true</defaultProfile>
 <instanceSchemaName></instanceSchemaName>
 <defaultExtractTemplate>jdbc_extraction</defaultExtractTemplate>
@@ -12,6 +18,15 @@
 <componentName>controledenotas</componentName>
 <componentDescription></componentDescription>
 <lastChange>1427735968424</lastChange>
+=======
+<defaultExtractTemplate>jdbc_extraction</defaultExtractTemplate>
+<profileCaseManipulation></profileCaseManipulation>
+<instanceSchemaName></instanceSchemaName>
+<defaultMasterTemplate>mysql55_ddl</defaultMasterTemplate>
+<componentName>controledenotas</componentName>
+<componentDescription></componentDescription>
+<lastChange>1427742649734</lastChange>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
 <dataDicComponentSetProperties>
 </dataDicComponentSetProperties>
 </DataDicGeneratorProfile>
