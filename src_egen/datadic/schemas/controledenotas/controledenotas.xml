@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<DataDicSchema>
+<class>com.egen.tool.datadic.DataDicSchema</class>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<mainSchema>true</mainSchema>
+<componentName>controledenotas</componentName>
+<componentDescription></componentDescription>
+<lastChange>1427736996293</lastChange>
+<dataDicViews>
+</dataDicViews>
+<dataDicSequences>
+</dataDicSequences>
+<dataDicGrants>
+</dataDicGrants>
+<dataDicProcedures>
+</dataDicProcedures>
+<dataDicTables>
+</dataDicTables>
+=======
+<mainSchema>false</mainSchema>
+<componentName>controledenotas</componentName>
+<componentDescription></componentDescription>
+<lastChange>1427742916822</lastChange>
+<dataDicSequences>
+</dataDicSequences>
+<dataDicTables>
+</dataDicTables>
+<dataDicProcedures>
+</dataDicProcedures>
+<dataDicGrants>
+</dataDicGrants>
+<dataDicViews>
+</dataDicViews>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicComponentSetProperties>
+</dataDicComponentSetProperties>
+</DataDicSchema>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ControleDeNotas1">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/business/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/integration/java"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <property name="context-root" value="ControleDeNotas1"/>
+        <property name="java-output-path" value="/ControleDeNotas1/target/ControleDeNotas1/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,242 @@
+<?xml version="1.0" ?>
+<DataDicTable>
+<class>com.egen.tool.datadic.DataDicTable</class>
+<componentName>tb_desempenho_bimestral</componentName>
+<componentDescription></componentDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<lastChange>1427738603535</lastChange>
+=======
+<lastChange>1427742916812</lastChange>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableConstraintPk><class>com.egen.tool.datadic.DataDicTableConstraintPk</class>
+<constraintDescription></constraintDescription>
+<constraintName>PRIMARY</constraintName>
+<lastChange>0</lastChange>
+<referencedColumnReferences>
+<referencedColumnReferences_item>
+<class>java.lang.String</class>
+<value>id_bimestre</value>
+</referencedColumnReferences_item>
+</referencedColumnReferences>
+<dataDicTableConstraintSetProperties>
+</dataDicTableConstraintSetProperties>
+</dataDicTableConstraintPk>
+<dataDicTableConstraintChecks>
+</dataDicTableConstraintChecks>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+=======
+<dataDicTableConstraintFks>
+<dataDicTableConstraintFks_item>
+<class>com.egen.tool.datadic.DataDicTableConstraintFk</class>
+<referencedTable>tb_desempenho</referencedTable>
+<constraintDescription></constraintDescription>
+<constraintName>fk_tb_desempenho_bimestral_id_desempenho</constraintName>
+<lastChange>0</lastChange>
+<dataDicTableConstraintFkColumnReferences>
+<dataDicTableConstraintFkColumnReferences_item>
+<class>com.egen.tool.datadic.DataDicTableConstraintFkColumnReference</class>
+<referencedColumn>id_desempenho</referencedColumn>
+<localColumn>desempenho</localColumn>
+</dataDicTableConstraintFkColumnReferences_item>
+</dataDicTableConstraintFkColumnReferences>
+<dataDicTableConstraintSetProperties>
+</dataDicTableConstraintSetProperties>
+</dataDicTableConstraintFks_item>
+</dataDicTableConstraintFks>
+<dataDicTableConstraintUks>
+</dataDicTableConstraintUks>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableColumns>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnSize>0</columnSize>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>true</columnNotnull>
+<columnType>INTEGER</columnType>
+<columnScale>0</columnScale>
+<columnName>id_bimestre</columnName>
+<columnDefaultValue></columnDefaultValue>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnName>id_bimestre</columnName>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>true</columnNotnull>
+<columnScale>0</columnScale>
+<columnType>INT</columnType>
+<columnSize>10</columnSize>
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<columnName>nota1</columnName>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnScale>0</columnScale>
+<columnType>INT</columnType>
+<columnSize>10</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnSize>0</columnSize>
+=======
+<columnName>nota2</columnName>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnType>INTEGER</columnType>
+<columnScale>0</columnScale>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnName>nota1</columnName>
+<columnDefaultValue></columnDefaultValue>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnType>INT</columnType>
+<columnSize>10</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnSize>0</columnSize>
+=======
+<columnName>nota3</columnName>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnType>INTEGER</columnType>
+<columnScale>0</columnScale>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnName>nota2</columnName>
+<columnDefaultValue></columnDefaultValue>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnType>INT</columnType>
+<columnSize>10</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnSize>0</columnSize>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnType>INTEGER</columnType>
+<columnScale>0</columnScale>
+<columnName>nota3</columnName>
+<columnDefaultValue></columnDefaultValue>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnDescription></columnDescription>
+<columnSize>0</columnSize>
+=======
+<columnName>media_bimestre</columnName>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnType>INTEGER</columnType>
+<columnScale>0</columnScale>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnName>media_bimestre</columnName>
+<columnDefaultValue></columnDefaultValue>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnType>INT</columnType>
+<columnSize>10</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnSize>0</columnSize>
+=======
+<columnName>desempenho</columnName>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnType>INTEGER</columnType>
+<columnScale>0</columnScale>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnName>desempenho</columnName>
+<columnDefaultValue></columnDefaultValue>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnType>INT</columnType>
+<columnSize>10</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+</dataDicTableColumns>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<dataDicTableConstraintFks>
+<dataDicTableConstraintFks_item>
+<class>com.egen.tool.datadic.DataDicTableConstraintFk</class>
+<referencedTable>tb_desempenho</referencedTable>
+<constraintName>fk_tb_desempenho_bimestral_id_desempenho</constraintName>
+<constraintDescription></constraintDescription>
+<lastChange>0</lastChange>
+<dataDicTableConstraintFkColumnReferences>
+<dataDicTableConstraintFkColumnReferences_item>
+<class>com.egen.tool.datadic.DataDicTableConstraintFkColumnReference</class>
+<referencedColumn>id_desempenho</referencedColumn>
+<localColumn>desempenho</localColumn>
+</dataDicTableConstraintFkColumnReferences_item>
+</dataDicTableConstraintFkColumnReferences>
+<dataDicTableConstraintSetProperties>
+</dataDicTableConstraintSetProperties>
+</dataDicTableConstraintFks_item>
+</dataDicTableConstraintFks>
+<dataDicTableConstraintUks>
+</dataDicTableConstraintUks>
+=======
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableTriggers>
+</dataDicTableTriggers>
+<dataDicTableIndexes>
+</dataDicTableIndexes>
+<dataDicGrants>
+</dataDicGrants>
+<dataDicComponentSetProperties>
+</dataDicComponentSetProperties>
+</DataDicTable>

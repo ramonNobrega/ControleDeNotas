@@ -1,0 +1,212 @@
+<?xml version="1.0" ?>
+<DataDicTable>
+<class>com.egen.tool.datadic.DataDicTable</class>
+<componentName>tb_professor</componentName>
+<componentDescription></componentDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<lastChange>1427738246851</lastChange>
+=======
+<lastChange>1427742916815</lastChange>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableConstraintPk><class>com.egen.tool.datadic.DataDicTableConstraintPk</class>
+<constraintDescription></constraintDescription>
+<constraintName>PRIMARY</constraintName>
+<lastChange>0</lastChange>
+<referencedColumnReferences>
+<referencedColumnReferences_item>
+<class>java.lang.String</class>
+<value>id_professor</value>
+</referencedColumnReferences_item>
+</referencedColumnReferences>
+<dataDicTableConstraintSetProperties>
+</dataDicTableConstraintSetProperties>
+</dataDicTableConstraintPk>
+<dataDicTableConstraintChecks>
+</dataDicTableConstraintChecks>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+=======
+<dataDicTableConstraintFks>
+<dataDicTableConstraintFks_item>
+<class>com.egen.tool.datadic.DataDicTableConstraintFk</class>
+<referencedTable>tb_turma</referencedTable>
+<constraintDescription></constraintDescription>
+<constraintName>fk_tb_professor_id_turma</constraintName>
+<lastChange>0</lastChange>
+<dataDicTableConstraintFkColumnReferences>
+<dataDicTableConstraintFkColumnReferences_item>
+<class>com.egen.tool.datadic.DataDicTableConstraintFkColumnReference</class>
+<referencedColumn>id_turma</referencedColumn>
+<localColumn>turma</localColumn>
+</dataDicTableConstraintFkColumnReferences_item>
+</dataDicTableConstraintFkColumnReferences>
+<dataDicTableConstraintSetProperties>
+</dataDicTableConstraintSetProperties>
+</dataDicTableConstraintFks_item>
+</dataDicTableConstraintFks>
+<dataDicTableConstraintUks>
+</dataDicTableConstraintUks>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableColumns>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnSize>0</columnSize>
+=======
+<columnName>id_professor</columnName>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>true</columnNotnull>
+<columnType>INTEGER</columnType>
+<columnScale>0</columnScale>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnName>id_professor</columnName>
+<columnDefaultValue></columnDefaultValue>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnType>INT</columnType>
+<columnSize>10</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnSize>100</columnSize>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnType>VARCHAR(10)</columnType>
+<columnScale>0</columnScale>
+<columnName>nome_professor</columnName>
+<columnDefaultValue></columnDefaultValue>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnName>nome_professor</columnName>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnScale>0</columnScale>
+<columnType>VARCHAR</columnType>
+<columnSize>100</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnSize>32</columnSize>
+=======
+<columnName>senha</columnName>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>true</columnNotnull>
+<columnType>VARCHAR(10)</columnType>
+<columnScale>0</columnScale>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnName>senha</columnName>
+<columnDefaultValue></columnDefaultValue>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnType>VARCHAR</columnType>
+<columnSize>32</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnSize>100</columnSize>
+=======
+<columnName>disciplina</columnName>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnType>VARCHAR(10)</columnType>
+<columnScale>0</columnScale>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnName>disciplina</columnName>
+<columnDefaultValue></columnDefaultValue>
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+=======
+<columnType>VARCHAR</columnType>
+<columnSize>100</columnSize>
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+<dataDicTableColumns_item>
+<class>com.egen.tool.datadic.DataDicTableColumn</class>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<columnDescription></columnDescription>
+<columnSize>0</columnSize>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnType>INTEGER</columnType>
+<columnScale>0</columnScale>
+<columnName>turma</columnName>
+<columnDefaultValue></columnDefaultValue>
+=======
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<columnIsAutoIncrement>false</columnIsAutoIncrement>
+<columnDefaultValue></columnDefaultValue>
+<columnDescription></columnDescription>
+<columnName>turma</columnName>
+<dataDicTableColumnDomainReference></dataDicTableColumnDomainReference>
+<columnNotnull>false</columnNotnull>
+<columnScale>0</columnScale>
+<columnType>INT</columnType>
+<columnSize>10</columnSize>
+<lastChange>0</lastChange>
+<dataDicTableColumnSetProperties>
+</dataDicTableColumnSetProperties>
+</dataDicTableColumns_item>
+</dataDicTableColumns>
+<<<<<<< 64869680fe9a2bb8c65dfec68491135da3c8adbe
+<dataDicTableConstraintFks>
+<dataDicTableConstraintFks_item>
+<class>com.egen.tool.datadic.DataDicTableConstraintFk</class>
+<referencedTable>tb_turma</referencedTable>
+<constraintName>fk_tb_professor_id_turma</constraintName>
+<constraintDescription></constraintDescription>
+<lastChange>0</lastChange>
+<dataDicTableConstraintFkColumnReferences>
+<dataDicTableConstraintFkColumnReferences_item>
+<class>com.egen.tool.datadic.DataDicTableConstraintFkColumnReference</class>
+<referencedColumn>id_turma</referencedColumn>
+<localColumn>turma</localColumn>
+</dataDicTableConstraintFkColumnReferences_item>
+</dataDicTableConstraintFkColumnReferences>
+<dataDicTableConstraintSetProperties>
+</dataDicTableConstraintSetProperties>
+</dataDicTableConstraintFks_item>
+</dataDicTableConstraintFks>
+<dataDicTableConstraintUks>
+</dataDicTableConstraintUks>
+=======
+>>>>>>> b00437913af4fbe1c3f1e43ce3e034908b24d929
+<dataDicTableTriggers>
+</dataDicTableTriggers>
+<dataDicTableIndexes>
+</dataDicTableIndexes>
+<dataDicGrants>
+</dataDicGrants>
+<dataDicComponentSetProperties>
+</dataDicComponentSetProperties>
+</DataDicTable>

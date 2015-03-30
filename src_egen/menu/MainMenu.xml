@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuGenerator>
+<class>com.egen.develop.menu.MenuGenerator</class>
+<path></path>
+<title>Main Menu</title>
+<file_name></file_name>
+<menu><class>com.egen.util.system.Menu</class>
+<enabled>null</enabled>
+<role></role>
+<topic></topic>
+<expression></expression>
+<roleinclude>false</roleinclude>
+<menuSetProperties></menuSetProperties>
+<exclude_manual>false</exclude_manual>
+<onclick></onclick>
+<open>false</open>
+<link></link>
+<item_type></item_type>
+<extraLink></extraLink>
+<src></src>
+<key_table>0</key_table>
+<i18n></i18n>
+<template></template>
+<name></name>
+<id>1</id>
+<target></target>
+<label></label>
+<sub_menus>
+</sub_menus>
+</menu>
+</MenuGenerator>
