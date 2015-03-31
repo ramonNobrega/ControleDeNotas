@@ -3,7 +3,7 @@
 <target>deploy</target>
 <lastModifyDate>16/03/2009 10:13:42</lastModifyDate>
 <deploymentProfileName>DefaultDeployment</deploymentProfileName>
-<buildFile>%TOOL_HOME%/configdata/templatesets/tsegenstd/project/make/build.xml</buildFile>
+<buildFile>%TOOL_HOME%\configdata\templatesets\demoiselle\project\make\build.xml</buildFile>
 <buildType></buildType>
 <parameters>
 <parameters_item>
@@ -24,7 +24,7 @@
 </parameters_item>
 <parameters_item>
 <$key>excludedResources</$key>
-<$value>**/*.java,**/META-INFO/,**/CVS/,**/src/,**/src_egen/,**/temp/*.pdf,**/temp/*.rtf,**/temp/*.xls</$value>
+<$value>**/*.java,**/META-INFO/,**/CVS/,**/.svn/,**/src/,**/src_egen/,**/temp/*.pdf,**/temp/*.rtf,**/temp/*.xls</$value>
 </parameters_item>
 <parameters_item>
 <$key>workingDirectory</$key>

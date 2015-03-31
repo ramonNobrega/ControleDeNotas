@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+	<ui:define name="body">
+		<h:form id="cadastraProfessorForm">
+			<p:focus id="cadastraProfessorFocus"/>
+			<div id="cadastraProfessorTitle" class="blocktitle">Cadastra Novo Professor</div>
+			<p:toolbar id="cadastraProfessorToolbar">
+				<p:toolbarGroup id="cadastraProfessorLeftToolbarGroup" align="left">
+					<p:commandButton id="back" value="#{messages['button.back']}" action="#{cadastroProfessorMB.getPreviousView}" immediate="true" ajax="false" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
+					<p:commandButton id="insert" value="#{messages['button.insert']}" action="#{cadastroProfessorMB.insert}" ajax="false" title="#{messages['button.insert']}" icon="ui-icon-disk"></p:commandButton>
+				</p:toolbarGroup>
+				<p:toolbarGroup id="cadastraProfessorRightToolbarGroup" align="right">
+					<ui:include src="/template/exportToolbar.xhtml">
+						<ui:param name="target" value="cadastraProfessorDataTable" />
+					</ui:include>
+				</p:toolbarGroup>
+			</p:toolbar>
+			<p:outputPanel id="cadastraProfessorPanel">
+				<div class="formrow">
+					<div id="matriculaformcell" class="formcell">
+						<p:outputLabel id="matriculaLabel" value="Matr&#237;cula" for="matricula" styleClass="text-input"></p:outputLabel>
+						<p:inputText id="matricula" value="#{cadastroProfessorMB.professor.matricula}" required="true" maxlength="10" size="10">
+						</p:inputText>
+					</div>
+				</div>
+				<div class="formrow">
+					<div id="nomeformcell" class="formcell">
+						<p:outputLabel id="nomeLabel" value="Nome" for="nome" styleClass="text-input"></p:outputLabel>
+						<p:inputText id="nome" value="#{cadastroProfessorMB.professor.nome}" required="true" maxlength="100" size="100">
+						</p:inputText>
+					</div>
+				</div>
+				<div class="formrow">
+					<div id="senhaformcell" class="formcell">
+						<p:outputLabel id="senhaLabel" value="Senha" for="senha" styleClass="text-input"></p:outputLabel>
+						<p:password id="senha" value="#{cadastroProfessorMB.professor.senha}" required="true" size="32"></p:password>
+					</div>
+				</div>
+				<div class="formrow">
+					<div id="disciplinaformcell" class="formcell">
+						<p:outputLabel id="disciplinaLabel" value="Disciplina" for="disciplina" styleClass="text-input"></p:outputLabel>
+						<p:inputText id="disciplina" value="#{cadastroProfessorMB.professor.disciplina}" maxlength="100" size="100">
+						</p:inputText>
+					</div>
+				</div>
+			</p:outputPanel>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.egen.tool.business.BusinessComponent>
+<class>com.egen.tool.business.BusinessComponent</class>
+<businessComponentAlias>DesempenhoDAO</businessComponentAlias>
+<businessComponentModule>persistence/entity</businessComponentModule>
+<businessComponentName>DesempenhoDAO</businessComponentName>
+<businessComponentMasterTemplate>EntityCrudDAOTemplate</businessComponentMasterTemplate>
+<variables>
+<variables_item>
+<class>com.egen.tool.business.BusinessVariable</class>
+<businessVariableName>desempenho</businessVariableName>
+<businessVariableDomainReference></businessVariableDomainReference>
+<businessVariableDescription></businessVariableDescription>
+<businessVariableInitialization></businessVariableInitialization>
+<variableComponentType></variableComponentType>
+<businessVariableType>@entity(controledenotas.domain.entity.Desempenho)</businessVariableType>
+<businessVariableSetProperties>
+</businessVariableSetProperties>
+</variables_item>
+</variables>
+<businessComponentSetProperties>
+</businessComponentSetProperties>
+<inputParameters>
+</inputParameters>
+<outputParameters>
+</outputParameters>
+<businessCodeUnits>
+<businessCodeUnits_item>
+<class>com.egen.tool.business.BusinessCodeUnit</class>
+<businessCodeUnitIdentification>DAO</businessCodeUnitIdentification>
+<businessCodeUnitContent>package controledenotas.persistence.entity;
+
+import java.util.*;
+import javax.inject.Inject;
+import javax.persistence.*;
+
+import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
+
+import controledenotas.domain.entity.Desempenho;
+import br.gov.frameworkdemoiselle.template.JPACrud;
+import javax.persistence.criteria.*;
+
+@PersistenceController
+public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public List<Desempenho> findByExample(Desempenho example) {
+		if (example == null) {
+			example = new Desempenho();
+		}
+		return super.findByExample(example);
+	}
+
+	public List<Desempenho> findByCriteria(java.util.Map<String, Object> parameters) {
+		if (parameters == null) {
+			parameters = new java.util.HashMap<String, Object>();
+		}
+		CriteriaBuilder cb = super.getCriteriaBuilder();
+		CriteriaQuery<Desempenho> q = cb.createQuery(Desempenho.class);
+		Root<Desempenho> r = q.from(Desempenho.class);
+		Predicate where = null;
+		Object parameter = null; 
+		parameter = parameters.get("codigo");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("codigo").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("codigo"), parameter);
+			}
+			if (expression != null) {
+				where = expression;
+			}
+		}
+		parameter = parameters.get("mediaParcial");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("mediaParcial").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("mediaParcial"), parameter);
+			}
+			if (expression != null) {
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
+			}
+		}
+		parameter = parameters.get("provaFinal");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("provaFinal").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("provaFinal"), parameter);
+			}
+			if (expression != null) {
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
+			}
+		}
+		parameter = parameters.get("mediaFinal");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("mediaFinal").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("mediaFinal"), parameter);
+			}
+			if (expression != null) {
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
+			}
+		}
+		parameter = parameters.get("situacao");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<String> collection = (List<String>)parameter;
+				expression = r.get("situacao").in(collection);
+			} else if (parameter instanceof String && ((String)parameter).length()>0) {
+				expression = cb.like(r.<String>get("situacao"), "%" + parameter + "%");
+			}
+			if (expression != null) {
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
+			}
+		}
+		parameter = parameters.get("aluno");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("aluno").get("matricula").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("aluno").get("matricula"), parameter);
+			} else if (parameter instanceof controledenotas.domain.entity.Aluno) {
+				expression = cb.equal(r.get("aluno"), parameter);
+			}
+			if (expression != null) {
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
+			}
+		}
+		List<Desempenho> results = new ArrayList<Desempenho>();
+		if (where != null) {
+			q.where(where);
+			results =  getEntityManager().createQuery(q).getResultList();
+		}
+		return results;
+	}
+
+}
+
+</businessCodeUnitContent>
+<businessCodeUnitTemplate>EntityDAOUnit</businessCodeUnitTemplate>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>extends</setPropertyKey>
+<setPropertyValue>br.gov.frameworkdemoiselle.template.JPACrud<[ENTITY], [ID_TYPE]></setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyValue>src/main/java/controledenotas/persistence/entity/DesempenhoDAO.java</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
+<businessCodeBlocks>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
+<businessCodeBlockContent>package controledenotas.persistence.entity;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
+<businessCodeBlockContent>import java.util.*;
+import javax.inject.Inject;
+import javax.persistence.*;
+
+import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
+
+import controledenotas.domain.entity.Desempenho;
+import br.gov.frameworkdemoiselle.template.JPACrud;
+import javax.persistence.criteria.*;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOImportBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
+<businessCodeBlockContent>import br.gov.frameworkdemoiselle.template.JPACrud;</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyValue>custom</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+</intraCodeBlocks_item>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>extraImport_1</businessCodeBlockIdentification>
+<businessCodeBlockContent>import javax.persistence.criteria.*;
+</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyValue>custom</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
+<businessCodeBlockContent>@PersistenceController
+public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
+
+	private static final long serialVersionUID = 1L;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
+<businessCodeBlockContent>	private static final long serialVersionUID = 1L;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>findByExample</businessCodeBlockIdentification>
+<businessCodeBlockContent>	@Override
+	public List<Desempenho> findByExample(Desempenho example) {
+		if (example == null) {
+			example = new Desempenho();
+		}
+		return super.findByExample(example);
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOFindByExampleBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>findByCriteria</businessCodeBlockIdentification>
+<businessCodeBlockContent>	public List<Desempenho> findByCriteria(java.util.Map<String, Object> parameters) {
+		if (parameters == null) {
+			parameters = new java.util.HashMap<String, Object>();
+		}
+		CriteriaBuilder cb = super.getCriteriaBuilder();
+		CriteriaQuery<Desempenho> q = cb.createQuery(Desempenho.class);
+		Root<Desempenho> r = q.from(Desempenho.class);
+		Predicate where = null;
+		Object parameter = null; 
+		parameter = parameters.get("codigo");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("codigo").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("codigo"), parameter);
+			}
+			if (expression != null) {
+				where = expression;
+			}
+		}
+		parameter = parameters.get("mediaParcial");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("mediaParcial").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("mediaParcial"), parameter);
+			}
+			if (expression != null) {
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
+			}
+		}
+		parameter = parameters.get("provaFinal");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("provaFinal").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("provaFinal"), parameter);
+			}
+			if (expression != null) {
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
+			}
+		}
+		parameter = parameters.get("mediaFinal");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("mediaFinal").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("mediaFinal"), parameter);
+			}
+			if (expression != null) {
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
+			}
+		}
+		parameter = parameters.get("situacao");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<String> collection = (List<String>)parameter;
+				expression = r.get("situacao").in(collection);
+			} else if (parameter instanceof String && ((String)parameter).length()>0) {
+				expression = cb.like(r.<String>get("situacao"), "%" + parameter + "%");
+			}
+			if (expression != null) {
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
+			}
+		}
+		parameter = parameters.get("aluno");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("aluno").get("matricula").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("aluno").get("matricula"), parameter);
+			} else if (parameter instanceof controledenotas.domain.entity.Aluno) {
+				expression = cb.equal(r.get("aluno"), parameter);
+			}
+			if (expression != null) {
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
+			}
+		}
+		List<Desempenho> results = new ArrayList<Desempenho>();
+		if (where != null) {
+			q.where(where);
+			results =  getEntityManager().createQuery(q).getResultList();
+		}
+		return results;
+	}
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+</businessCodeBlocks>
+</businessCodeUnits_item>
+<businessCodeUnits_item>
+<class>com.egen.tool.business.BusinessCodeUnit</class>
+<businessCodeUnitIdentification>DAOTest</businessCodeUnitIdentification>
+<businessCodeUnitContent>package controledenotas.persistence.entity;
+
+import controledenotas.domain.entity.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import java.util.*;
+import javax.inject.Inject;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+
+@RunWith(DemoiselleRunner.class)
+public class DesempenhoDAOTest {
+
+	@Inject
+	private DesempenhoDAO desempenhoDAO;
+
+	@Before
+	public void before() {
+		for (Desempenho desempenho : desempenhoDAO.findAll()) {
+		desempenhoDAO.delete(desempenho.getCodigo());
+		}
+	}
+
+	@After
+	public void after() {
+		before();
+	}
+
+	@Test
+	public void insert() {
+		Desempenho desempenho = new Desempenho();
+		desempenho.setCodigo(new Integer("1"));
+		desempenhoDAO.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
+		assertNotNull(desempenhoList);
+		assertEquals(1, desempenhoList.size());
+	}
+
+	@Test
+	public void update() {
+		Desempenho desempenho = new Desempenho();
+		desempenho.setCodigo(new Integer("1"));
+		desempenho.setMediaParcial(new Integer("1"));
+		desempenhoDAO.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
+		assertNotNull(desempenhoList);
+		assertTrue(desempenhoList.size()>0);
+		Desempenho beforeUpdate = desempenhoList.get(0);
+		assertEquals(new Integer("1"), beforeUpdate.getMediaParcial());
+		beforeUpdate.setMediaParcial(new Integer("2"));
+		desempenhoDAO.update(beforeUpdate);
+		desempenhoList = desempenhoDAO.findAll();
+		Desempenho afterUpdate = desempenhoList.get(0);
+		assertEquals(new Integer("2"), afterUpdate.getMediaParcial());
+	}
+
+	@Test
+	public void delete() {
+		Desempenho desempenho = new Desempenho();
+		desempenho.setCodigo(new Integer("1"));
+		desempenhoDAO.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
+		assertNotNull(desempenhoList);
+		assertEquals(1, desempenhoList.size());
+		desempenhoDAO.delete(desempenho.getCodigo());
+		desempenhoList = desempenhoDAO.findAll();
+		assertEquals(0, desempenhoList.size());
+	}
+
+}
+
+</businessCodeUnitContent>
+<businessCodeUnitTemplate>EntityDAOTestUnit</businessCodeUnitTemplate>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyValue>src/test/java/controledenotas/persistence/entity/DesempenhoDAOTest.java</setPropertyValue>
+<setPropertyEnumeration></setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
+<businessCodeBlocks>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
+<businessCodeBlockContent>package controledenotas.persistence.entity;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
+<businessCodeBlockContent>import controledenotas.domain.entity.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import java.util.*;
+import javax.inject.Inject;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOTestImportBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
+<businessCodeBlockContent>@RunWith(DemoiselleRunner.class)
+public class DesempenhoDAOTest {
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>attributes</businessCodeBlockIdentification>
+<businessCodeBlockContent>	@Inject
+	private DesempenhoDAO desempenhoDAO;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOTestAttributesBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>setup</businessCodeBlockIdentification>
+<businessCodeBlockContent>	@Before
+	public void before() {
+		for (Desempenho desempenho : desempenhoDAO.findAll()) {
+		desempenhoDAO.delete(desempenho.getCodigo());
+		}
+	}
+
+	@After
+	public void after() {
+		before();
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOTestSetupBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>insert</businessCodeBlockIdentification>
+<businessCodeBlockContent>	@Test
+	public void insert() {
+		Desempenho desempenho = new Desempenho();
+		desempenho.setCodigo(new Integer("1"));
+		desempenhoDAO.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
+		assertNotNull(desempenhoList);
+		assertEquals(1, desempenhoList.size());
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOTestInsertBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>update</businessCodeBlockIdentification>
+<businessCodeBlockContent>	@Test
+	public void update() {
+		Desempenho desempenho = new Desempenho();
+		desempenho.setCodigo(new Integer("1"));
+		desempenho.setMediaParcial(new Integer("1"));
+		desempenhoDAO.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
+		assertNotNull(desempenhoList);
+		assertTrue(desempenhoList.size()>0);
+		Desempenho beforeUpdate = desempenhoList.get(0);
+		assertEquals(new Integer("1"), beforeUpdate.getMediaParcial());
+		beforeUpdate.setMediaParcial(new Integer("2"));
+		desempenhoDAO.update(beforeUpdate);
+		desempenhoList = desempenhoDAO.findAll();
+		Desempenho afterUpdate = desempenhoList.get(0);
+		assertEquals(new Integer("2"), afterUpdate.getMediaParcial());
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOTestUpdateBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>delete</businessCodeBlockIdentification>
+<businessCodeBlockContent>	@Test
+	public void delete() {
+		Desempenho desempenho = new Desempenho();
+		desempenho.setCodigo(new Integer("1"));
+		desempenhoDAO.insert(desempenho);
+		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
+		assertNotNull(desempenhoList);
+		assertEquals(1, desempenhoList.size());
+		desempenhoDAO.delete(desempenho.getCodigo());
+		desempenhoList = desempenhoDAO.findAll();
+		assertEquals(0, desempenhoList.size());
+	}
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate>EntityDAOTestDeleteBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+</businessCodeBlocks>
+</businessCodeUnits_item>
+</businessCodeUnits>
+</com.egen.tool.business.BusinessComponent>
