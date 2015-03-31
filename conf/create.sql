@@ -11,18 +11,18 @@ CREATE TABLE IF NOT EXISTS controledenotas.tb_desempenho (
 	prova_final INT,
 	media_final INT,
 	situacao VARCHAR(10),
-	aluno INT
+	aluno INT,
+	desempenho_bimestral INTEGER
 );
 ALTER TABLE controledenotas.tb_desempenho ADD CONSTRAINT pk_tb_desempenho PRIMARY KEY(id_desempenho);
 
 CREATE TABLE IF NOT EXISTS controledenotas.tb_desempenho_bimestral (
-	id_bimestre INT NOT NULL,
+	id_bimestre INT(4) NOT NULL,
 	nota1 INT,
 	nota2 INT,
 	nota3 INT,
 	media_bimestre INT,
-	aluno INT,
-	desempenho INT
+	aluno INT
 );
 ALTER TABLE controledenotas.tb_desempenho_bimestral ADD CONSTRAINT pk_tb_desempenho_bimestral PRIMARY KEY(id_bimestre);
 
@@ -43,7 +43,7 @@ ALTER TABLE controledenotas.tb_turma ADD CONSTRAINT pk_tb_turma PRIMARY KEY(id_t
 
 
 ALTER TABLE controledenotas.tb_desempenho ADD CONSTRAINT fk_tb_desempenho_id_aluno FOREIGN KEY (aluno) REFERENCES controledenotas.tb_aluno (id_aluno);
+ALTER TABLE controledenotas.tb_desempenho ADD CONSTRAINT fk_tb_desempenho_id_desempenho_bimestral FOREIGN KEY (desempenho_bimestral) REFERENCES controledenotas.tb_desempenho_bimestral (id_bimestre);
 ALTER TABLE controledenotas.tb_desempenho_bimestral ADD CONSTRAINT fk_tb_desempenho_bimestral_id_aluno FOREIGN KEY (aluno) REFERENCES controledenotas.tb_aluno (id_aluno);
-ALTER TABLE controledenotas.tb_desempenho_bimestral ADD CONSTRAINT fk_tb_desempenho_bimestral_tb_desempenho FOREIGN KEY (desempenho) REFERENCES controledenotas.tb_desempenho (id_desempenho);
 ALTER TABLE controledenotas.tb_professor ADD CONSTRAINT fk_tb_professor_id_turma FOREIGN KEY (turma) REFERENCES controledenotas.tb_turma (id_turma);
 ALTER TABLE controledenotas.tb_turma ADD CONSTRAINT fk_tb_turma_id_aluno FOREIGN KEY (id_aluno) REFERENCES controledenotas.tb_aluno (id_aluno);
