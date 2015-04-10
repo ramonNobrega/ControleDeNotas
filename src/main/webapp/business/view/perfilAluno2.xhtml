@@ -1,0 +1,66 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+	<ui:define name="body">
+		<h:form id="block02Form">
+			<p:focus id="block02Focus"/>
+			<div id="block02Title" class="blocktitle">Visualiza</div>
+			<p:toolbar id="block02Toolbar">
+				<p:toolbarGroup id="block02LeftToolbarGroup" align="left">
+					<p:commandButton id="back" value="#{messages['button.back']}" action="#{perfilAluno2MB.getPreviousView}" immediate="true" ajax="false" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
+					<p:commandButton id="insert" value="#{messages['button.insert']}" action="#{perfilAluno2MB.insert}" ajax="false" title="#{messages['button.insert']}" icon="ui-icon-disk"></p:commandButton>
+					<p:commandButton id="save" value="#{messages['button.save']}" action="#{perfilAluno2MB.save}" ajax="false" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
+				</p:toolbarGroup>
+				<p:toolbarGroup id="block02RightToolbarGroup" align="right">
+					<ui:include src="/template/exportToolbar.xhtml">
+						<ui:param name="target" value="block02DataTable" />
+					</ui:include>
+				</p:toolbarGroup>
+			</p:toolbar>
+			<p:outputPanel id="block02Panel">
+				<p:dataTable id="block02DataTable" value="#{perfilAluno2MB.desempenhoResultList}" var="bean" rows="5" paginator="true" rowsPerPageTemplate="5,10,15,20,50,100" rowIndexVar="rowIndexVar" resizableColumns="true" tableStyle="width:100%">
+					<p:column id="codigoDTColumn" sortBy="#{bean.codigo}" filterBy="#{bean.codigo}" filterMatchMode="contains">
+						<f:facet name="header">
+							<h:outputText value="C&#243;digo"></h:outputText>
+						</f:facet>
+						<p:inputText id="codigo" value="#{bean.codigo}" required="true" maxlength="10" size="10">
+						</p:inputText>
+					</p:column>
+					<p:column id="mediaParcialDTColumn" sortBy="#{bean.mediaParcial}" filterBy="#{bean.mediaParcial}" filterMatchMode="contains">
+						<f:facet name="header">
+							<h:outputText value="M&#233;dia Parcial"></h:outputText>
+						</f:facet>
+						<p:inputText id="mediaParcial" value="#{bean.mediaParcial}" maxlength="10" size="10">
+						</p:inputText>
+					</p:column>
+					<p:column id="provaFinalDTColumn" sortBy="#{bean.provaFinal}" filterBy="#{bean.provaFinal}" filterMatchMode="contains">
+						<f:facet name="header">
+							<h:outputText value="Prova Final"></h:outputText>
+						</f:facet>
+						<p:inputText id="provaFinal" value="#{bean.provaFinal}" maxlength="10" size="10">
+						</p:inputText>
+					</p:column>
+					<p:column id="mediaFinalDTColumn" sortBy="#{bean.mediaFinal}" filterBy="#{bean.mediaFinal}" filterMatchMode="contains">
+						<f:facet name="header">
+							<h:outputText value="M&#233;dia Final"></h:outputText>
+						</f:facet>
+						<p:inputText id="mediaFinal" value="#{bean.mediaFinal}" maxlength="10" size="10">
+						</p:inputText>
+					</p:column>
+					<p:column id="situacaoDTColumn" sortBy="#{bean.situacao}" filterBy="#{bean.situacao}" filterMatchMode="contains">
+						<f:facet name="header">
+							<h:outputText value="Situa&#231;&#227;o"></h:outputText>
+						</f:facet>
+						<p:inputText id="situacao" value="#{bean.situacao}" maxlength="10" size="10">
+						</p:inputText>
+					</p:column>
+					<p:column id="alunoDTColumn" sortBy="#{bean.aluno}" filterBy="#{bean.aluno}" filterMatchMode="contains">
+						<f:facet name="header">
+							<h:outputText value="Aluno"></h:outputText>
+						</f:facet>
+						<p:inputText id="aluno" value="#{bean.aluno}" maxlength="10" size="10">
+						</p:inputText>
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.*;
 import javax.persistence.*;
 import controledenotas.domain.entity.Aluno;
-import controledenotas.domain.entity.Desempenho;
 
 @Entity
 @Table(name="tb_desempenho_bimestral", schema="controledenotas")
@@ -13,17 +12,18 @@ public class DesempenhoBimestral implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_bimestre", nullable=false)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_bimestre", nullable=false, columnDefinition="INT default 1")
 	private Integer idBimestre;
 
-	@Column(name="nota1")
-	private Integer nota1;
+	@Column(name="nota1", columnDefinition="FLOAT default 0")
+	private Double nota1;
 
-	@Column(name="nota2")
-	private Integer nota2;
+	@Column(name="nota2", columnDefinition="FLOAT default 0")
+	private Double nota2;
 
-	@Column(name="nota3")
-	private Integer nota3;
+	@Column(name="nota3", columnDefinition="FLOAT default 0")
+	private Double nota3;
 
 	@Column(name="media_bimestre")
 	private Integer mediaBimestre;
@@ -32,15 +32,14 @@ public class DesempenhoBimestral implements Serializable {
 	@JoinColumn(name="aluno", referencedColumnName="id_aluno")
 	private Aluno aluno;
 
-	@ManyToOne
-	@JoinColumn(name="desempenho", referencedColumnName="id_desempenho")
-	private Desempenho desempenho;
+	@Column(name="nu_bim", nullable=false)
+	private Integer nu_bim;
 
 	public DesempenhoBimestral() {
 		super();
 	}
 
-	public DesempenhoBimestral(Integer idBimestre, Integer nota1, Integer nota2, Integer nota3, Integer mediaBimestre, Aluno aluno, Desempenho desempenho) {
+	public DesempenhoBimestral(Integer idBimestre, Double nota1, Double nota2, Double nota3, Integer mediaBimestre, Aluno aluno, Integer nu_bim) {
 		this();
 		this.idBimestre = idBimestre;
 		this.nota1 = nota1;
@@ -48,7 +47,7 @@ public class DesempenhoBimestral implements Serializable {
 		this.nota3 = nota3;
 		this.mediaBimestre = mediaBimestre;
 		this.aluno = aluno;
-		this.desempenho = desempenho;
+		this.nu_bim = nu_bim;
 	}
 
 	public Integer getIdBimestre() {
@@ -59,27 +58,27 @@ public class DesempenhoBimestral implements Serializable {
 		this.idBimestre = idBimestre;
 	}
 
-	public Integer getNota1() {
+	public Double getNota1() {
 		return nota1;
 	}
 
-	public void setNota1(Integer nota1) {
+	public void setNota1(Double nota1) {
 		this.nota1 = nota1;
 	}
 
-	public Integer getNota2() {
+	public Double getNota2() {
 		return nota2;
 	}
 
-	public void setNota2(Integer nota2) {
+	public void setNota2(Double nota2) {
 		this.nota2 = nota2;
 	}
 
-	public Integer getNota3() {
+	public Double getNota3() {
 		return nota3;
 	}
 
-	public void setNota3(Integer nota3) {
+	public void setNota3(Double nota3) {
 		this.nota3 = nota3;
 	}
 
@@ -102,15 +101,12 @@ public class DesempenhoBimestral implements Serializable {
 		this.aluno = aluno;
 	}
 
-	public Desempenho getDesempenho() {
-		if (desempenho == null) {
-			desempenho= new Desempenho();
-		}
-		return desempenho;
+	public Integer getNu_bim() {
+		return nu_bim;
 	}
 
-	public void setDesempenho(Desempenho desempenho) {
-		this.desempenho = desempenho;
+	public void setNu_bim(Integer nu_bim) {
+		this.nu_bim = nu_bim;
 	}
 
 }

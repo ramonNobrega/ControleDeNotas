@@ -32,7 +32,6 @@ public class AlunoBCTest {
 	@Test
 	public void insert() {
 		Aluno aluno = new Aluno();
-		aluno.setMatricula(new Integer("1"));
 		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
 		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoBC.insert(aluno);
@@ -44,7 +43,6 @@ public class AlunoBCTest {
 	@Test
 	public void update() {
 		Aluno aluno = new Aluno();
-		aluno.setMatricula(new Integer("1"));
 		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
 		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoBC.insert(aluno);
@@ -63,7 +61,6 @@ public class AlunoBCTest {
 	@Test
 	public void delete() {
 		Aluno aluno = new Aluno();
-		aluno.setMatricula(new Integer("1"));
 		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
 		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoBC.insert(aluno);

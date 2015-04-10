@@ -51,9 +51,9 @@ public class DesempenhoBimestralDAO extends JPACrud<DesempenhoBimestral, Integer
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("nota1").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("nota1"), parameter);
 			}
 			if (expression != null) {
@@ -69,9 +69,9 @@ public class DesempenhoBimestralDAO extends JPACrud<DesempenhoBimestral, Integer
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("nota2").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("nota2"), parameter);
 			}
 			if (expression != null) {
@@ -87,9 +87,9 @@ public class DesempenhoBimestralDAO extends JPACrud<DesempenhoBimestral, Integer
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("nota3").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("nota3"), parameter);
 			}
 			if (expression != null) {
@@ -138,17 +138,15 @@ public class DesempenhoBimestralDAO extends JPACrud<DesempenhoBimestral, Integer
 				}
 			}
 		}
-		parameter = parameters.get("desempenho");
+		parameter = parameters.get("nu_bim");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
 				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("desempenho").get("codigo").in(collection);
+				expression = r.get("nu_bim").in(collection);
 			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("desempenho").get("codigo"), parameter);
-			} else if (parameter instanceof controledenotas.domain.entity.Desempenho) {
-				expression = cb.equal(r.get("desempenho"), parameter);
+				expression = cb.equal(r.get("nu_bim"), parameter);
 			}
 			if (expression != null) {
 				if (where == null) {

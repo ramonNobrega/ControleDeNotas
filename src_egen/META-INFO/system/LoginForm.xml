@@ -224,6 +224,10 @@ import br.gov.frameworkdemoiselle.security.SecurityContext;
 <$value>false</$value>
 </fieldSetProperty_item>
 <fieldSetProperty_item>
+<$key>annotations</$key>
+<$value>@Inject</$value>
+</fieldSetProperty_item>
+<fieldSetProperty_item>
 <$key>controllerCode</$key>
 <$value>@Inject
 private Credential credential;
@@ -237,10 +241,6 @@ public void setCredential(Credential credential) {
 }
 
 </$value>
-</fieldSetProperty_item>
-<fieldSetProperty_item>
-<$key>annotations</$key>
-<$value>@Inject</$value>
 </fieldSetProperty_item>
 </fieldSetProperty>
 <codeItem></codeItem>
@@ -352,6 +352,10 @@ public void setCredential(Credential credential) {
 <$value>false</$value>
 </fieldSetProperty_item>
 <fieldSetProperty_item>
+<$key>annotations</$key>
+<$value>@Inject</$value>
+</fieldSetProperty_item>
+<fieldSetProperty_item>
 <$key>controllerCode</$key>
 <$value>@Inject
 private SecurityContext context;
@@ -365,10 +369,6 @@ public void setContext(SecurityContext context) {
 }
 
 </$value>
-</fieldSetProperty_item>
-<fieldSetProperty_item>
-<$key>annotations</$key>
-<$value>@Inject</$value>
 </fieldSetProperty_item>
 </fieldSetProperty>
 <codeItem></codeItem>
@@ -1144,11 +1144,11 @@ public void setContext(SecurityContext context) {
 <onmouseup></onmouseup>
 <baseButtonSetProperty>
 <baseButtonSetProperty_item>
-<$key>update</$key>
+<$key>actionListener</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
-<$key>actionListener</$key>
+<$key>update</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
@@ -1269,16 +1269,16 @@ public void setContext(SecurityContext context) {
 <$value>LoginMB</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
-<$key>PREVIOUS_VIEW</$key>
-<$value>/system/login.xhtml</$value>
+<$key>NEXT_VIEW</$key>
+<$value>/system/home.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>XHTML_REFERENCE</$key>
 <$value>/system/login.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
-<$key>NEXT_VIEW</$key>
-<$value>/system/home.xhtml</$value>
+<$key>PREVIOUS_VIEW</$key>
+<$value>/system/login.xhtml</$value>
 </generatorSetProperty_item>
 </generatorSetProperty>
 </generator>

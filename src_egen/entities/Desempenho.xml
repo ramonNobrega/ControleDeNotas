@@ -6,8 +6,8 @@
 <columns>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<columnName>codigo</columnName>
 <columnDomainReference></columnDomainReference>
+<columnName>codigo</columnName>
 <discard>false</discard>
 <columnProperties>
 <columnProperties_item>
@@ -24,6 +24,11 @@
 <class>java.lang.String</class>
 <$key>db_column</$key>
 <$value>id_desempenho</$value>
+</columnProperties_item>
+<columnProperties_item>
+<class>java.lang.String</class>
+<$key>columnDefinition</$key>
+<$value>INT default 1</$value>
 </columnProperties_item>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -59,8 +64,8 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<columnName>mediaParcial</columnName>
 <columnDomainReference></columnDomainReference>
+<columnName>mediaParcial</columnName>
 <discard>false</discard>
 <columnProperties>
 <columnProperties_item>
@@ -77,6 +82,11 @@
 <class>java.lang.String</class>
 <$key>db_column</$key>
 <$value>media_parcial</$value>
+</columnProperties_item>
+<columnProperties_item>
+<class>java.lang.String</class>
+<$key>columnDefinition</$key>
+<$value>FLOAT default 0</$value>
 </columnProperties_item>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -101,7 +111,7 @@
 <columnProperties_item>
 <class>java.lang.String</class>
 <$key>type</$key>
-<$value>java.lang.Integer</$value>
+<$value>java.lang.Double</$value>
 </columnProperties_item>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -112,8 +122,8 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<columnName>provaFinal</columnName>
 <columnDomainReference></columnDomainReference>
+<columnName>provaFinal</columnName>
 <discard>false</discard>
 <columnProperties>
 <columnProperties_item>
@@ -130,6 +140,11 @@
 <class>java.lang.String</class>
 <$key>db_column</$key>
 <$value>prova_final</$value>
+</columnProperties_item>
+<columnProperties_item>
+<class>java.lang.String</class>
+<$key>columnDefinition</$key>
+<$value>FLOAT default 0</$value>
 </columnProperties_item>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -154,7 +169,7 @@
 <columnProperties_item>
 <class>java.lang.String</class>
 <$key>type</$key>
-<$value>java.lang.Integer</$value>
+<$value>java.lang.Double</$value>
 </columnProperties_item>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -165,8 +180,8 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<columnName>mediaFinal</columnName>
 <columnDomainReference></columnDomainReference>
+<columnName>mediaFinal</columnName>
 <discard>false</discard>
 <columnProperties>
 <columnProperties_item>
@@ -183,6 +198,11 @@
 <class>java.lang.String</class>
 <$key>db_column</$key>
 <$value>media_final</$value>
+</columnProperties_item>
+<columnProperties_item>
+<class>java.lang.String</class>
+<$key>columnDefinition</$key>
+<$value>FLOAT default 0</$value>
 </columnProperties_item>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -207,7 +227,7 @@
 <columnProperties_item>
 <class>java.lang.String</class>
 <$key>type</$key>
-<$value>java.lang.Integer</$value>
+<$value>java.lang.Double</$value>
 </columnProperties_item>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -218,8 +238,8 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<columnName>situacao</columnName>
 <columnDomainReference></columnDomainReference>
+<columnName>situacao</columnName>
 <discard>false</discard>
 <columnProperties>
 <columnProperties_item>
@@ -236,6 +256,11 @@
 <class>java.lang.String</class>
 <$key>db_column</$key>
 <$value>situacao</$value>
+</columnProperties_item>
+<columnProperties_item>
+<class>java.lang.String</class>
+<$key>columnDefinition</$key>
+<$value>VARCHAR()(10) default reprovado</$value>
 </columnProperties_item>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -266,8 +291,8 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<columnName>aluno</columnName>
 <columnDomainReference></columnDomainReference>
+<columnName>aluno</columnName>
 <discard>false</discard>
 <columnProperties>
 <columnProperties_item>
@@ -339,8 +364,8 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<columnName>aluno.matricula</columnName>
 <columnDomainReference></columnDomainReference>
+<columnName>aluno.matricula</columnName>
 <discard>true</discard>
 <columnProperties>
 <columnProperties_item>
@@ -392,8 +417,8 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<columnName>aluno.nome</columnName>
 <columnDomainReference></columnDomainReference>
+<columnName>aluno.nome</columnName>
 <discard>true</discard>
 <columnProperties>
 <columnProperties_item>
@@ -440,8 +465,8 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<columnName>aluno.senha</columnName>
 <columnDomainReference></columnDomainReference>
+<columnName>aluno.senha</columnName>
 <discard>true</discard>
 <columnProperties>
 <columnProperties_item>
@@ -491,49 +516,6 @@
 </columnProperties_item>
 </columnProperties>
 </columns_item>
-<columns_item>
-<class>com.egen.tool.integration.VObjectColumn</class>
-<columnName>alunos</columnName>
-<columnDomainReference></columnDomainReference>
-<discard>true</discard>
-<columnProperties>
-<columnProperties_item>
-<class>java.lang.String</class>
-<$key>inverseJoinColumns</$key>
-<$value>{aluno,id_aluno}</$value>
-</columnProperties_item>
-<columnProperties_item>
-<class>java.lang.String</class>
-<$key>cascadeType</$key>
-<$value>ALL</$value>
-</columnProperties_item>
-<columnProperties_item>
-<class>java.lang.String</class>
-<$key>fetchType</$key>
-<$value>LAZY</$value>
-</columnProperties_item>
-<columnProperties_item>
-<class>java.lang.String</class>
-<$key>association</$key>
-<$value>ManyToMany</$value>
-</columnProperties_item>
-<columnProperties_item>
-<class>java.lang.String</class>
-<$key>associationTarget</$key>
-<$value>tb_desempenho_bimestral</$value>
-</columnProperties_item>
-<columnProperties_item>
-<class>java.lang.String</class>
-<$key>joinColumns</$key>
-<$value>{desempenho,id_desempenho}</$value>
-</columnProperties_item>
-<columnProperties_item>
-<class>java.lang.String</class>
-<$key>type</$key>
-<$value>java.util.List<Aluno></$value>
-</columnProperties_item>
-</columnProperties>
-</columns_item>
 </columns>
 <properties>
 <properties_item>
@@ -558,13 +540,13 @@
 </properties_item>
 <properties_item>
 <class>java.lang.String</class>
-<$key>indexes</$key>
-<$value></$value>
+<$key>idGeneratorStrategy</$key>
+<$value>IDENTITY</$value>
 </properties_item>
 <properties_item>
 <class>java.lang.String</class>
-<$key>pojo</$key>
-<$value>controledenotas.domain.entity.Desempenho</$value>
+<$key>indexes</$key>
+<$value></$value>
 </properties_item>
 <properties_item>
 <class>java.lang.String</class>

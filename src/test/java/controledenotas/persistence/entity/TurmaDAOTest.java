@@ -46,7 +46,6 @@ public class TurmaDAOTest {
 		Turma turma = new Turma();
 		turma.setCodigo(new Integer("1"));
 		Aluno matriculaAluno = new Aluno();
-		matriculaAluno.setMatricula(new Integer("1"));
 		matriculaAluno.setNome("XXXXXXXXXXXXXXXXXXXX");
 		matriculaAluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoDAO.insert(matriculaAluno);

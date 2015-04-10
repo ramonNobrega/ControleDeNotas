@@ -15,7 +15,7 @@
 <actionCode></actionCode>
 <jspTemplate>StandardViewTemplate</jspTemplate>
 <jspCode></jspCode>
-<help></help>
+<help>Seja bem vindo</help>
 <i18nHelp></i18nHelp>
 <show_help>false</show_help>
 <develHelp></develHelp>
@@ -123,7 +123,6 @@ import controledenotas.business.entity.ProfessorBC;
 	<p:toolbarGroup id="cadastraProfessorLeftToolbarGroup" align="left">
 		<p:commandButton id="back" value="#{messages['button.back']}" action="#{cadastroProfessorMB.getPreviousView}" immediate="true" ajax="false" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
 		<p:commandButton id="insert" value="#{messages['button.insert']}" action="#{cadastroProfessorMB.insert}" ajax="false" title="#{messages['button.insert']}" icon="ui-icon-disk"></p:commandButton>
-		<p:commandButton id="save" value="#{messages['button.save']}" action="#{cadastroProfessorMB.save}" ajax="false" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
 	</p:toolbarGroup>
 	<p:toolbarGroup id="cadastraProfessorRightToolbarGroup" align="right">
 		<ui:include src="/template/exportToolbar.xhtml">
@@ -654,11 +653,11 @@ import controledenotas.business.entity.ProfessorBC;
 <onmouseup></onmouseup>
 <baseButtonSetProperty>
 <baseButtonSetProperty_item>
-<$key>update</$key>
+<$key>actionListener</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
-<$key>actionListener</$key>
+<$key>update</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
@@ -741,11 +740,11 @@ import controledenotas.business.entity.ProfessorBC;
 <onmouseup></onmouseup>
 <baseButtonSetProperty>
 <baseButtonSetProperty_item>
-<$key>update</$key>
+<$key>actionListener</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
-<$key>actionListener</$key>
+<$key>update</$key>
 <$value></$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
@@ -804,7 +803,7 @@ import controledenotas.business.entity.ProfessorBC;
 <$value>CadastroProfessorMB</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
-<$key>NEXT_VIEW</$key>
+<$key>XHTML_REFERENCE</$key>
 <$value>/system/cadastroProfessor.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
@@ -812,7 +811,7 @@ import controledenotas.business.entity.ProfessorBC;
 <$value>/system/cadastroProfessor.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
-<$key>XHTML_REFERENCE</$key>
+<$key>NEXT_VIEW</$key>
 <$value>/system/cadastroProfessor.xhtml</$value>
 </generatorSetProperty_item>
 </generatorSetProperty>

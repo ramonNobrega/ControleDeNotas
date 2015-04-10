@@ -32,7 +32,7 @@ public class DesempenhoBimestralBCTest {
 	@Test
 	public void insert() {
 		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
-		desempenhoBimestral.setIdBimestre(new Integer("1"));
+		desempenhoBimestral.setNu_bim(new Integer("1"));
 		desempenhoBimestralBC.insert(desempenhoBimestral);
 		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralBC.findAll();
 		assertNotNull(desempenhoBimestralList);
@@ -42,25 +42,25 @@ public class DesempenhoBimestralBCTest {
 	@Test
 	public void update() {
 		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
-		desempenhoBimestral.setIdBimestre(new Integer("1"));
-		desempenhoBimestral.setNota1(new Integer("1"));
+		desempenhoBimestral.setNota1(new Double("1.1"));
+		desempenhoBimestral.setNu_bim(new Integer("1"));
 		desempenhoBimestralBC.insert(desempenhoBimestral);
 		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralBC.findAll();
 		assertNotNull(desempenhoBimestralList);
 		assertTrue(desempenhoBimestralList.size()>0);
 		DesempenhoBimestral beforeUpdate = desempenhoBimestralList.get(0);
-		assertEquals(new Integer("1"), beforeUpdate.getNota1());
-		beforeUpdate.setNota1(new Integer("2"));
+		assertEquals(new Integer("1"), beforeUpdate.getNu_bim());
+		beforeUpdate.setNu_bim(new Integer("2"));
 		desempenhoBimestralBC.update(beforeUpdate);
 		desempenhoBimestralList = desempenhoBimestralBC.findAll();
 		DesempenhoBimestral afterUpdate = desempenhoBimestralList.get(0);
-		assertEquals(new Integer("2"), afterUpdate.getNota1());
+		assertEquals(new Integer("2"), afterUpdate.getNu_bim());
 	}
 
 	@Test
 	public void delete() {
 		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
-		desempenhoBimestral.setIdBimestre(new Integer("1"));
+		desempenhoBimestral.setNu_bim(new Integer("1"));
 		desempenhoBimestralBC.insert(desempenhoBimestral);
 		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralBC.findAll();
 		assertNotNull(desempenhoBimestralList);
