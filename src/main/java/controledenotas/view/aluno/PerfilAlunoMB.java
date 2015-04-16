@@ -1,4 +1,4 @@
-package controledenotas.view.report;
+package controledenotas.view.aluno;
 
 import java.util.*;
 
@@ -20,13 +20,15 @@ import controledenotas.business.process.*;
 import controledenotas.constant.*;
 import controledenotas.exception.*;
 
-import controledenotas.business.entity.DesempenhoBC;
 import controledenotas.business.entity.DesempenhoBimestralBC;
+import controledenotas.business.entity.AlunoBC;
+import controledenotas.business.entity.DesempenhoBC;
+import controledenotas.domain.entity.Aluno;
 
 @ViewController
-@PreviousView("/report/perfilAluno.xhtml")
-@NextView("/report/perfilAluno.xhtml")
-public class PerfilAlunoMB extends AbstractPageBean {
+@PreviousView("/aluno/perfilAluno.xhtml")
+@NextView("/aluno/perfilAluno.xhtml")
+public class PerfilAlunoMB extends AbstractListPageBean<Aluno, Integer> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,6 +39,14 @@ public class PerfilAlunoMB extends AbstractPageBean {
 	@Name("messages")
 	private ResourceBundle bundle;
 
+	@Inject
+	private AlunoBC alunoBC;
+	
+	@Override
+	protected List<Aluno> handleResultList() {
+		return this.alunoBC.findAll();
+	}
+	
 	@Inject
 	private DesempenhoBimestralBC desempenhoBimestralBC;
 	
@@ -49,21 +59,6 @@ public class PerfilAlunoMB extends AbstractPageBean {
 	
 	public void setDesempenhoBimestralResultList(List<DesempenhoBimestral> desempenhoBimestralResultList) {
 		this.desempenhoBimestralResultList = desempenhoBimestralResultList;
-	}
-	
-	
-	@Inject
-	private DesempenhoBC desempenhoBC;
-	
-	private List<Desempenho> desempenhoResultList;
-	
-	public List<Desempenho> getDesempenhoResultList() {
-		desempenhoResultList = this.desempenhoBC.findAll();
-		return desempenhoResultList;
-	}
-	
-	public void setDesempenhoResultList(List<Desempenho> desempenhoResultList) {
-		this.desempenhoResultList = desempenhoResultList;
 	}
 
 }

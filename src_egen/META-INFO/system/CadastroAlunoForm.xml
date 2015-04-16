@@ -518,7 +518,7 @@ private ProfessorBC professorBC;
 <template></template>
 <action_code>@Transactional
 public String insert() {
-		Desempenho desempenho = new Desempenho();
+	Desempenho desempenho = new Desempenho();
 		desempenho.setAluno(getAluno());
 		desempenho.setMediaFinal(0);
 		desempenho.setMediaParcial(0);

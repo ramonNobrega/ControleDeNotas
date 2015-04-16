@@ -11,6 +11,7 @@ import br.gov.frameworkdemoiselle.message.*;
 import br.gov.frameworkdemoiselle.stereotype.*;
 import br.gov.frameworkdemoiselle.template.*;
 import br.gov.frameworkdemoiselle.transaction.*;
+
 import controledenotas.domain.entity.*;
 import controledenotas.domain.enumeration.*;
 import controledenotas.domain.view.*;
@@ -18,6 +19,7 @@ import controledenotas.business.entity.*;
 import controledenotas.business.process.*;
 import controledenotas.constant.*;
 import controledenotas.exception.*;
+
 import controledenotas.domain.entity.Aluno;
 import controledenotas.business.entity.AlunoBC;
 import controledenotas.business.entity.ProfessorBC;
@@ -53,19 +55,20 @@ public class CadastroAlunoMB extends AbstractPageBean {
 	@Transactional
 	public String insert() {
 		Desempenho desempenho = new Desempenho();
-		desempenho.setAluno(getAluno());
-		desempenho.setMediaFinal(0);
-		desempenho.setMediaParcial(0);
-		desempenho.setProvaFinal(0);
-		desempenho.setSituacao("reprovado");
-		getAluno().getDesempenhosList().add(desempenho);
-		for (int i = 1; i < 5; i++) {
-			getAluno().getDesempenhoBimestralList().add(new DesempenhoBimestral(null, 0.0, 0.0, 0.0, 0, aluno, i));
-		}
-		this.alunoBC.insert(getAluno());
-		messageContext.add(new DefaultMessage("{pages.msg.insertsuccess}"));
-		return getPreviousView();
+			desempenho.setAluno(getAluno());
+			desempenho.setMediaFinal(0);
+			desempenho.setMediaParcial(0);
+			desempenho.setProvaFinal(0);
+			desempenho.setSituacao("reprovado");
+			getAluno().getDesempenhosList().add(desempenho);
+			for (int i = 1; i < 5; i++) {
+				getAluno().getDesempenhoBimestralList().add(new DesempenhoBimestral(null, 0.0, 0.0, 0.0, 0, aluno, i));
+			}
+			this.alunoBC.insert(getAluno());
+			messageContext.add(new DefaultMessage("{pages.msg.insertsuccess}"));
+			return getPreviousView();
 	}
+	
 	/* Button[cadastraAluno.insert] */
 
 }

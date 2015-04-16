@@ -1,4 +1,4 @@
-package controledenotas.view.system;
+package controledenotas.view.professor;
 
 import java.util.*;
 
@@ -21,11 +21,12 @@ import controledenotas.constant.*;
 import controledenotas.exception.*;
 
 import controledenotas.business.entity.DesempenhoBimestralBC;
+import controledenotas.domain.entity.DesempenhoBimestral;
 
 @ViewController
-@PreviousView("/system/perfilAluno.xhtml")
-@NextView("/system/perfilAluno.xhtml")
-public class PerfilAlunoMB extends AbstractPageBean {
+@PreviousView("/professor/manterDesempenhoBimestral.xhtml")
+@NextView("/professor/manterDesempenhoBimestralDetail.xhtml")
+public class ManterDesempenhoBimestralMB extends AbstractListPageBean<DesempenhoBimestral, Integer> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,29 +40,30 @@ public class PerfilAlunoMB extends AbstractPageBean {
 	@Inject
 	private DesempenhoBimestralBC desempenhoBimestralBC;
 	
-	private List<DesempenhoBimestral> desempenhoBimestralResultList;
-	
-	public List<DesempenhoBimestral> getDesempenhoBimestralResultList() {
-		desempenhoBimestralResultList = this.desempenhoBimestralBC.findAll();
-		return desempenhoBimestralResultList;
+	public String newRecord() {
+		return getNextView();
 	}
 	
-	public void setDesempenhoBimestralResultList(List<DesempenhoBimestral> desempenhoBimestralResultList) {
-		this.desempenhoBimestralResultList = desempenhoBimestralResultList;
-	}
-	
-	
-	@Inject
-	@Name("enum.truefalse.properties")
-	private ResourceBundle truefalse.propertiesBundle;
-	
-	public void Desempenho() {
-		if (truefalse.propertiesBundle != null) {
-			Enumeration<String> keys = truefalse.propertiesBundle.getKeys();
-			while (keys.hasMoreElements()) {
-				String key = keys.nextElement();
+	@Transactional
+	public String delete() {
+		boolean delete = false;
+		for (Iterator<Integer> iter = getSelection().keySet().iterator(); iter.hasNext();) {
+			Integer selectedId = iter.next();
+			delete = getSelection().get(selectedId);
+			if (delete) {
+				desempenhoBimestralBC.delete(selectedId);
+				iter.remove();
 			}
 		}
+		if (delete) {
+			messageContext.add(new DefaultMessage("{pages.msg.deletesuccess}"));
+		}
+		return getCurrentView();
+	}
+	
+	@Override
+	protected List<DesempenhoBimestral> handleResultList() {
+		return this.desempenhoBimestralBC.findAll();
 	}
 
 }

@@ -6,6 +6,7 @@
 			<p:toolbar id="cadastraAlunoToolbar">
 				<p:toolbarGroup id="cadastraAlunoLeftToolbarGroup" align="left">
 					<p:commandButton id="back" value="#{messages['button.back']}" action="#{cadastroAlunoMB.getPreviousView}" immediate="true" ajax="false" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
+					<p:commandButton id="insert" value="Inserir" action="#{cadastroAlunoMB.insert}" ajax="false" title="#{messages['button.insert']}" icon="ui-icon-disk"></p:commandButton>
 				</p:toolbarGroup>
 				<p:toolbarGroup id="cadastraAlunoRightToolbarGroup" align="right">
 					<ui:include src="/template/exportToolbar.xhtml">
