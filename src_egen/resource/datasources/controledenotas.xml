@@ -3,9 +3,9 @@
 <class>com.egen.tool.configuration.ToolsDataSource</class>
 <name>jdbc/controledenotas</name>
 <factory>org.apache.commons.dbcp.BasicDataSourceFactory</factory>
-<driver>com.mysql.jdbc.Driver</driver>
-<password>malthus</password>
 <url>jdbc:mysql://localhost:3306/controledenotas</url>
+<password></password>
 <username>root</username>
 <databaseProduct>MySQL</databaseProduct>
+<driver>com.mysql.jdbc.Driver</driver>
 </ToolsDataSource>

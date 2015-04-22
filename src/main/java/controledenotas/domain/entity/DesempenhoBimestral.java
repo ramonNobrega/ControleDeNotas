@@ -26,9 +26,10 @@ public class DesempenhoBimestral implements Serializable {
 	private Double nota3;
 
 	@Column(name="media_bimestre")
-	private Integer mediaBimestre;
+	private double mediaBimestre;
 
-	@ManyToOne
+	/*Opção oculta do mapeamento*/
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="aluno", referencedColumnName="id_aluno")
 	private Aluno aluno;
 
@@ -45,7 +46,7 @@ public class DesempenhoBimestral implements Serializable {
 		this.nota1 = nota1;
 		this.nota2 = nota2;
 		this.nota3 = nota3;
-		this.mediaBimestre = mediaBimestre;
+		setMediaBimestre((nota1+nota2+nota3)/3);
 		this.aluno = aluno;
 		this.nu_bim = nu_bim;
 	}
@@ -82,12 +83,12 @@ public class DesempenhoBimestral implements Serializable {
 		this.nota3 = nota3;
 	}
 
-	public Integer getMediaBimestre() {
+	public double getMediaBimestre() {
 		return mediaBimestre;
 	}
 
-	public void setMediaBimestre(Integer mediaBimestre) {
-		this.mediaBimestre = mediaBimestre;
+	public void setMediaBimestre(double media) {
+		this.mediaBimestre = media;
 	}
 
 	public Aluno getAluno() {

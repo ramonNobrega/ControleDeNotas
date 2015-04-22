@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.egen.tool.business.BusinessComponent>
+<class>com.egen.tool.business.BusinessComponent</class>
+<businessComponentAlias>DesempenhoBimestreCalculaMedia</businessComponentAlias>
+<businessComponentModule>business</businessComponentModule>
+<businessComponentMasterTemplate>StandardBCTemplate</businessComponentMasterTemplate>
+<businessComponentName>DesempenhoBimestreCalculaMedia</businessComponentName>
+<variables>
+</variables>
+<businessComponentSetProperties>
+</businessComponentSetProperties>
+<outputParameters>
+<outputParameters_item>
+<class>com.egen.tool.business.BusinessVariable</class>
+<businessVariableName>media</businessVariableName>
+<businessVariableDomainReference></businessVariableDomainReference>
+<businessVariableInitialization></businessVariableInitialization>
+<businessVariableType>Double</businessVariableType>
+<variableComponentType>input</variableComponentType>
+<businessVariableDescription></businessVariableDescription>
+<businessVariableSetProperties>
+</businessVariableSetProperties>
+</outputParameters_item>
+</outputParameters>
+<businessCodeUnits>
+<businessCodeUnits_item>
+<class>com.egen.tool.business.BusinessCodeUnit</class>
+<businessCodeUnitIdentification>BC</businessCodeUnitIdentification>
+<businessCodeUnitContent>package controledenotas.business;
+
+/* block[extraImport]*/
+import br.gov.frameworkdemoiselle.stereotype.BusinessController;
+/* block[extraImport]*/
+/* block[extraImport_1]*/
+import java.io.Serializable;
+/* block[extraImport_1]*/
+
+@BusinessController
+public class DesempenhoBimestreCalculaMedia implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+/* block[abrirCalcularMedia]*/
+public static Double calcularMedia(Double nota1,Double nota2,Double nota3) {
+/* block[abrirCalcularMedia]*/
+
+/* block[corpoCalculandoMedia]*/
+Double media = (nota1+nota2+nota3)/3;
+return media;
+/* block[corpoCalculandoMedia]*/
+
+/* block[fechandoCalcularMedia]*/
+}
+/* block[fechandoCalcularMedia]*/
+
+}
+
+</businessCodeUnitContent>
+<businessCodeUnitTemplate>StandardBCUnit</businessCodeUnitTemplate>
+<businessCodeBlocks>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockContent>package controledenotas.business;
+
+</businessCodeBlockContent>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
+<businessCodeBlockTemplate>BlankBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockContent>/* block[extraImport]*/
+import br.gov.frameworkdemoiselle.stereotype.BusinessController;
+/* block[extraImport]*/
+/* block[extraImport_1]*/
+import java.io.Serializable;
+/* block[extraImport_1]*/
+</businessCodeBlockContent>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockContent>import br.gov.frameworkdemoiselle.stereotype.BusinessController;
+</businessCodeBlockContent>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyValue>custom</setPropertyValue>
+<setPropertyEnumeration>
+</setPropertyEnumeration>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+</intraCodeBlocks_item>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>extraImport_1</businessCodeBlockIdentification>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockContent>import java.io.Serializable;
+</businessCodeBlockContent>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyValue>custom</setPropertyValue>
+<setPropertyEnumeration>
+</setPropertyEnumeration>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
+<businessCodeBlockTemplate>StandardBCClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockContent>@BusinessController
+public class DesempenhoBimestreCalculaMedia implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+</businessCodeBlockContent>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
+<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockContent>	private static final long serialVersionUID = 1L;
+
+</businessCodeBlockContent>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>abrirCalcularMedia</businessCodeBlockIdentification>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockContent>public static Double calcularMedia(Double nota1,Double nota2,Double nota3) {
+</businessCodeBlockContent>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>corpoCalculandoMedia</businessCodeBlockIdentification>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockContent>Double media = (nota1+nota2+nota3)/3;
+return media;
+</businessCodeBlockContent>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>fechandoCalcularMedia</businessCodeBlockIdentification>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockContent>}
+</businessCodeBlockContent>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+<businessCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<intraCodeBlocks>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
+</businessCodeBlocks_item>
+</businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>implements</setPropertyKey>
+<setPropertyValue>java.io.Serializable</setPropertyValue>
+<setPropertyEnumeration>
+</setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyValue>src/main/java/controledenotas/business/DesempenhoBimestreCalculaMedia.java</setPropertyValue>
+<setPropertyEnumeration>
+</setPropertyEnumeration>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
+</businessCodeUnits_item>
+</businessCodeUnits>
+<inputParameters>
+<inputParameters_item>
+<class>com.egen.tool.business.BusinessVariable</class>
+<businessVariableName>nota1</businessVariableName>
+<businessVariableDomainReference></businessVariableDomainReference>
+<businessVariableInitialization></businessVariableInitialization>
+<businessVariableType>Double</businessVariableType>
+<variableComponentType>input</variableComponentType>
+<businessVariableDescription></businessVariableDescription>
+<businessVariableSetProperties>
+</businessVariableSetProperties>
+</inputParameters_item>
+<inputParameters_item>
+<class>com.egen.tool.business.BusinessVariable</class>
+<businessVariableName>nota2</businessVariableName>
+<businessVariableDomainReference></businessVariableDomainReference>
+<businessVariableInitialization></businessVariableInitialization>
+<businessVariableType>Double</businessVariableType>
+<variableComponentType>input</variableComponentType>
+<businessVariableDescription></businessVariableDescription>
+<businessVariableSetProperties>
+</businessVariableSetProperties>
+</inputParameters_item>
+<inputParameters_item>
+<class>com.egen.tool.business.BusinessVariable</class>
+<businessVariableName>nota3</businessVariableName>
+<businessVariableDomainReference></businessVariableDomainReference>
+<businessVariableInitialization></businessVariableInitialization>
+<businessVariableType>Double</businessVariableType>
+<variableComponentType>input</variableComponentType>
+<businessVariableDescription></businessVariableDescription>
+<businessVariableSetProperties>
+</businessVariableSetProperties>
+</inputParameters_item>
+</inputParameters>
+</com.egen.tool.business.BusinessComponent>
