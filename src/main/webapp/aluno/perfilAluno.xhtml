@@ -1,26 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
 	<ui:define name="body">
-		<h:form id="dadosblockForm">
-			<p:focus id="dadosblockFocus"/>
-			<p:toolbar id="botoesblockToolbar">
-				<p:toolbarGroup id="dadosblockLeftToolbarGroup" align="left">
-				</p:toolbarGroup>
-				<p:toolbarGroup id="dadosblockRightToolbarGroup" align="right">
-					<ui:include src="/template/exportToolbar.xhtml">
-						<ui:param name="target" value="dadosblockDataTable" />
-					</ui:include>
-				</p:toolbarGroup>
-			</p:toolbar>
-			<p:outputPanel id="dadosblockPanel">
-				<div class="formrow">
-					<div id="nomeformcell" class="formcell">
-						<p:outputLabel id="nomeLabel" value="Nome" for="nome" styleClass="text-input"></p:outputLabel>
-						<p:inputText id="nome" value="#{perfilAlunoMB.aluno.nome}" required="true" maxlength="100" size="100">
-						</p:inputText>
-					</div>
-				</div>
-			</p:outputPanel>
-		</h:form>
 		<h:form id="notasBlockForm">
 			<div id="notasBlockTitle" class="blocktitle">Notas</div>
 			<p:outputPanel id="notasBlockPanel" styleClass="h1">
@@ -61,6 +40,41 @@
 							<h:outputText value="M&#233;dia Bimestral"></h:outputText>
 						</f:facet>
 						<h:outputText id="mediaBimestre" value="#{bean.mediaBimestre}">
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+		</h:form>
+		<h:form id="perfilBlockForm">
+			<div id="perfilBlockTitle" class="blocktitle">Perfil</div>
+			<p:toolbar id="perfilBlockToolbar">
+				<p:toolbarGroup id="perfilBlockRightToolbarGroup" align="right">
+					<ui:include src="/template/exportToolbar.xhtml">
+						<ui:param name="target" value="perfilBlockDataTable" />
+					</ui:include>
+				</p:toolbarGroup>
+			</p:toolbar>
+			<p:outputPanel id="perfilBlockPanel">
+				<p:dataTable id="perfilBlockDataTable" value="#{perfilAlunoMB.resultList}" var="bean" rows="5" paginator="true" rowsPerPageTemplate="5,10,15,20,50,100" rowIndexVar="rowIndexVar" resizableColumns="true" tableStyle="width:100%">
+					<p:column id="matriculaDTColumn" style="text-align:right;" sortBy="#{bean.matricula}" filterBy="#{bean.matricula}" filterMatchMode="contains" exportable="true">
+						<f:facet name="header">
+							<h:outputText value="Matr&#237;cula"></h:outputText>
+						</f:facet>
+						<h:outputText id="matricula" value="#{bean.matricula}">
+						</h:outputText>
+					</p:column>
+					<p:column id="nomeDTColumn" sortBy="#{bean.nome}" filterBy="#{bean.nome}" filterMatchMode="contains" exportable="true">
+						<f:facet name="header">
+							<h:outputText value="Nome"></h:outputText>
+						</f:facet>
+						<h:outputText id="nome" value="#{bean.nome}">
+						</h:outputText>
+					</p:column>
+					<p:column id="senhaDTColumn" sortBy="#{bean.senha}" filterBy="#{bean.senha}" filterMatchMode="contains" exportable="true">
+						<f:facet name="header">
+							<h:outputText value="Senha"></h:outputText>
+						</f:facet>
+						<h:outputText id="senha" value="#{bean.senha}">
 						</h:outputText>
 					</p:column>
 				</p:dataTable>
