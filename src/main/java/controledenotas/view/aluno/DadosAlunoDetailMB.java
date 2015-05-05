@@ -1,4 +1,4 @@
-package controledenotas.view.professor;
+package controledenotas.view.aluno;
 
 import java.util.*;
 
@@ -20,13 +20,15 @@ import controledenotas.business.process.*;
 import controledenotas.constant.*;
 import controledenotas.exception.*;
 
+import controledenotas.business.entity.AlunoBC;
+import controledenotas.domain.entity.Aluno;
 import controledenotas.business.entity.DesempenhoBimestralBC;
-import controledenotas.domain.entity.DesempenhoBimestral;
+import controledenotas.business.entity.DesempenhoBC;
 
 @ViewController
-@PreviousView("/professor/manterDesempenhoBimestral.xhtml")
-@NextView("/professor/manterDesempenhoBimestralDetail.xhtml")
-public class ManterDesempenhoBimestralDetailMB extends AbstractEditPageBean<DesempenhoBimestral, Integer> {
+@PreviousView("/aluno/dadosAluno.xhtml")
+@NextView("/aluno/dadosAlunoDetail.xhtml")
+public class DadosAlunoDetailMB extends AbstractEditPageBean<Aluno, Integer> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -38,12 +40,12 @@ public class ManterDesempenhoBimestralDetailMB extends AbstractEditPageBean<Dese
 	private ResourceBundle bundle;
 
 	@Inject
-	private DesempenhoBimestralBC desempenhoBimestralBC;
+	private AlunoBC alunoBC;
 	
 	@Override
 	@Transactional
 	public String insert() {
-		this.desempenhoBimestralBC.insert(getBean());
+		this.alunoBC.insert(getBean());
 		messageContext.add(new DefaultMessage("{pages.msg.insertsuccess}"));
 		return getPreviousView();
 	}
@@ -51,7 +53,7 @@ public class ManterDesempenhoBimestralDetailMB extends AbstractEditPageBean<Dese
 	@Override
 	@Transactional
 	public String update() {
-		this.desempenhoBimestralBC.update(getBean());
+		this.alunoBC.update(getBean());
 		messageContext.add(new DefaultMessage("{pages.msg.updatesuccess}"));
 		return getPreviousView();
 	}
@@ -59,13 +61,13 @@ public class ManterDesempenhoBimestralDetailMB extends AbstractEditPageBean<Dese
 	@Override
 	@Transactional
 	public String delete() {
-		this.desempenhoBimestralBC.delete(getBean().getIdBimestre());
+		this.alunoBC.delete(getBean().getMatricula());
 		return getPreviousView();
 	}
 	
 	@Override
 	protected void handleLoad() {
-		setBean(this.desempenhoBimestralBC.load(getId()));
+		setBean(this.alunoBC.load(getId()));
 	}
 
 }

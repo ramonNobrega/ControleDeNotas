@@ -24,6 +24,8 @@ import controledenotas.business.entity.DesempenhoBimestralBC;
 import controledenotas.business.entity.AlunoBC;
 import controledenotas.business.entity.DesempenhoBC;
 import controledenotas.domain.entity.Aluno;
+import javax.faces.model.SelectItem;
+import br.gov.frameworkdemoiselle.report.Type;
 
 @ViewController
 @PreviousView("/aluno/perfilAluno.xhtml")
@@ -40,14 +42,6 @@ public class PerfilAlunoMB extends AbstractListPageBean<Aluno, Integer> {
 	private ResourceBundle bundle;
 
 	@Inject
-	private AlunoBC alunoBC;
-	
-	@Override
-	protected List<Aluno> handleResultList() {
-		return this.alunoBC.findAll();
-	}
-	
-	@Inject
 	private DesempenhoBimestralBC desempenhoBimestralBC;
 	
 	private List<DesempenhoBimestral> desempenhoBimestralResultList;
@@ -59,6 +53,30 @@ public class PerfilAlunoMB extends AbstractListPageBean<Aluno, Integer> {
 	
 	public void setDesempenhoBimestralResultList(List<DesempenhoBimestral> desempenhoBimestralResultList) {
 		this.desempenhoBimestralResultList = desempenhoBimestralResultList;
+	}
+	
+	
+	@Inject
+	private AlunoBC alunoBC;
+	
+	public SelectItem[] getDesempenhosListList() {
+		Type[] types = Type.values();
+		SelectItem[] options = new SelectItem[types.length];
+		for (int i=0; i<types.length; i++) {
+			Type type = types[i];
+			options[i] = new SelectItem(type, type.name());
+		}
+		return options;
+	}
+	
+	public SelectItem[] getDesempenhoBimestralListList() {
+		Type[] types = Type.values();
+		SelectItem[] options = new SelectItem[types.length];
+		for (int i=0; i<types.length; i++) {
+			Type type = types[i];
+			options[i] = new SelectItem(type, type.name());
+		}
+		return options;
 	}
 
 }

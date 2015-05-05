@@ -9,7 +9,7 @@ import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.template.DelegateCrud;
 
 @BusinessController
-public class AlunoBC extends DelegateCrud<Aluno, Integer, AlunoDAO> {
+public class AlunoBC extends DelegateCrud<Aluno, Long, AlunoDAO> {
 
 	private static final long serialVersionUID = 1L;
 

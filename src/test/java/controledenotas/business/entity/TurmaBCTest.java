@@ -10,16 +10,12 @@ import javax.inject.Inject;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
-import controledenotas.domain.entity.Aluno;
 
 @RunWith(DemoiselleRunner.class)
 public class TurmaBCTest {
 
 	@Inject
 	private TurmaBC turmaBC;
-
-	@Inject
-	private AlunoBC alunoBC;
 
 	@Before
 	public void before() {
@@ -36,7 +32,7 @@ public class TurmaBCTest {
 	@Test
 	public void insert() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
+		turma.setNome("XXX");
 		turmaBC.insert(turma);
 		List<Turma> turmaList = turmaBC.findAll();
 		assertNotNull(turmaList);
@@ -46,29 +42,24 @@ public class TurmaBCTest {
 	@Test
 	public void update() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
-		Aluno matriculaAluno = new Aluno();
-		matriculaAluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		matriculaAluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
-		alunoBC.insert(matriculaAluno);
-		turma.setMatriculaAluno(matriculaAluno);
+		turma.setNome("XXX");
 		turmaBC.insert(turma);
 		List<Turma> turmaList = turmaBC.findAll();
 		assertNotNull(turmaList);
 		assertTrue(turmaList.size()>0);
 		Turma beforeUpdate = turmaList.get(0);
-		assertEquals(new Integer("1"), beforeUpdate.getMatriculaAluno());
-		beforeUpdate.setMatriculaAluno(null);
+		assertEquals("XXX", beforeUpdate.getNome());
+		beforeUpdate.setNome("YYY");
 		turmaBC.update(beforeUpdate);
 		turmaList = turmaBC.findAll();
 		Turma afterUpdate = turmaList.get(0);
-		assertEquals(null, afterUpdate.getMatriculaAluno());
+		assertEquals("YYY", afterUpdate.getNome());
 	}
 
 	@Test
 	public void delete() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
+		turma.setNome("XXX");
 		turmaBC.insert(turma);
 		List<Turma> turmaList = turmaBC.findAll();
 		assertNotNull(turmaList);

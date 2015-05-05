@@ -5,7 +5,7 @@
 <factory>org.apache.commons.dbcp.BasicDataSourceFactory</factory>
 <url>jdbc:mysql://localhost:3306/controledenotas</url>
 <password></password>
+<driver>com.mysql.jdbc.Driver</driver>
 <username>root</username>
 <databaseProduct>MySQL</databaseProduct>
-<driver>com.mysql.jdbc.Driver</driver>
 </ToolsDataSource>

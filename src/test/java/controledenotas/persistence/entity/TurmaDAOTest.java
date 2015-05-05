@@ -16,14 +16,11 @@ public class TurmaDAOTest {
 	@Inject
 	private TurmaDAO turmaDAO;
 
-	@Inject
-	private AlunoDAO alunoDAO;
-
 	@Before
 	public void before() {
-		for (Turma turma : turmaDAO.findAll()) {
-		turmaDAO.delete(turma.getCodigo());
-		}
+//		for (Turma turma : turmaDAO.findAll()) {
+//		turmaDAO.delete(turma.getCodigo());
+//		}
 	}
 
 	@After
@@ -34,7 +31,7 @@ public class TurmaDAOTest {
 	@Test
 	public void insert() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
+		turma.setNome("A");
 		turmaDAO.insert(turma);
 		List<Turma> turmaList = turmaDAO.findAll();
 		assertNotNull(turmaList);
@@ -44,29 +41,24 @@ public class TurmaDAOTest {
 	@Test
 	public void update() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
-		Aluno matriculaAluno = new Aluno();
-		matriculaAluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		matriculaAluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
-		alunoDAO.insert(matriculaAluno);
-		turma.setMatriculaAluno(matriculaAluno);
+		turma.setNome("XXX");
 		turmaDAO.insert(turma);
 		List<Turma> turmaList = turmaDAO.findAll();
 		assertNotNull(turmaList);
 		assertTrue(turmaList.size()>0);
 		Turma beforeUpdate = turmaList.get(0);
-		assertEquals(new Integer("1"), beforeUpdate.getMatriculaAluno());
-		beforeUpdate.setMatriculaAluno(null);
+		assertEquals("XXX", beforeUpdate.getNome());
+		beforeUpdate.setNome("YYY");
 		turmaDAO.update(beforeUpdate);
 		turmaList = turmaDAO.findAll();
 		Turma afterUpdate = turmaList.get(0);
-		assertEquals(null, afterUpdate.getMatriculaAluno());
+		assertEquals("YYY", afterUpdate.getNome());
 	}
 
 	@Test
 	public void delete() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
+		turma.setNome("XXX");
 		turmaDAO.insert(turma);
 		List<Turma> turmaList = turmaDAO.findAll();
 		assertNotNull(turmaList);

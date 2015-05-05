@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.egen.tool.business.BusinessComponent>
 <class>com.egen.tool.business.BusinessComponent</class>
-<businessComponentMasterTemplate>EntityCrudDAOTemplate</businessComponentMasterTemplate>
-<businessComponentModule>persistence/entity</businessComponentModule>
 <businessComponentName>TurmaDAO</businessComponentName>
+<businessComponentMasterTemplate>EntityCrudDAOTemplate</businessComponentMasterTemplate>
 <businessComponentAlias>TurmaDAO</businessComponentAlias>
+<businessComponentModule>persistence/entity</businessComponentModule>
 <variables>
 <variables_item>
 <class>com.egen.tool.business.BusinessVariable</class>
 <businessVariableName>turma</businessVariableName>
-<businessVariableType>@entity(controledenotas.domain.entity.Turma)</businessVariableType>
-<variableComponentType></variableComponentType>
 <businessVariableDomainReference></businessVariableDomainReference>
 <businessVariableInitialization></businessVariableInitialization>
+<variableComponentType></variableComponentType>
+<businessVariableType>@entity(controledenotas.domain.entity.Turma)</businessVariableType>
 <businessVariableDescription></businessVariableDescription>
 <businessVariableSetProperties>
 </businessVariableSetProperties>
 </variables_item>
 </variables>
-<businessComponentSetProperties>
-</businessComponentSetProperties>
 <inputParameters>
 </inputParameters>
+<outputParameters>
+</outputParameters>
 <businessCodeUnits>
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>DAO</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityDAOUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.persistence.entity;
 
 import java.util.*;
@@ -74,17 +75,15 @@ public class TurmaDAO extends JPACrud<Turma, Integer> {
 				where = expression;
 			}
 		}
-		parameter = parameters.get("matriculaAluno");
+		parameter = parameters.get("nome");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("matriculaAluno").get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("matriculaAluno").get("matricula"), parameter);
-			} else if (parameter instanceof controledenotas.domain.entity.Aluno) {
-				expression = cb.equal(r.get("matriculaAluno"), parameter);
+				List<String> collection = (List<String>)parameter;
+				expression = r.get("nome").in(collection);
+			} else if (parameter instanceof String && ((String)parameter).length()>0) {
+				expression = cb.like(r.<String>get("nome"), "%" + parameter + "%");
 			}
 			if (expression != null) {
 				if (where == null) {
@@ -105,23 +104,22 @@ public class TurmaDAO extends JPACrud<Turma, Integer> {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityDAOUnit</businessCodeUnitTemplate>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
 <businessCodeBlockContent>package controledenotas.persistence.entity;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOImportBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
 <businessCodeBlockContent>import java.util.*;
 import javax.inject.Inject;
 import javax.persistence.*;
@@ -133,75 +131,75 @@ import br.gov.frameworkdemoiselle.template.JPACrud;
 import javax.persistence.criteria.*;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOImportBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 <intraCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate></businessCodeBlockTemplate>
-<businessCodeBlockContent>import br.gov.frameworkdemoiselle.template.JPACrud;</businessCodeBlockContent>
 <businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
+<businessCodeBlockContent>import br.gov.frameworkdemoiselle.template.JPACrud;</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>position</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
-<intraCodeBlocks>
-</intraCodeBlocks>
 </intraCodeBlocks_item>
 <intraCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockIdentification>extraImport_1</businessCodeBlockIdentification>
 <businessCodeBlockContent>import javax.persistence.criteria.*;
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>extraImport_1</businessCodeBlockIdentification>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>position</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
-<intraCodeBlocks>
-</intraCodeBlocks>
 </intraCodeBlocks_item>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
 <businessCodeBlockContent>@PersistenceController
 public class TurmaDAO extends JPACrud<Turma, Integer> {
 
 	private static final long serialVersionUID = 1L;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOClassDefinitionBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 <intraCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
 <businessCodeBlockContent>	private static final long serialVersionUID = 1L;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </intraCodeBlocks_item>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOFindByExampleBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>findByExample</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Override
 	public List<Turma> findByExample(Turma example) {
 		if (example == null) {
@@ -211,15 +209,15 @@ public class TurmaDAO extends JPACrud<Turma, Integer> {
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>findByExample</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOFindByExampleBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>findByCriteria</businessCodeBlockIdentification>
 <businessCodeBlockContent>	public List<Turma> findByCriteria(java.util.Map<String, Object> parameters) {
 		if (parameters == null) {
 			parameters = new java.util.HashMap<String, Object>();
@@ -243,17 +241,15 @@ public class TurmaDAO extends JPACrud<Turma, Integer> {
 				where = expression;
 			}
 		}
-		parameter = parameters.get("matriculaAluno");
+		parameter = parameters.get("nome");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("matriculaAluno").get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("matriculaAluno").get("matricula"), parameter);
-			} else if (parameter instanceof controledenotas.domain.entity.Aluno) {
-				expression = cb.equal(r.get("matriculaAluno"), parameter);
+				List<String> collection = (List<String>)parameter;
+				expression = r.get("nome").in(collection);
+			} else if (parameter instanceof String && ((String)parameter).length()>0) {
+				expression = cb.like(r.<String>get("nome"), "%" + parameter + "%");
 			}
 			if (expression != null) {
 				if (where == null) {
@@ -271,34 +267,34 @@ public class TurmaDAO extends JPACrud<Turma, Integer> {
 		return results;
 	}
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>findByCriteria</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
-<businessCodeBlockContent>}</businessCodeBlockContent>
 <businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
 <businessCodeUnitSetProperty>
 <businessCodeUnitSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>extends</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>br.gov.frameworkdemoiselle.template.JPACrud<[ENTITY], [ID_TYPE]></setPropertyValue>
 </businessCodeUnitSetProperty_item>
 <businessCodeUnitSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>src/main/java/controledenotas/persistence/entity/TurmaDAO.java</setPropertyValue>
 </businessCodeUnitSetProperty_item>
 </businessCodeUnitSetProperty>
@@ -306,6 +302,7 @@ public class TurmaDAO extends JPACrud<Turma, Integer> {
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>DAOTest</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityDAOTestUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.persistence.entity;
 
 import controledenotas.domain.entity.*;
@@ -324,9 +321,6 @@ public class TurmaDAOTest {
 	@Inject
 	private TurmaDAO turmaDAO;
 
-	@Inject
-	private AlunoDAO alunoDAO;
-
 	@Before
 	public void before() {
 		for (Turma turma : turmaDAO.findAll()) {
@@ -342,7 +336,7 @@ public class TurmaDAOTest {
 	@Test
 	public void insert() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
+		turma.setNome("XXX");
 		turmaDAO.insert(turma);
 		List<Turma> turmaList = turmaDAO.findAll();
 		assertNotNull(turmaList);
@@ -352,29 +346,24 @@ public class TurmaDAOTest {
 	@Test
 	public void update() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
-		Aluno matriculaAluno = new Aluno();
-		matriculaAluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		matriculaAluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
-		alunoDAO.insert(matriculaAluno);
-		turma.setMatriculaAluno(matriculaAluno);
+		turma.setNome("XXX");
 		turmaDAO.insert(turma);
 		List<Turma> turmaList = turmaDAO.findAll();
 		assertNotNull(turmaList);
 		assertTrue(turmaList.size()>0);
 		Turma beforeUpdate = turmaList.get(0);
-		assertEquals(new Integer("1"), beforeUpdate.getMatriculaAluno());
-		beforeUpdate.setMatriculaAluno(null);
+		assertEquals("XXX", beforeUpdate.getNome());
+		beforeUpdate.setNome("YYY");
 		turmaDAO.update(beforeUpdate);
 		turmaList = turmaDAO.findAll();
 		Turma afterUpdate = turmaList.get(0);
-		assertEquals(null, afterUpdate.getMatriculaAluno());
+		assertEquals("YYY", afterUpdate.getNome());
 	}
 
 	@Test
 	public void delete() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
+		turma.setNome("XXX");
 		turmaDAO.insert(turma);
 		List<Turma> turmaList = turmaDAO.findAll();
 		assertNotNull(turmaList);
@@ -387,23 +376,22 @@ public class TurmaDAOTest {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityDAOTestUnit</businessCodeUnitTemplate>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
 <businessCodeBlockContent>package controledenotas.persistence.entity;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestImportBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
 <businessCodeBlockContent>import controledenotas.domain.entity.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -415,79 +403,41 @@ import org.junit.runner.RunWith;
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
-<intraCodeBlocks>
-<intraCodeBlocks_item>
-<class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate></businessCodeBlockTemplate>
-<businessCodeBlockContent>import controledenotas.domain.entity.Aluno;</businessCodeBlockContent>
-<businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-<businessCodeBlockSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
-<setPropertyKey>position</setPropertyKey>
-<setPropertyValue>custom</setPropertyValue>
-</businessCodeBlockSetProperty_item>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestImportBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
-</intraCodeBlocks_item>
-</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
 <businessCodeBlockContent>@RunWith(DemoiselleRunner.class)
 public class TurmaDAOTest {
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestAttributesBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>attributes</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Inject
 	private TurmaDAO turmaDAO;
 
-	@Inject
-	private AlunoDAO alunoDAO;
-
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>attributes</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
-<intraCodeBlocks>
-<intraCodeBlocks_item>
-<class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate></businessCodeBlockTemplate>
-<businessCodeBlockContent>	@Inject
-	private AlunoDAO alunoDAO;
-
-</businessCodeBlockContent>
-<businessCodeBlockIdentification>extraDAO</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-<businessCodeBlockSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
-<setPropertyKey>position</setPropertyKey>
-<setPropertyValue>custom</setPropertyValue>
-</businessCodeBlockSetProperty_item>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestAttributesBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
-</intraCodeBlocks_item>
-</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestSetupBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>setup</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Before
 	public void before() {
 		for (Turma turma : turmaDAO.findAll()) {
@@ -501,19 +451,19 @@ public class TurmaDAOTest {
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>setup</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestSetupBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestInsertBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>insert</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Test
 	public void insert() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
+		turma.setNome("XXX");
 		turmaDAO.insert(turma);
 		List<Turma> turmaList = turmaDAO.findAll();
 		assertNotNull(turmaList);
@@ -521,51 +471,46 @@ public class TurmaDAOTest {
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>insert</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestInsertBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestUpdateBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>update</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Test
 	public void update() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
-		Aluno matriculaAluno = new Aluno();
-		matriculaAluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		matriculaAluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
-		alunoDAO.insert(matriculaAluno);
-		turma.setMatriculaAluno(matriculaAluno);
+		turma.setNome("XXX");
 		turmaDAO.insert(turma);
 		List<Turma> turmaList = turmaDAO.findAll();
 		assertNotNull(turmaList);
 		assertTrue(turmaList.size()>0);
 		Turma beforeUpdate = turmaList.get(0);
-		assertEquals(new Integer("1"), beforeUpdate.getMatriculaAluno());
-		beforeUpdate.setMatriculaAluno(null);
+		assertEquals("XXX", beforeUpdate.getNome());
+		beforeUpdate.setNome("YYY");
 		turmaDAO.update(beforeUpdate);
 		turmaList = turmaDAO.findAll();
 		Turma afterUpdate = turmaList.get(0);
-		assertEquals(null, afterUpdate.getMatriculaAluno());
+		assertEquals("YYY", afterUpdate.getNome());
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>update</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestUpdateBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestDeleteBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>delete</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Test
 	public void delete() {
 		Turma turma = new Turma();
-		turma.setCodigo(new Integer("1"));
+		turma.setNome("XXX");
 		turmaDAO.insert(turma);
 		List<Turma> turmaList = turmaDAO.findAll();
 		assertNotNull(turmaList);
@@ -576,33 +521,33 @@ public class TurmaDAOTest {
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>delete</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestDeleteBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
-<businessCodeBlockContent>}</businessCodeBlockContent>
 <businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
 <businessCodeUnitSetProperty>
 <businessCodeUnitSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>src/test/java/controledenotas/persistence/entity/TurmaDAOTest.java</setPropertyValue>
 </businessCodeUnitSetProperty_item>
 </businessCodeUnitSetProperty>
 </businessCodeUnits_item>
 </businessCodeUnits>
-<outputParameters>
-</outputParameters>
+<businessComponentSetProperties>
+</businessComponentSetProperties>
 </com.egen.tool.business.BusinessComponent>

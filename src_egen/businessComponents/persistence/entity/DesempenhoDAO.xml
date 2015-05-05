@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.egen.tool.business.BusinessComponent>
 <class>com.egen.tool.business.BusinessComponent</class>
-<businessComponentAlias>DesempenhoDAO</businessComponentAlias>
-<businessComponentModule>persistence/entity</businessComponentModule>
 <businessComponentName>DesempenhoDAO</businessComponentName>
 <businessComponentMasterTemplate>EntityCrudDAOTemplate</businessComponentMasterTemplate>
+<businessComponentAlias>DesempenhoDAO</businessComponentAlias>
+<businessComponentModule>persistence/entity</businessComponentModule>
 <variables>
 <variables_item>
 <class>com.egen.tool.business.BusinessVariable</class>
 <businessVariableName>desempenho</businessVariableName>
 <businessVariableDomainReference></businessVariableDomainReference>
-<businessVariableDescription></businessVariableDescription>
 <businessVariableInitialization></businessVariableInitialization>
 <variableComponentType></variableComponentType>
 <businessVariableType>@entity(controledenotas.domain.entity.Desempenho)</businessVariableType>
+<businessVariableDescription></businessVariableDescription>
 <businessVariableSetProperties>
 </businessVariableSetProperties>
 </variables_item>
 </variables>
-<businessComponentSetProperties>
-</businessComponentSetProperties>
 <inputParameters>
 </inputParameters>
 <outputParameters>
@@ -28,6 +26,7 @@
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>DAO</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityDAOUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.persistence.entity;
 
 import java.util.*;
@@ -41,7 +40,7 @@ import br.gov.frameworkdemoiselle.template.JPACrud;
 import javax.persistence.criteria.*;
 
 @PersistenceController
-public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
+public class DesempenhoDAO extends JPACrud<Desempenho, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -67,9 +66,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Long> collection = (List<Long>)parameter;
 				expression = r.get("codigo").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Long) {
 				expression = cb.equal(r.get("codigo"), parameter);
 			}
 			if (expression != null) {
@@ -81,9 +80,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("mediaParcial").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("mediaParcial"), parameter);
 			}
 			if (expression != null) {
@@ -99,9 +98,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("provaFinal").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("provaFinal"), parameter);
 			}
 			if (expression != null) {
@@ -117,9 +116,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("mediaFinal").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("mediaFinal"), parameter);
 			}
 			if (expression != null) {
@@ -153,10 +152,10 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("aluno").get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("aluno").get("matricula"), parameter);
+				List<Long> collection = (List<Long>)parameter;
+				expression = r.get("aluno").get("user").get("id").in(collection);
+			} else if (parameter instanceof Long) {
+				expression = cb.equal(r.get("aluno").get("user").get("id"), parameter);
 			} else if (parameter instanceof controledenotas.domain.entity.Aluno) {
 				expression = cb.equal(r.get("aluno"), parameter);
 			}
@@ -179,21 +178,6 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityDAOUnit</businessCodeUnitTemplate>
-<businessCodeUnitSetProperty>
-<businessCodeUnitSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyKey>extends</setPropertyKey>
-<setPropertyValue>br.gov.frameworkdemoiselle.template.JPACrud<[ENTITY], [ID_TYPE]></setPropertyValue>
-<setPropertyEnumeration></setPropertyEnumeration>
-</businessCodeUnitSetProperty_item>
-<businessCodeUnitSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyKey>file</setPropertyKey>
-<setPropertyValue>src/main/java/controledenotas/persistence/entity/DesempenhoDAO.java</setPropertyValue>
-<setPropertyEnumeration></setPropertyEnumeration>
-</businessCodeUnitSetProperty_item>
-</businessCodeUnitSetProperty>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
@@ -234,8 +218,8 @@ import javax.persistence.criteria.*;
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
 <setPropertyKey>position</setPropertyKey>
-<setPropertyValue>custom</setPropertyValue>
 <setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
 </intraCodeBlocks_item>
@@ -251,8 +235,8 @@ import javax.persistence.criteria.*;
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
 <setPropertyKey>position</setPropertyKey>
-<setPropertyValue>custom</setPropertyValue>
 <setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
 </intraCodeBlocks_item>
@@ -264,7 +248,7 @@ import javax.persistence.criteria.*;
 <class>com.egen.tool.business.BusinessCodeBlock</class>
 <businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
 <businessCodeBlockContent>@PersistenceController
-public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
+public class DesempenhoDAO extends JPACrud<Desempenho, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -322,9 +306,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Long> collection = (List<Long>)parameter;
 				expression = r.get("codigo").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Long) {
 				expression = cb.equal(r.get("codigo"), parameter);
 			}
 			if (expression != null) {
@@ -336,9 +320,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("mediaParcial").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("mediaParcial"), parameter);
 			}
 			if (expression != null) {
@@ -354,9 +338,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("provaFinal").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("provaFinal"), parameter);
 			}
 			if (expression != null) {
@@ -372,9 +356,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("mediaFinal").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("mediaFinal"), parameter);
 			}
 			if (expression != null) {
@@ -408,10 +392,10 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("aluno").get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("aluno").get("matricula"), parameter);
+				List<Long> collection = (List<Long>)parameter;
+				expression = r.get("aluno").get("user").get("id").in(collection);
+			} else if (parameter instanceof Long) {
+				expression = cb.equal(r.get("aluno").get("user").get("id"), parameter);
 			} else if (parameter instanceof controledenotas.domain.entity.Aluno) {
 				expression = cb.equal(r.get("aluno"), parameter);
 			}
@@ -448,10 +432,25 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 </businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>extends</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>br.gov.frameworkdemoiselle.template.JPACrud<[ENTITY], [ID_TYPE]></setPropertyValue>
+</businessCodeUnitSetProperty_item>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>src/main/java/controledenotas/persistence/entity/DesempenhoDAO.java</setPropertyValue>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
 </businessCodeUnits_item>
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>DAOTest</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityDAOTestUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.persistence.entity;
 
 import controledenotas.domain.entity.*;
@@ -485,7 +484,6 @@ public class DesempenhoDAOTest {
 	@Test
 	public void insert() {
 		Desempenho desempenho = new Desempenho();
-		desempenho.setCodigo(new Integer("1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
 		assertNotNull(desempenhoList);
@@ -495,25 +493,23 @@ public class DesempenhoDAOTest {
 	@Test
 	public void update() {
 		Desempenho desempenho = new Desempenho();
-		desempenho.setCodigo(new Integer("1"));
-		desempenho.setMediaParcial(new Integer("1"));
+		desempenho.setMediaParcial(new Double("1.1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
 		assertNotNull(desempenhoList);
 		assertTrue(desempenhoList.size()>0);
 		Desempenho beforeUpdate = desempenhoList.get(0);
-		assertEquals(new Integer("1"), beforeUpdate.getMediaParcial());
-		beforeUpdate.setMediaParcial(new Integer("2"));
+		assertEquals(new Double("1.1"), beforeUpdate.getMediaParcial());
+		beforeUpdate.setMediaParcial(new Double("2.2"));
 		desempenhoDAO.update(beforeUpdate);
 		desempenhoList = desempenhoDAO.findAll();
 		Desempenho afterUpdate = desempenhoList.get(0);
-		assertEquals(new Integer("2"), afterUpdate.getMediaParcial());
+		assertEquals(new Double("2.2"), afterUpdate.getMediaParcial());
 	}
 
 	@Test
 	public void delete() {
 		Desempenho desempenho = new Desempenho();
-		desempenho.setCodigo(new Integer("1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
 		assertNotNull(desempenhoList);
@@ -526,15 +522,6 @@ public class DesempenhoDAOTest {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityDAOTestUnit</businessCodeUnitTemplate>
-<businessCodeUnitSetProperty>
-<businessCodeUnitSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyKey>file</setPropertyKey>
-<setPropertyValue>src/test/java/controledenotas/persistence/entity/DesempenhoDAOTest.java</setPropertyValue>
-<setPropertyEnumeration></setPropertyEnumeration>
-</businessCodeUnitSetProperty_item>
-</businessCodeUnitSetProperty>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
@@ -622,7 +609,6 @@ public class DesempenhoDAOTest {
 <businessCodeBlockContent>	@Test
 	public void insert() {
 		Desempenho desempenho = new Desempenho();
-		desempenho.setCodigo(new Integer("1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
 		assertNotNull(desempenhoList);
@@ -642,19 +628,18 @@ public class DesempenhoDAOTest {
 <businessCodeBlockContent>	@Test
 	public void update() {
 		Desempenho desempenho = new Desempenho();
-		desempenho.setCodigo(new Integer("1"));
-		desempenho.setMediaParcial(new Integer("1"));
+		desempenho.setMediaParcial(new Double("1.1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
 		assertNotNull(desempenhoList);
 		assertTrue(desempenhoList.size()>0);
 		Desempenho beforeUpdate = desempenhoList.get(0);
-		assertEquals(new Integer("1"), beforeUpdate.getMediaParcial());
-		beforeUpdate.setMediaParcial(new Integer("2"));
+		assertEquals(new Double("1.1"), beforeUpdate.getMediaParcial());
+		beforeUpdate.setMediaParcial(new Double("2.2"));
 		desempenhoDAO.update(beforeUpdate);
 		desempenhoList = desempenhoDAO.findAll();
 		Desempenho afterUpdate = desempenhoList.get(0);
-		assertEquals(new Integer("2"), afterUpdate.getMediaParcial());
+		assertEquals(new Double("2.2"), afterUpdate.getMediaParcial());
 	}
 
 </businessCodeBlockContent>
@@ -670,7 +655,6 @@ public class DesempenhoDAOTest {
 <businessCodeBlockContent>	@Test
 	public void delete() {
 		Desempenho desempenho = new Desempenho();
-		desempenho.setCodigo(new Integer("1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
 		assertNotNull(desempenhoList);
@@ -698,6 +682,16 @@ public class DesempenhoDAOTest {
 </businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>src/test/java/controledenotas/persistence/entity/DesempenhoDAOTest.java</setPropertyValue>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
 </businessCodeUnits_item>
 </businessCodeUnits>
+<businessComponentSetProperties>
+</businessComponentSetProperties>
 </com.egen.tool.business.BusinessComponent>

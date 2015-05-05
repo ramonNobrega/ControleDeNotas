@@ -19,7 +19,7 @@ public class ProfessorDAOTest {
 	@Before
 	public void before() {
 		for (Professor professor : professorDAO.findAll()) {
-		professorDAO.delete(professor.getMatricula());
+		professorDAO.delete(professor.getUser().getId());
 		}
 	}
 
@@ -31,9 +31,6 @@ public class ProfessorDAOTest {
 	@Test
 	public void insert() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorDAO.insert(professor);
 		List<Professor> professorList = professorDAO.findAll();
 		assertNotNull(professorList);
@@ -43,33 +40,28 @@ public class ProfessorDAOTest {
 	@Test
 	public void update() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		professor.setDisciplina("XXXXXXXXXXXXXXXXXXXX");
 		professorDAO.insert(professor);
 		List<Professor> professorList = professorDAO.findAll();
 		assertNotNull(professorList);
 		assertTrue(professorList.size()>0);
 		Professor beforeUpdate = professorList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
+		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getDisciplina());
+		beforeUpdate.setDisciplina("YYYYYYYYYYYYYYYYYYYY");
 		professorDAO.update(beforeUpdate);
 		professorList = professorDAO.findAll();
 		Professor afterUpdate = professorList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
+		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getDisciplina());
 	}
 
 	@Test
 	public void delete() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorDAO.insert(professor);
 		List<Professor> professorList = professorDAO.findAll();
 		assertNotNull(professorList);
 		assertEquals(1, professorList.size());
-		professorDAO.delete(professor.getMatricula());
+		professorDAO.delete(professor.getUser().getId());
 		professorList = professorDAO.findAll();
 		assertEquals(0, professorList.size());
 	}

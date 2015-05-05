@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.egen.tool.business.BusinessComponent>
 <class>com.egen.tool.business.BusinessComponent</class>
-<businessComponentAlias>ProfessorDAO</businessComponentAlias>
-<businessComponentModule>persistence/entity</businessComponentModule>
 <businessComponentName>ProfessorDAO</businessComponentName>
 <businessComponentMasterTemplate>EntityCrudDAOTemplate</businessComponentMasterTemplate>
+<businessComponentAlias>ProfessorDAO</businessComponentAlias>
+<businessComponentModule>persistence/entity</businessComponentModule>
 <variables>
 <variables_item>
 <class>com.egen.tool.business.BusinessVariable</class>
 <businessVariableName>professor</businessVariableName>
 <businessVariableDomainReference></businessVariableDomainReference>
-<businessVariableDescription></businessVariableDescription>
 <businessVariableInitialization></businessVariableInitialization>
 <variableComponentType></variableComponentType>
 <businessVariableType>@entity(controledenotas.domain.entity.Professor)</businessVariableType>
+<businessVariableDescription></businessVariableDescription>
 <businessVariableSetProperties>
 </businessVariableSetProperties>
 </variables_item>
 </variables>
-<businessComponentSetProperties>
-</businessComponentSetProperties>
 <inputParameters>
 </inputParameters>
 <outputParameters>
@@ -28,6 +26,7 @@
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>DAO</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityDAOUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.persistence.entity;
 
 import java.util.*;
@@ -41,7 +40,7 @@ import br.gov.frameworkdemoiselle.template.JPACrud;
 import javax.persistence.criteria.*;
 
 @PersistenceController
-public class ProfessorDAO extends JPACrud<Professor, Integer> {
+public class ProfessorDAO extends JPACrud<Professor, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -62,54 +61,20 @@ public class ProfessorDAO extends JPACrud<Professor, Integer> {
 		Root<Professor> r = q.from(Professor.class);
 		Predicate where = null;
 		Object parameter = null; 
-		parameter = parameters.get("matricula");
+		parameter = parameters.get("user");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("matricula"), parameter);
+				List<Long> collection = (List<Long>)parameter;
+				expression = r.get("user").get("id").in(collection);
+			} else if (parameter instanceof Long) {
+				expression = cb.equal(r.get("user").get("id"), parameter);
+			} else if (parameter instanceof controledenotas.domain.entity.User) {
+				expression = cb.equal(r.get("user"), parameter);
 			}
 			if (expression != null) {
 				where = expression;
-			}
-		}
-		parameter = parameters.get("nome");
-		if (parameter != null) {
-			Predicate expression = null;
-			if (parameter instanceof java.util.List<?>) {
-				@SuppressWarnings("unchecked")
-				List<String> collection = (List<String>)parameter;
-				expression = r.get("nome").in(collection);
-			} else if (parameter instanceof String && ((String)parameter).length()>0) {
-				expression = cb.like(r.<String>get("nome"), "%" + parameter + "%");
-			}
-			if (expression != null) {
-				if (where == null) {
-					where = expression;
-				} else {
-					where = cb.and(where, expression);
-				}
-			}
-		}
-		parameter = parameters.get("senha");
-		if (parameter != null) {
-			Predicate expression = null;
-			if (parameter instanceof java.util.List<?>) {
-				@SuppressWarnings("unchecked")
-				List<String> collection = (List<String>)parameter;
-				expression = r.get("senha").in(collection);
-			} else if (parameter instanceof String && ((String)parameter).length()>0) {
-				expression = cb.like(r.<String>get("senha"), "%" + parameter + "%");
-			}
-			if (expression != null) {
-				if (where == null) {
-					where = expression;
-				} else {
-					where = cb.and(where, expression);
-				}
 			}
 		}
 		parameter = parameters.get("disciplina");
@@ -161,21 +126,6 @@ public class ProfessorDAO extends JPACrud<Professor, Integer> {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityDAOUnit</businessCodeUnitTemplate>
-<businessCodeUnitSetProperty>
-<businessCodeUnitSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyKey>extends</setPropertyKey>
-<setPropertyValue>br.gov.frameworkdemoiselle.template.JPACrud<[ENTITY], [ID_TYPE]></setPropertyValue>
-<setPropertyEnumeration></setPropertyEnumeration>
-</businessCodeUnitSetProperty_item>
-<businessCodeUnitSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyKey>file</setPropertyKey>
-<setPropertyValue>src/main/java/controledenotas/persistence/entity/ProfessorDAO.java</setPropertyValue>
-<setPropertyEnumeration></setPropertyEnumeration>
-</businessCodeUnitSetProperty_item>
-</businessCodeUnitSetProperty>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
@@ -216,8 +166,8 @@ import javax.persistence.criteria.*;
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
 <setPropertyKey>position</setPropertyKey>
-<setPropertyValue>custom</setPropertyValue>
 <setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
 </intraCodeBlocks_item>
@@ -233,8 +183,8 @@ import javax.persistence.criteria.*;
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
 <setPropertyKey>position</setPropertyKey>
-<setPropertyValue>custom</setPropertyValue>
 <setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
 </intraCodeBlocks_item>
@@ -246,7 +196,7 @@ import javax.persistence.criteria.*;
 <class>com.egen.tool.business.BusinessCodeBlock</class>
 <businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
 <businessCodeBlockContent>@PersistenceController
-public class ProfessorDAO extends JPACrud<Professor, Integer> {
+public class ProfessorDAO extends JPACrud<Professor, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -299,54 +249,20 @@ public class ProfessorDAO extends JPACrud<Professor, Integer> {
 		Root<Professor> r = q.from(Professor.class);
 		Predicate where = null;
 		Object parameter = null; 
-		parameter = parameters.get("matricula");
+		parameter = parameters.get("user");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("matricula"), parameter);
+				List<Long> collection = (List<Long>)parameter;
+				expression = r.get("user").get("id").in(collection);
+			} else if (parameter instanceof Long) {
+				expression = cb.equal(r.get("user").get("id"), parameter);
+			} else if (parameter instanceof controledenotas.domain.entity.User) {
+				expression = cb.equal(r.get("user"), parameter);
 			}
 			if (expression != null) {
 				where = expression;
-			}
-		}
-		parameter = parameters.get("nome");
-		if (parameter != null) {
-			Predicate expression = null;
-			if (parameter instanceof java.util.List<?>) {
-				@SuppressWarnings("unchecked")
-				List<String> collection = (List<String>)parameter;
-				expression = r.get("nome").in(collection);
-			} else if (parameter instanceof String && ((String)parameter).length()>0) {
-				expression = cb.like(r.<String>get("nome"), "%" + parameter + "%");
-			}
-			if (expression != null) {
-				if (where == null) {
-					where = expression;
-				} else {
-					where = cb.and(where, expression);
-				}
-			}
-		}
-		parameter = parameters.get("senha");
-		if (parameter != null) {
-			Predicate expression = null;
-			if (parameter instanceof java.util.List<?>) {
-				@SuppressWarnings("unchecked")
-				List<String> collection = (List<String>)parameter;
-				expression = r.get("senha").in(collection);
-			} else if (parameter instanceof String && ((String)parameter).length()>0) {
-				expression = cb.like(r.<String>get("senha"), "%" + parameter + "%");
-			}
-			if (expression != null) {
-				if (where == null) {
-					where = expression;
-				} else {
-					where = cb.and(where, expression);
-				}
 			}
 		}
 		parameter = parameters.get("disciplina");
@@ -412,10 +328,25 @@ public class ProfessorDAO extends JPACrud<Professor, Integer> {
 </businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>extends</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>br.gov.frameworkdemoiselle.template.JPACrud<[ENTITY], [ID_TYPE]></setPropertyValue>
+</businessCodeUnitSetProperty_item>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>src/main/java/controledenotas/persistence/entity/ProfessorDAO.java</setPropertyValue>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
 </businessCodeUnits_item>
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>DAOTest</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityDAOTestUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.persistence.entity;
 
 import controledenotas.domain.entity.*;
@@ -437,7 +368,7 @@ public class ProfessorDAOTest {
 	@Before
 	public void before() {
 		for (Professor professor : professorDAO.findAll()) {
-		professorDAO.delete(professor.getMatricula());
+		professorDAO.delete(professor.getUser().getId());
 		}
 	}
 
@@ -449,9 +380,6 @@ public class ProfessorDAOTest {
 	@Test
 	public void insert() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorDAO.insert(professor);
 		List<Professor> professorList = professorDAO.findAll();
 		assertNotNull(professorList);
@@ -461,33 +389,28 @@ public class ProfessorDAOTest {
 	@Test
 	public void update() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		professor.setDisciplina("XXXXXXXXXXXXXXXXXXXX");
 		professorDAO.insert(professor);
 		List<Professor> professorList = professorDAO.findAll();
 		assertNotNull(professorList);
 		assertTrue(professorList.size()>0);
 		Professor beforeUpdate = professorList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
+		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getDisciplina());
+		beforeUpdate.setDisciplina("YYYYYYYYYYYYYYYYYYYY");
 		professorDAO.update(beforeUpdate);
 		professorList = professorDAO.findAll();
 		Professor afterUpdate = professorList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
+		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getDisciplina());
 	}
 
 	@Test
 	public void delete() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorDAO.insert(professor);
 		List<Professor> professorList = professorDAO.findAll();
 		assertNotNull(professorList);
 		assertEquals(1, professorList.size());
-		professorDAO.delete(professor.getMatricula());
+		professorDAO.delete(professor.getUser().getId());
 		professorList = professorDAO.findAll();
 		assertEquals(0, professorList.size());
 	}
@@ -495,15 +418,6 @@ public class ProfessorDAOTest {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityDAOTestUnit</businessCodeUnitTemplate>
-<businessCodeUnitSetProperty>
-<businessCodeUnitSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyKey>file</setPropertyKey>
-<setPropertyValue>src/test/java/controledenotas/persistence/entity/ProfessorDAOTest.java</setPropertyValue>
-<setPropertyEnumeration></setPropertyEnumeration>
-</businessCodeUnitSetProperty_item>
-</businessCodeUnitSetProperty>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
@@ -569,7 +483,7 @@ public class ProfessorDAOTest {
 <businessCodeBlockContent>	@Before
 	public void before() {
 		for (Professor professor : professorDAO.findAll()) {
-		professorDAO.delete(professor.getMatricula());
+		professorDAO.delete(professor.getUser().getId());
 		}
 	}
 
@@ -591,9 +505,6 @@ public class ProfessorDAOTest {
 <businessCodeBlockContent>	@Test
 	public void insert() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorDAO.insert(professor);
 		List<Professor> professorList = professorDAO.findAll();
 		assertNotNull(professorList);
@@ -613,20 +524,18 @@ public class ProfessorDAOTest {
 <businessCodeBlockContent>	@Test
 	public void update() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		professor.setDisciplina("XXXXXXXXXXXXXXXXXXXX");
 		professorDAO.insert(professor);
 		List<Professor> professorList = professorDAO.findAll();
 		assertNotNull(professorList);
 		assertTrue(professorList.size()>0);
 		Professor beforeUpdate = professorList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
+		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getDisciplina());
+		beforeUpdate.setDisciplina("YYYYYYYYYYYYYYYYYYYY");
 		professorDAO.update(beforeUpdate);
 		professorList = professorDAO.findAll();
 		Professor afterUpdate = professorList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
+		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getDisciplina());
 	}
 
 </businessCodeBlockContent>
@@ -642,14 +551,11 @@ public class ProfessorDAOTest {
 <businessCodeBlockContent>	@Test
 	public void delete() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorDAO.insert(professor);
 		List<Professor> professorList = professorDAO.findAll();
 		assertNotNull(professorList);
 		assertEquals(1, professorList.size());
-		professorDAO.delete(professor.getMatricula());
+		professorDAO.delete(professor.getUser().getId());
 		professorList = professorDAO.findAll();
 		assertEquals(0, professorList.size());
 	}
@@ -672,6 +578,16 @@ public class ProfessorDAOTest {
 </businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>src/test/java/controledenotas/persistence/entity/ProfessorDAOTest.java</setPropertyValue>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
 </businessCodeUnits_item>
 </businessCodeUnits>
+<businessComponentSetProperties>
+</businessComponentSetProperties>
 </com.egen.tool.business.BusinessComponent>

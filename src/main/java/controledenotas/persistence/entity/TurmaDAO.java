@@ -46,17 +46,15 @@ public class TurmaDAO extends JPACrud<Turma, Integer> {
 				where = expression;
 			}
 		}
-		parameter = parameters.get("matriculaAluno");
+		parameter = parameters.get("nome");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("matriculaAluno").get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("matriculaAluno").get("matricula"), parameter);
-			} else if (parameter instanceof controledenotas.domain.entity.Aluno) {
-				expression = cb.equal(r.get("matriculaAluno"), parameter);
+				List<String> collection = (List<String>)parameter;
+				expression = r.get("nome").in(collection);
+			} else if (parameter instanceof String && ((String)parameter).length()>0) {
+				expression = cb.like(r.<String>get("nome"), "%" + parameter + "%");
 			}
 			if (expression != null) {
 				if (where == null) {

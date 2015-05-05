@@ -11,7 +11,7 @@ import br.gov.frameworkdemoiselle.template.JPACrud;
 import javax.persistence.criteria.*;
 
 @PersistenceController
-public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
+public class DesempenhoDAO extends JPACrud<Desempenho, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,9 +37,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Long> collection = (List<Long>)parameter;
 				expression = r.get("codigo").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Long) {
 				expression = cb.equal(r.get("codigo"), parameter);
 			}
 			if (expression != null) {
@@ -51,9 +51,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("mediaParcial").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("mediaParcial"), parameter);
 			}
 			if (expression != null) {
@@ -69,9 +69,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("provaFinal").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("provaFinal"), parameter);
 			}
 			if (expression != null) {
@@ -87,9 +87,9 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("mediaFinal").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("mediaFinal"), parameter);
 			}
 			if (expression != null) {
@@ -123,10 +123,10 @@ public class DesempenhoDAO extends JPACrud<Desempenho, Integer> {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("aluno").get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("aluno").get("matricula"), parameter);
+				List<Long> collection = (List<Long>)parameter;
+				expression = r.get("aluno").get("user").get("id").in(collection);
+			} else if (parameter instanceof Long) {
+				expression = cb.equal(r.get("aluno").get("user").get("id"), parameter);
 			} else if (parameter instanceof controledenotas.domain.entity.Aluno) {
 				expression = cb.equal(r.get("aluno"), parameter);
 			}

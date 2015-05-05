@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+import controledenotas.domain.entity.Turma;
 
 @RunWith(DemoiselleRunner.class)
 public class AlunoBCTest {
@@ -17,10 +18,13 @@ public class AlunoBCTest {
 	@Inject
 	private AlunoBC alunoBC;
 
+	@Inject
+	private TurmaBC turmaBC;
+
 	@Before
 	public void before() {
 		for (Aluno aluno : alunoBC.findAll()) {
-		  alunoBC.delete(aluno.getMatricula());
+		  alunoBC.delete(aluno.getUser().getId());
 		}
 	}
 
@@ -32,8 +36,6 @@ public class AlunoBCTest {
 	@Test
 	public void insert() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoBC.insert(aluno);
 		List<Aluno> alunoList = alunoBC.findAll();
 		assertNotNull(alunoList);
@@ -43,31 +45,24 @@ public class AlunoBCTest {
 	@Test
 	public void update() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		Turma turma = new Turma();
+		turma.setNome("XXX");
+		turmaBC.insert(turma);
+		aluno.setTurma(turma);
 		alunoBC.insert(aluno);
 		List<Aluno> alunoList = alunoBC.findAll();
 		assertNotNull(alunoList);
 		assertTrue(alunoList.size()>0);
-		Aluno beforeUpdate = alunoList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
-		alunoBC.update(beforeUpdate);
-		alunoList = alunoBC.findAll();
-		Aluno afterUpdate = alunoList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
 	}
 
 	@Test
 	public void delete() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoBC.insert(aluno);
 		List<Aluno> alunoList = alunoBC.findAll();
 		assertNotNull(alunoList);
 		assertEquals(1, alunoList.size());
-		  alunoBC.delete(aluno.getMatricula());
+		  alunoBC.delete(aluno.getUser().getId());
 		alunoList = alunoBC.findAll();
 		assertEquals(0, alunoList.size());
 	}

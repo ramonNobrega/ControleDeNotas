@@ -3,6 +3,7 @@ package controledenotas.domain.entity;
 import java.io.*;
 import java.util.*;
 import javax.persistence.*;
+import controledenotas.domain.entity.User;
 import controledenotas.domain.entity.Turma;
 
 @Entity
@@ -12,57 +13,39 @@ public class Professor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_professor", nullable=false)
-	private Integer matricula;
-
-	@Column(name="nome_professor", length=100, nullable=false)
-	private String nome;
-
-	@Column(name="senha_professor", length=32, nullable=false)
-	private String senha;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@OneToOne(cascade=CascadeType.ALL, optional=false, orphanRemoval=true)
+	@JoinColumn(name="id_professor", referencedColumnName="id_user")
+	private User user;
 
 	@Column(name="disciplina", length=100)
 	private String disciplina;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="turma", referencedColumnName="id_turma")
 	private Turma turma;
 
 	public Professor() {
 		super();
+		user = new User();
 	}
 
-	public Professor(Integer matricula, String nome, String senha, String disciplina, Turma turma) {
+	public Professor(User user, String disciplina, Turma turma) {
 		this();
-		this.matricula = matricula;
-		this.nome = nome;
-		this.senha = senha;
+		this.user = user;
 		this.disciplina = disciplina;
 		this.turma = turma;
 	}
 
-	public Integer getMatricula() {
-		return matricula;
+	public User getUser() {
+		if (user == null) {
+			user= new User();
+		}
+		return user;
 	}
 
-	public void setMatricula(Integer matricula) {
-		this.matricula = matricula;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getDisciplina() {
@@ -82,6 +65,52 @@ public class Professor implements Serializable {
 
 	public void setTurma(Turma turma) {
 		this.turma = turma;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((disciplina == null) ? 0 : disciplina.hashCode());
+		result = prime * result + ((turma == null) ? 0 : turma.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Professor other = (Professor) obj;
+			if (user == null) {
+				if (other.user != null) {
+					return false;
+				}
+			} else if (!user.equals(other.user)) {
+				return false;
+			}
+			if (disciplina == null) {
+				if (other.disciplina != null) {
+					return false;
+				}
+			} else if (!disciplina.equals(other.disciplina)) {
+				return false;
+			}
+			if (turma == null) {
+				if (other.turma != null) {
+					return false;
+				}
+			} else if (!turma.equals(other.turma)) {
+				return false;
+			}
+		return true;
 	}
 
 }

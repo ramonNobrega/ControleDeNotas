@@ -19,7 +19,7 @@ public class DesempenhoBimestralDAOTest {
 	@Before
 	public void before() {
 		for (DesempenhoBimestral desempenhoBimestral : desempenhoBimestralDAO.findAll()) {
-		desempenhoBimestralDAO.delete(desempenhoBimestral.getIdBimestre());
+		desempenhoBimestralDAO.delete(desempenhoBimestral.getId());
 		}
 	}
 
@@ -31,7 +31,7 @@ public class DesempenhoBimestralDAOTest {
 	@Test
 	public void insert() {
 		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
-		desempenhoBimestral.setNu_bim(new Integer("1"));
+		desempenhoBimestral.setNumero(new Integer("1"));
 		desempenhoBimestralDAO.insert(desempenhoBimestral);
 		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralDAO.findAll();
 		assertNotNull(desempenhoBimestralList);
@@ -41,30 +41,29 @@ public class DesempenhoBimestralDAOTest {
 	@Test
 	public void update() {
 		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
-		desempenhoBimestral.setNota1(new Double("1.1"));
-		desempenhoBimestral.setNu_bim(new Integer("1"));
+		desempenhoBimestral.setNumero(new Integer("1"));
 		desempenhoBimestralDAO.insert(desempenhoBimestral);
 		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralDAO.findAll();
 		assertNotNull(desempenhoBimestralList);
 		assertTrue(desempenhoBimestralList.size()>0);
 		DesempenhoBimestral beforeUpdate = desempenhoBimestralList.get(0);
-		assertEquals(new Integer("1"), beforeUpdate.getNu_bim());
-		beforeUpdate.setNu_bim(new Integer("2"));
+		assertEquals(new Integer("1"), beforeUpdate.getNumero());
+		beforeUpdate.setNumero(new Integer("2"));
 		desempenhoBimestralDAO.update(beforeUpdate);
 		desempenhoBimestralList = desempenhoBimestralDAO.findAll();
 		DesempenhoBimestral afterUpdate = desempenhoBimestralList.get(0);
-		assertEquals(new Integer("2"), afterUpdate.getNu_bim());
+		assertEquals(new Integer("2"), afterUpdate.getNumero());
 	}
 
 	@Test
 	public void delete() {
 		DesempenhoBimestral desempenhoBimestral = new DesempenhoBimestral();
-		desempenhoBimestral.setNu_bim(new Integer("1"));
+		desempenhoBimestral.setNumero(new Integer("1"));
 		desempenhoBimestralDAO.insert(desempenhoBimestral);
 		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralDAO.findAll();
 		assertNotNull(desempenhoBimestralList);
 		assertEquals(1, desempenhoBimestralList.size());
-		desempenhoBimestralDAO.delete(desempenhoBimestral.getIdBimestre());
+		desempenhoBimestralDAO.delete(desempenhoBimestral.getId());
 		desempenhoBimestralList = desempenhoBimestralDAO.findAll();
 		assertEquals(0, desempenhoBimestralList.size());
 	}

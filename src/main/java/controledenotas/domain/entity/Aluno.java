@@ -3,6 +3,8 @@ package controledenotas.domain.entity;
 import java.io.*;
 import java.util.*;
 import javax.persistence.*;
+import controledenotas.domain.entity.User;
+import controledenotas.domain.entity.Turma;
 
 @Entity
 @Table(name="tb_aluno", schema="controledenotas")
@@ -12,93 +14,113 @@ public class Aluno implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_aluno", nullable=false, updatable=false)
-	private Integer matricula;
+	@ManyToOne(cascade=CascadeType.ALL, optional=false)
+	@JoinColumn(name="id_aluno", referencedColumnName="id_user")
+	private User user;
 
-	@Column(name="nome_aluno", length=100, nullable=false, updatable=false)
-	private String nome;
-
-	@Column(name="senha_aluno", length=32, nullable=false, updatable=false)
-	private String senha;
-
-	@OneToMany(mappedBy="aluno", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
-	private List<Desempenho> desempenhosList;
+	@ManyToOne
+	@JoinColumn(name="id_turma", referencedColumnName="id_turma")
+	private Turma turma;
 
 	@OneToMany(mappedBy="aluno", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
-	private List<DesempenhoBimestral> desempenhoBimestralList;
+	private List<Desempenho> desempenhos;
 
-	@OneToMany(mappedBy="matriculaAluno", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
-	private List<Turma> turmaList;
+	@OneToMany(mappedBy="aluno", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
+	private List<DesempenhoBimestral> desempenhosBimestrais;
 
 	public Aluno() {
 		super();
+		user = new User();
 	}
 
-	public Aluno(Integer matricula, String nome, String senha, List<Desempenho> desempenhosList, List<DesempenhoBimestral> desempenhoBimestralList, List<Turma> turmaList) {
+	public Aluno(User user, Turma turma, List<Desempenho> desempenhos, List<DesempenhoBimestral> desempenhosBimestrais) {
 		this();
-		this.matricula = matricula;
-		this.nome = nome;
-		this.senha = senha;
-		this.desempenhosList = desempenhosList;
-		this.desempenhoBimestralList = desempenhoBimestralList;
-		this.turmaList = turmaList;
+		this.user = user;
+		this.turma = turma;
+		this.desempenhos = desempenhos;
+		this.desempenhosBimestrais = desempenhosBimestrais;
 	}
 
-	public Integer getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(Integer matricula) {
-		this.matricula = matricula;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public List<Desempenho> getDesempenhosList() {
-		if (desempenhosList == null) {
-			desempenhosList = new ArrayList<Desempenho>();
+	public User getUser() {
+		if (user == null) {
+			user= new User();
 		}
-		return desempenhosList;
+		return user;
 	}
 
-	public void setDesempenhosList(List<Desempenho> desempenhosList) {
-		this.desempenhosList = desempenhosList;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public List<DesempenhoBimestral> getDesempenhoBimestralList() {
-		if (desempenhoBimestralList == null) {
-			desempenhoBimestralList = new ArrayList<DesempenhoBimestral>();
+	public Turma getTurma() {
+		if (turma == null) {
+			turma= new Turma();
 		}
-		return desempenhoBimestralList;
+		return turma;
 	}
 
-	public void setDesempenhoBimestralList(List<DesempenhoBimestral> desempenhoBimestralList) {
-		this.desempenhoBimestralList = desempenhoBimestralList;
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
-	public List<Turma> getTurmaList() {
-		if (turmaList == null) {
-			turmaList = new ArrayList<Turma>();
+	public List<Desempenho> getDesempenhos() {
+		if (desempenhos == null) {
+			desempenhos = new ArrayList<Desempenho>();
 		}
-		return turmaList;
+		return desempenhos;
 	}
 
-	public void setTurmaList(List<Turma> turmaList) {
-		this.turmaList = turmaList;
+	public void setDesempenhos(List<Desempenho> desempenhos) {
+		this.desempenhos = desempenhos;
+	}
+
+	public List<DesempenhoBimestral> getDesempenhosBimestrais() {
+		if (desempenhosBimestrais == null) {
+			desempenhosBimestrais = new ArrayList<DesempenhoBimestral>();
+		}
+		return desempenhosBimestrais;
+	}
+
+	public void setDesempenhosBimestrais(List<DesempenhoBimestral> desempenhosBimestrais) {
+		this.desempenhosBimestrais = desempenhosBimestrais;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((turma == null) ? 0 : turma.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Aluno other = (Aluno) obj;
+			if (user == null) {
+				if (other.user != null) {
+					return false;
+				}
+			} else if (!user.equals(other.user)) {
+				return false;
+			}
+			if (turma == null) {
+				if (other.turma != null) {
+					return false;
+				}
+			} else if (!turma.equals(other.turma)) {
+				return false;
+			}
+		return true;
 	}
 
 }

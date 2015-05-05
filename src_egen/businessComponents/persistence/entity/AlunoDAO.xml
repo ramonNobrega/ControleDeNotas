@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.egen.tool.business.BusinessComponent>
 <class>com.egen.tool.business.BusinessComponent</class>
-<businessComponentMasterTemplate>EntityCrudDAOTemplate</businessComponentMasterTemplate>
-<businessComponentModule>persistence/entity</businessComponentModule>
 <businessComponentName>AlunoDAO</businessComponentName>
+<businessComponentMasterTemplate>EntityCrudDAOTemplate</businessComponentMasterTemplate>
 <businessComponentAlias>AlunoDAO</businessComponentAlias>
+<businessComponentModule>persistence/entity</businessComponentModule>
 <variables>
 <variables_item>
 <class>com.egen.tool.business.BusinessVariable</class>
 <businessVariableName>aluno</businessVariableName>
-<businessVariableType>@entity(controledenotas.domain.entity.Aluno)</businessVariableType>
-<variableComponentType></variableComponentType>
 <businessVariableDomainReference></businessVariableDomainReference>
 <businessVariableInitialization></businessVariableInitialization>
+<variableComponentType></variableComponentType>
+<businessVariableType>@entity(controledenotas.domain.entity.Aluno)</businessVariableType>
 <businessVariableDescription></businessVariableDescription>
 <businessVariableSetProperties>
 </businessVariableSetProperties>
 </variables_item>
 </variables>
-<businessComponentSetProperties>
-</businessComponentSetProperties>
 <inputParameters>
 </inputParameters>
+<outputParameters>
+</outputParameters>
 <businessCodeUnits>
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>DAO</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityDAOUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.persistence.entity;
 
 import java.util.*;
@@ -39,7 +40,7 @@ import br.gov.frameworkdemoiselle.template.JPACrud;
 import javax.persistence.criteria.*;
 
 @PersistenceController
-public class AlunoDAO extends JPACrud<Aluno, Integer> {
+public class AlunoDAO extends JPACrud<Aluno, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -60,47 +61,33 @@ public class AlunoDAO extends JPACrud<Aluno, Integer> {
 		Root<Aluno> r = q.from(Aluno.class);
 		Predicate where = null;
 		Object parameter = null; 
-		parameter = parameters.get("matricula");
+		parameter = parameters.get("user");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("matricula"), parameter);
+				List<Long> collection = (List<Long>)parameter;
+				expression = r.get("user").get("id").in(collection);
+			} else if (parameter instanceof Long) {
+				expression = cb.equal(r.get("user").get("id"), parameter);
+			} else if (parameter instanceof controledenotas.domain.entity.User) {
+				expression = cb.equal(r.get("user"), parameter);
 			}
 			if (expression != null) {
 				where = expression;
 			}
 		}
-		parameter = parameters.get("nome");
+		parameter = parameters.get("turma");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<String> collection = (List<String>)parameter;
-				expression = r.get("nome").in(collection);
-			} else if (parameter instanceof String && ((String)parameter).length()>0) {
-				expression = cb.like(r.<String>get("nome"), "%" + parameter + "%");
-			}
-			if (expression != null) {
-				if (where == null) {
-					where = expression;
-				} else {
-					where = cb.and(where, expression);
-				}
-			}
-		}
-		parameter = parameters.get("senha");
-		if (parameter != null) {
-			Predicate expression = null;
-			if (parameter instanceof java.util.List<?>) {
-				@SuppressWarnings("unchecked")
-				List<String> collection = (List<String>)parameter;
-				expression = r.get("senha").in(collection);
-			} else if (parameter instanceof String && ((String)parameter).length()>0) {
-				expression = cb.like(r.<String>get("senha"), "%" + parameter + "%");
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("turma").get("codigo").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("turma").get("codigo"), parameter);
+			} else if (parameter instanceof controledenotas.domain.entity.Turma) {
+				expression = cb.equal(r.get("turma"), parameter);
 			}
 			if (expression != null) {
 				if (where == null) {
@@ -121,23 +108,22 @@ public class AlunoDAO extends JPACrud<Aluno, Integer> {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityDAOUnit</businessCodeUnitTemplate>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
 <businessCodeBlockContent>package controledenotas.persistence.entity;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOImportBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
 <businessCodeBlockContent>import java.util.*;
 import javax.inject.Inject;
 import javax.persistence.*;
@@ -149,75 +135,75 @@ import br.gov.frameworkdemoiselle.template.JPACrud;
 import javax.persistence.criteria.*;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOImportBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 <intraCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate></businessCodeBlockTemplate>
-<businessCodeBlockContent>import br.gov.frameworkdemoiselle.template.JPACrud;</businessCodeBlockContent>
 <businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
+<businessCodeBlockContent>import br.gov.frameworkdemoiselle.template.JPACrud;</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>position</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
-<intraCodeBlocks>
-</intraCodeBlocks>
 </intraCodeBlocks_item>
 <intraCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockIdentification>extraImport_1</businessCodeBlockIdentification>
 <businessCodeBlockContent>import javax.persistence.criteria.*;
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>extraImport_1</businessCodeBlockIdentification>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>position</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
-<intraCodeBlocks>
-</intraCodeBlocks>
 </intraCodeBlocks_item>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
 <businessCodeBlockContent>@PersistenceController
-public class AlunoDAO extends JPACrud<Aluno, Integer> {
+public class AlunoDAO extends JPACrud<Aluno, Long> {
 
 	private static final long serialVersionUID = 1L;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOClassDefinitionBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 <intraCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
 <businessCodeBlockContent>	private static final long serialVersionUID = 1L;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </intraCodeBlocks_item>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOFindByExampleBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>findByExample</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Override
 	public List<Aluno> findByExample(Aluno example) {
 		if (example == null) {
@@ -227,15 +213,15 @@ public class AlunoDAO extends JPACrud<Aluno, Integer> {
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>findByExample</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOFindByExampleBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>findByCriteria</businessCodeBlockIdentification>
 <businessCodeBlockContent>	public List<Aluno> findByCriteria(java.util.Map<String, Object> parameters) {
 		if (parameters == null) {
 			parameters = new java.util.HashMap<String, Object>();
@@ -245,47 +231,33 @@ public class AlunoDAO extends JPACrud<Aluno, Integer> {
 		Root<Aluno> r = q.from(Aluno.class);
 		Predicate where = null;
 		Object parameter = null; 
-		parameter = parameters.get("matricula");
+		parameter = parameters.get("user");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("matricula"), parameter);
+				List<Long> collection = (List<Long>)parameter;
+				expression = r.get("user").get("id").in(collection);
+			} else if (parameter instanceof Long) {
+				expression = cb.equal(r.get("user").get("id"), parameter);
+			} else if (parameter instanceof controledenotas.domain.entity.User) {
+				expression = cb.equal(r.get("user"), parameter);
 			}
 			if (expression != null) {
 				where = expression;
 			}
 		}
-		parameter = parameters.get("nome");
+		parameter = parameters.get("turma");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<String> collection = (List<String>)parameter;
-				expression = r.get("nome").in(collection);
-			} else if (parameter instanceof String && ((String)parameter).length()>0) {
-				expression = cb.like(r.<String>get("nome"), "%" + parameter + "%");
-			}
-			if (expression != null) {
-				if (where == null) {
-					where = expression;
-				} else {
-					where = cb.and(where, expression);
-				}
-			}
-		}
-		parameter = parameters.get("senha");
-		if (parameter != null) {
-			Predicate expression = null;
-			if (parameter instanceof java.util.List<?>) {
-				@SuppressWarnings("unchecked")
-				List<String> collection = (List<String>)parameter;
-				expression = r.get("senha").in(collection);
-			} else if (parameter instanceof String && ((String)parameter).length()>0) {
-				expression = cb.like(r.<String>get("senha"), "%" + parameter + "%");
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("turma").get("codigo").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("turma").get("codigo"), parameter);
+			} else if (parameter instanceof controledenotas.domain.entity.Turma) {
+				expression = cb.equal(r.get("turma"), parameter);
 			}
 			if (expression != null) {
 				if (where == null) {
@@ -303,34 +275,34 @@ public class AlunoDAO extends JPACrud<Aluno, Integer> {
 		return results;
 	}
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>findByCriteria</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
-<businessCodeBlockContent>}</businessCodeBlockContent>
 <businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
 <businessCodeUnitSetProperty>
 <businessCodeUnitSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>extends</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>br.gov.frameworkdemoiselle.template.JPACrud<[ENTITY], [ID_TYPE]></setPropertyValue>
 </businessCodeUnitSetProperty_item>
 <businessCodeUnitSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>src/main/java/controledenotas/persistence/entity/AlunoDAO.java</setPropertyValue>
 </businessCodeUnitSetProperty_item>
 </businessCodeUnitSetProperty>
@@ -338,6 +310,7 @@ public class AlunoDAO extends JPACrud<Aluno, Integer> {
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>DAOTest</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityDAOTestUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.persistence.entity;
 
 import controledenotas.domain.entity.*;
@@ -356,10 +329,13 @@ public class AlunoDAOTest {
 	@Inject
 	private AlunoDAO alunoDAO;
 
+	@Inject
+	private TurmaDAO turmaDAO;
+
 	@Before
 	public void before() {
 		for (Aluno aluno : alunoDAO.findAll()) {
-		alunoDAO.delete(aluno.getMatricula());
+		alunoDAO.delete(aluno.getUser().getId());
 		}
 	}
 
@@ -371,8 +347,6 @@ public class AlunoDAOTest {
 	@Test
 	public void insert() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoDAO.insert(aluno);
 		List<Aluno> alunoList = alunoDAO.findAll();
 		assertNotNull(alunoList);
@@ -382,31 +356,24 @@ public class AlunoDAOTest {
 	@Test
 	public void update() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		Turma turma = new Turma();
+		turma.setNome("XXX");
+		turmaDAO.insert(turma);
+		aluno.setTurma(turma);
 		alunoDAO.insert(aluno);
 		List<Aluno> alunoList = alunoDAO.findAll();
 		assertNotNull(alunoList);
 		assertTrue(alunoList.size()>0);
-		Aluno beforeUpdate = alunoList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
-		alunoDAO.update(beforeUpdate);
-		alunoList = alunoDAO.findAll();
-		Aluno afterUpdate = alunoList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
 	}
 
 	@Test
 	public void delete() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoDAO.insert(aluno);
 		List<Aluno> alunoList = alunoDAO.findAll();
 		assertNotNull(alunoList);
 		assertEquals(1, alunoList.size());
-		alunoDAO.delete(aluno.getMatricula());
+		alunoDAO.delete(aluno.getUser().getId());
 		alunoList = alunoDAO.findAll();
 		assertEquals(0, alunoList.size());
 	}
@@ -414,23 +381,22 @@ public class AlunoDAOTest {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityDAOTestUnit</businessCodeUnitTemplate>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
 <businessCodeBlockContent>package controledenotas.persistence.entity;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestImportBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
 <businessCodeBlockContent>import controledenotas.domain.entity.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -442,45 +408,83 @@ import org.junit.runner.RunWith;
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestImportBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
+<businessCodeBlockContent>import controledenotas.domain.entity.Turma;</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>custom</setPropertyValue>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
 <businessCodeBlockContent>@RunWith(DemoiselleRunner.class)
 public class AlunoDAOTest {
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestAttributesBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>attributes</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Inject
 	private AlunoDAO alunoDAO;
 
+	@Inject
+	private TurmaDAO turmaDAO;
+
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>attributes</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestAttributesBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>extraDAO</businessCodeBlockIdentification>
+<businessCodeBlockContent>	@Inject
+	private TurmaDAO turmaDAO;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>custom</setPropertyValue>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestSetupBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>setup</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Before
 	public void before() {
 		for (Aluno aluno : alunoDAO.findAll()) {
-		alunoDAO.delete(aluno.getMatricula());
+		alunoDAO.delete(aluno.getUser().getId());
 		}
 	}
 
@@ -490,20 +494,18 @@ public class AlunoDAOTest {
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>setup</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestSetupBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestInsertBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>insert</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Test
 	public void insert() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoDAO.insert(aluno);
 		List<Aluno> alunoList = alunoDAO.findAll();
 		assertNotNull(alunoList);
@@ -511,85 +513,78 @@ public class AlunoDAOTest {
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>insert</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestInsertBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestUpdateBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>update</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Test
 	public void update() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		Turma turma = new Turma();
+		turma.setNome("XXX");
+		turmaDAO.insert(turma);
+		aluno.setTurma(turma);
 		alunoDAO.insert(aluno);
 		List<Aluno> alunoList = alunoDAO.findAll();
 		assertNotNull(alunoList);
 		assertTrue(alunoList.size()>0);
-		Aluno beforeUpdate = alunoList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
-		alunoDAO.update(beforeUpdate);
-		alunoList = alunoDAO.findAll();
-		Aluno afterUpdate = alunoList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>update</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestUpdateBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityDAOTestDeleteBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>delete</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Test
 	public void delete() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoDAO.insert(aluno);
 		List<Aluno> alunoList = alunoDAO.findAll();
 		assertNotNull(alunoList);
 		assertEquals(1, alunoList.size());
-		alunoDAO.delete(aluno.getMatricula());
+		alunoDAO.delete(aluno.getUser().getId());
 		alunoList = alunoDAO.findAll();
 		assertEquals(0, alunoList.size());
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>delete</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityDAOTestDeleteBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
-<businessCodeBlockContent>}</businessCodeBlockContent>
 <businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
 <businessCodeUnitSetProperty>
 <businessCodeUnitSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>src/test/java/controledenotas/persistence/entity/AlunoDAOTest.java</setPropertyValue>
 </businessCodeUnitSetProperty_item>
 </businessCodeUnitSetProperty>
 </businessCodeUnits_item>
 </businessCodeUnits>
-<outputParameters>
-</outputParameters>
+<businessComponentSetProperties>
+</businessComponentSetProperties>
 </com.egen.tool.business.BusinessComponent>

@@ -20,7 +20,7 @@ public class ProfessorBCTest {
 	@Before
 	public void before() {
 		for (Professor professor : professorBC.findAll()) {
-		  professorBC.delete(professor.getMatricula());
+		  professorBC.delete(professor.getUser().getId());
 		}
 	}
 
@@ -32,9 +32,6 @@ public class ProfessorBCTest {
 	@Test
 	public void insert() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorBC.insert(professor);
 		List<Professor> professorList = professorBC.findAll();
 		assertNotNull(professorList);
@@ -44,33 +41,28 @@ public class ProfessorBCTest {
 	@Test
 	public void update() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		professor.setDisciplina("XXXXXXXXXXXXXXXXXXXX");
 		professorBC.insert(professor);
 		List<Professor> professorList = professorBC.findAll();
 		assertNotNull(professorList);
 		assertTrue(professorList.size()>0);
 		Professor beforeUpdate = professorList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
+		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getDisciplina());
+		beforeUpdate.setDisciplina("YYYYYYYYYYYYYYYYYYYY");
 		professorBC.update(beforeUpdate);
 		professorList = professorBC.findAll();
 		Professor afterUpdate = professorList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
+		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getDisciplina());
 	}
 
 	@Test
 	public void delete() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorBC.insert(professor);
 		List<Professor> professorList = professorBC.findAll();
 		assertNotNull(professorList);
 		assertEquals(1, professorList.size());
-		  professorBC.delete(professor.getMatricula());
+		  professorBC.delete(professor.getUser().getId());
 		professorList = professorBC.findAll();
 		assertEquals(0, professorList.size());
 	}

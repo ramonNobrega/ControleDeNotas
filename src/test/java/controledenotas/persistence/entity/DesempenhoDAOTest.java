@@ -31,7 +31,6 @@ public class DesempenhoDAOTest {
 	@Test
 	public void insert() {
 		Desempenho desempenho = new Desempenho();
-		desempenho.setCodigo(new Integer("1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
 		assertNotNull(desempenhoList);
@@ -41,25 +40,23 @@ public class DesempenhoDAOTest {
 	@Test
 	public void update() {
 		Desempenho desempenho = new Desempenho();
-		desempenho.setCodigo(new Integer("1"));
-		desempenho.setMediaParcial(new Integer("1"));
+		desempenho.setMediaParcial(new Double("1.1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
 		assertNotNull(desempenhoList);
 		assertTrue(desempenhoList.size()>0);
 		Desempenho beforeUpdate = desempenhoList.get(0);
-		assertEquals(new Integer("1"), beforeUpdate.getMediaParcial());
-		beforeUpdate.setMediaParcial(new Integer("2"));
+		assertEquals(new Double("1.1"), beforeUpdate.getMediaParcial());
+		beforeUpdate.setMediaParcial(new Double("2.2"));
 		desempenhoDAO.update(beforeUpdate);
 		desempenhoList = desempenhoDAO.findAll();
 		Desempenho afterUpdate = desempenhoList.get(0);
-		assertEquals(new Integer("2"), afterUpdate.getMediaParcial());
+		assertEquals(new Double("2.2"), afterUpdate.getMediaParcial());
 	}
 
 	@Test
 	public void delete() {
 		Desempenho desempenho = new Desempenho();
-		desempenho.setCodigo(new Integer("1"));
 		desempenhoDAO.insert(desempenho);
 		List<Desempenho> desempenhoList = desempenhoDAO.findAll();
 		assertNotNull(desempenhoList);

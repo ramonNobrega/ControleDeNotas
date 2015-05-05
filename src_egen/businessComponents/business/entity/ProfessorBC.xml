@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.egen.tool.business.BusinessComponent>
 <class>com.egen.tool.business.BusinessComponent</class>
-<businessComponentAlias>ProfessorBC</businessComponentAlias>
-<businessComponentModule>business/entity</businessComponentModule>
 <businessComponentName>ProfessorBC</businessComponentName>
 <businessComponentMasterTemplate>EntityCrudBCTemplate</businessComponentMasterTemplate>
+<businessComponentAlias>ProfessorBC</businessComponentAlias>
+<businessComponentModule>business/entity</businessComponentModule>
 <variables>
 <variables_item>
 <class>com.egen.tool.business.BusinessVariable</class>
 <businessVariableName>professor</businessVariableName>
 <businessVariableDomainReference></businessVariableDomainReference>
-<businessVariableDescription></businessVariableDescription>
 <businessVariableInitialization></businessVariableInitialization>
 <variableComponentType></variableComponentType>
 <businessVariableType>@entity(controledenotas.domain.entity.Professor)</businessVariableType>
+<businessVariableDescription></businessVariableDescription>
 <businessVariableSetProperties>
 </businessVariableSetProperties>
 </variables_item>
 </variables>
-<businessComponentSetProperties>
-</businessComponentSetProperties>
 <inputParameters>
 </inputParameters>
 <outputParameters>
@@ -28,6 +26,7 @@
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>BC</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityBCUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.business.entity;
 
 import controledenotas.domain.entity.Professor;
@@ -39,7 +38,7 @@ import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.template.DelegateCrud;
 
 @BusinessController
-public class ProfessorBC extends DelegateCrud<Professor, Integer, ProfessorDAO> {
+public class ProfessorBC extends DelegateCrud<Professor, Long, ProfessorDAO> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -54,21 +53,6 @@ public class ProfessorBC extends DelegateCrud<Professor, Integer, ProfessorDAO> 
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityBCUnit</businessCodeUnitTemplate>
-<businessCodeUnitSetProperty>
-<businessCodeUnitSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyKey>extends</setPropertyKey>
-<setPropertyValue>br.gov.frameworkdemoiselle.template.DelegateCrud<[ENTITY], [ID_TYPE], [DAO]></setPropertyValue>
-<setPropertyEnumeration></setPropertyEnumeration>
-</businessCodeUnitSetProperty_item>
-<businessCodeUnitSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyKey>file</setPropertyKey>
-<setPropertyValue>src/main/java/controledenotas/business/entity/ProfessorBC.java</setPropertyValue>
-<setPropertyEnumeration></setPropertyEnumeration>
-</businessCodeUnitSetProperty_item>
-</businessCodeUnitSetProperty>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
@@ -108,8 +92,8 @@ import br.gov.frameworkdemoiselle.template.DelegateCrud;
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
 <setPropertyKey>position</setPropertyKey>
-<setPropertyValue>custom</setPropertyValue>
 <setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
 </intraCodeBlocks_item>
@@ -121,7 +105,7 @@ import br.gov.frameworkdemoiselle.template.DelegateCrud;
 <class>com.egen.tool.business.BusinessCodeBlock</class>
 <businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
 <businessCodeBlockContent>@BusinessController
-public class ProfessorBC extends DelegateCrud<Professor, Integer, ProfessorDAO> {
+public class ProfessorBC extends DelegateCrud<Professor, Long, ProfessorDAO> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -183,10 +167,25 @@ public class ProfessorBC extends DelegateCrud<Professor, Integer, ProfessorDAO> 
 </businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>extends</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>br.gov.frameworkdemoiselle.template.DelegateCrud<[ENTITY], [ID_TYPE], [DAO]></setPropertyValue>
+</businessCodeUnitSetProperty_item>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>src/main/java/controledenotas/business/entity/ProfessorBC.java</setPropertyValue>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
 </businessCodeUnits_item>
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>BCTest</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityBCTestUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.business.entity;
 
 import controledenotas.domain.entity.Professor;
@@ -209,7 +208,7 @@ public class ProfessorBCTest {
 	@Before
 	public void before() {
 		for (Professor professor : professorBC.findAll()) {
-		  professorBC.delete(professor.getMatricula());
+		  professorBC.delete(professor.getUser().getId());
 		}
 	}
 
@@ -221,9 +220,6 @@ public class ProfessorBCTest {
 	@Test
 	public void insert() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorBC.insert(professor);
 		List<Professor> professorList = professorBC.findAll();
 		assertNotNull(professorList);
@@ -233,33 +229,28 @@ public class ProfessorBCTest {
 	@Test
 	public void update() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		professor.setDisciplina("XXXXXXXXXXXXXXXXXXXX");
 		professorBC.insert(professor);
 		List<Professor> professorList = professorBC.findAll();
 		assertNotNull(professorList);
 		assertTrue(professorList.size()>0);
 		Professor beforeUpdate = professorList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
+		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getDisciplina());
+		beforeUpdate.setDisciplina("YYYYYYYYYYYYYYYYYYYY");
 		professorBC.update(beforeUpdate);
 		professorList = professorBC.findAll();
 		Professor afterUpdate = professorList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
+		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getDisciplina());
 	}
 
 	@Test
 	public void delete() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorBC.insert(professor);
 		List<Professor> professorList = professorBC.findAll();
 		assertNotNull(professorList);
 		assertEquals(1, professorList.size());
-		  professorBC.delete(professor.getMatricula());
+		  professorBC.delete(professor.getUser().getId());
 		professorList = professorBC.findAll();
 		assertEquals(0, professorList.size());
 	}
@@ -267,15 +258,6 @@ public class ProfessorBCTest {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityBCTestUnit</businessCodeUnitTemplate>
-<businessCodeUnitSetProperty>
-<businessCodeUnitSetProperty_item>
-<class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyKey>file</setPropertyKey>
-<setPropertyValue>src/test/java/controledenotas/business/entity/ProfessorBCTest.java</setPropertyValue>
-<setPropertyEnumeration></setPropertyEnumeration>
-</businessCodeUnitSetProperty_item>
-</businessCodeUnitSetProperty>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
@@ -342,7 +324,7 @@ public class ProfessorBCTest {
 <businessCodeBlockContent>	@Before
 	public void before() {
 		for (Professor professor : professorBC.findAll()) {
-		  professorBC.delete(professor.getMatricula());
+		  professorBC.delete(professor.getUser().getId());
 		}
 	}
 
@@ -364,9 +346,6 @@ public class ProfessorBCTest {
 <businessCodeBlockContent>	@Test
 	public void insert() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorBC.insert(professor);
 		List<Professor> professorList = professorBC.findAll();
 		assertNotNull(professorList);
@@ -386,20 +365,18 @@ public class ProfessorBCTest {
 <businessCodeBlockContent>	@Test
 	public void update() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		professor.setDisciplina("XXXXXXXXXXXXXXXXXXXX");
 		professorBC.insert(professor);
 		List<Professor> professorList = professorBC.findAll();
 		assertNotNull(professorList);
 		assertTrue(professorList.size()>0);
 		Professor beforeUpdate = professorList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
+		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getDisciplina());
+		beforeUpdate.setDisciplina("YYYYYYYYYYYYYYYYYYYY");
 		professorBC.update(beforeUpdate);
 		professorList = professorBC.findAll();
 		Professor afterUpdate = professorList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
+		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getDisciplina());
 	}
 
 </businessCodeBlockContent>
@@ -415,14 +392,11 @@ public class ProfessorBCTest {
 <businessCodeBlockContent>	@Test
 	public void delete() {
 		Professor professor = new Professor();
-		professor.setMatricula(new Integer("1"));
-		professor.setNome("XXXXXXXXXXXXXXXXXXXX");
-		professor.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		professorBC.insert(professor);
 		List<Professor> professorList = professorBC.findAll();
 		assertNotNull(professorList);
 		assertEquals(1, professorList.size());
-		  professorBC.delete(professor.getMatricula());
+		  professorBC.delete(professor.getUser().getId());
 		professorList = professorBC.findAll();
 		assertEquals(0, professorList.size());
 	}
@@ -445,6 +419,16 @@ public class ProfessorBCTest {
 </businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
+<businessCodeUnitSetProperty>
+<businessCodeUnitSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>src/test/java/controledenotas/business/entity/ProfessorBCTest.java</setPropertyValue>
+</businessCodeUnitSetProperty_item>
+</businessCodeUnitSetProperty>
 </businessCodeUnits_item>
 </businessCodeUnits>
+<businessComponentSetProperties>
+</businessComponentSetProperties>
 </com.egen.tool.business.BusinessComponent>

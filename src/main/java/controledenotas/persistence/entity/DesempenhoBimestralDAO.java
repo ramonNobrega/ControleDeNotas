@@ -11,7 +11,7 @@ import br.gov.frameworkdemoiselle.template.JPACrud;
 import javax.persistence.criteria.*;
 
 @PersistenceController
-public class DesempenhoBimestralDAO extends JPACrud<DesempenhoBimestral, Integer> {
+public class DesempenhoBimestralDAO extends JPACrud<DesempenhoBimestral, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -32,18 +32,36 @@ public class DesempenhoBimestralDAO extends JPACrud<DesempenhoBimestral, Integer
 		Root<DesempenhoBimestral> r = q.from(DesempenhoBimestral.class);
 		Predicate where = null;
 		Object parameter = null; 
-		parameter = parameters.get("idBimestre");
+		parameter = parameters.get("id");
+		if (parameter != null) {
+			Predicate expression = null;
+			if (parameter instanceof java.util.List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Long> collection = (List<Long>)parameter;
+				expression = r.get("id").in(collection);
+			} else if (parameter instanceof Long) {
+				expression = cb.equal(r.get("id"), parameter);
+			}
+			if (expression != null) {
+				where = expression;
+			}
+		}
+		parameter = parameters.get("numero");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
 				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("idBimestre").in(collection);
+				expression = r.get("numero").in(collection);
 			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("idBimestre"), parameter);
+				expression = cb.equal(r.get("numero"), parameter);
 			}
 			if (expression != null) {
-				where = expression;
+				if (where == null) {
+					where = expression;
+				} else {
+					where = cb.and(where, expression);
+				}
 			}
 		}
 		parameter = parameters.get("nota1");
@@ -105,9 +123,9 @@ public class DesempenhoBimestralDAO extends JPACrud<DesempenhoBimestral, Integer
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
+				List<Double> collection = (List<Double>)parameter;
 				expression = r.get("mediaBimestre").in(collection);
-			} else if (parameter instanceof Integer) {
+			} else if (parameter instanceof Double) {
 				expression = cb.equal(r.get("mediaBimestre"), parameter);
 			}
 			if (expression != null) {
@@ -123,30 +141,12 @@ public class DesempenhoBimestralDAO extends JPACrud<DesempenhoBimestral, Integer
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("aluno").get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("aluno").get("matricula"), parameter);
+				List<Long> collection = (List<Long>)parameter;
+				expression = r.get("aluno").get("user").get("id").in(collection);
+			} else if (parameter instanceof Long) {
+				expression = cb.equal(r.get("aluno").get("user").get("id"), parameter);
 			} else if (parameter instanceof controledenotas.domain.entity.Aluno) {
 				expression = cb.equal(r.get("aluno"), parameter);
-			}
-			if (expression != null) {
-				if (where == null) {
-					where = expression;
-				} else {
-					where = cb.and(where, expression);
-				}
-			}
-		}
-		parameter = parameters.get("nu_bim");
-		if (parameter != null) {
-			Predicate expression = null;
-			if (parameter instanceof java.util.List<?>) {
-				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("nu_bim").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("nu_bim"), parameter);
 			}
 			if (expression != null) {
 				if (where == null) {

@@ -11,7 +11,7 @@ import br.gov.frameworkdemoiselle.template.JPACrud;
 import javax.persistence.criteria.*;
 
 @PersistenceController
-public class AlunoDAO extends JPACrud<Aluno, Integer> {
+public class AlunoDAO extends JPACrud<Aluno, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -32,47 +32,33 @@ public class AlunoDAO extends JPACrud<Aluno, Integer> {
 		Root<Aluno> r = q.from(Aluno.class);
 		Predicate where = null;
 		Object parameter = null; 
-		parameter = parameters.get("matricula");
+		parameter = parameters.get("user");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<Integer> collection = (List<Integer>)parameter;
-				expression = r.get("matricula").in(collection);
-			} else if (parameter instanceof Integer) {
-				expression = cb.equal(r.get("matricula"), parameter);
+				List<Long> collection = (List<Long>)parameter;
+				expression = r.get("user").get("id").in(collection);
+			} else if (parameter instanceof Long) {
+				expression = cb.equal(r.get("user").get("id"), parameter);
+			} else if (parameter instanceof controledenotas.domain.entity.User) {
+				expression = cb.equal(r.get("user"), parameter);
 			}
 			if (expression != null) {
 				where = expression;
 			}
 		}
-		parameter = parameters.get("nome");
+		parameter = parameters.get("turma");
 		if (parameter != null) {
 			Predicate expression = null;
 			if (parameter instanceof java.util.List<?>) {
 				@SuppressWarnings("unchecked")
-				List<String> collection = (List<String>)parameter;
-				expression = r.get("nome").in(collection);
-			} else if (parameter instanceof String && ((String)parameter).length()>0) {
-				expression = cb.like(r.<String>get("nome"), "%" + parameter + "%");
-			}
-			if (expression != null) {
-				if (where == null) {
-					where = expression;
-				} else {
-					where = cb.and(where, expression);
-				}
-			}
-		}
-		parameter = parameters.get("senha");
-		if (parameter != null) {
-			Predicate expression = null;
-			if (parameter instanceof java.util.List<?>) {
-				@SuppressWarnings("unchecked")
-				List<String> collection = (List<String>)parameter;
-				expression = r.get("senha").in(collection);
-			} else if (parameter instanceof String && ((String)parameter).length()>0) {
-				expression = cb.like(r.<String>get("senha"), "%" + parameter + "%");
+				List<Integer> collection = (List<Integer>)parameter;
+				expression = r.get("turma").get("codigo").in(collection);
+			} else if (parameter instanceof Integer) {
+				expression = cb.equal(r.get("turma").get("codigo"), parameter);
+			} else if (parameter instanceof controledenotas.domain.entity.Turma) {
+				expression = cb.equal(r.get("turma"), parameter);
 			}
 			if (expression != null) {
 				if (where == null) {

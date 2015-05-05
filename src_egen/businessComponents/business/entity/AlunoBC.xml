@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.egen.tool.business.BusinessComponent>
 <class>com.egen.tool.business.BusinessComponent</class>
-<businessComponentMasterTemplate>EntityCrudBCTemplate</businessComponentMasterTemplate>
-<businessComponentModule>business/entity</businessComponentModule>
 <businessComponentName>AlunoBC</businessComponentName>
+<businessComponentMasterTemplate>EntityCrudBCTemplate</businessComponentMasterTemplate>
 <businessComponentAlias>AlunoBC</businessComponentAlias>
+<businessComponentModule>business/entity</businessComponentModule>
 <variables>
 <variables_item>
 <class>com.egen.tool.business.BusinessVariable</class>
 <businessVariableName>aluno</businessVariableName>
-<businessVariableType>@entity(controledenotas.domain.entity.Aluno)</businessVariableType>
-<variableComponentType></variableComponentType>
 <businessVariableDomainReference></businessVariableDomainReference>
 <businessVariableInitialization></businessVariableInitialization>
+<variableComponentType></variableComponentType>
+<businessVariableType>@entity(controledenotas.domain.entity.Aluno)</businessVariableType>
 <businessVariableDescription></businessVariableDescription>
 <businessVariableSetProperties>
 </businessVariableSetProperties>
 </variables_item>
 </variables>
-<businessComponentSetProperties>
-</businessComponentSetProperties>
 <inputParameters>
 </inputParameters>
+<outputParameters>
+</outputParameters>
 <businessCodeUnits>
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>BC</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityBCUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.business.entity;
 
 import controledenotas.domain.entity.Aluno;
@@ -37,7 +38,7 @@ import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.template.DelegateCrud;
 
 @BusinessController
-public class AlunoBC extends DelegateCrud<Aluno, Integer, AlunoDAO> {
+public class AlunoBC extends DelegateCrud<Aluno, Long, AlunoDAO> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -52,23 +53,22 @@ public class AlunoBC extends DelegateCrud<Aluno, Integer, AlunoDAO> {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityBCUnit</businessCodeUnitTemplate>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
 <businessCodeBlockContent>package controledenotas.business.entity;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCImportBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
 <businessCodeBlockContent>import controledenotas.domain.entity.Aluno;
 import controledenotas.persistence.entity.AlunoDAO;
 import java.util.*;
@@ -78,106 +78,106 @@ import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.template.DelegateCrud;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCImportBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 <intraCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
 <businessCodeBlockContent>import br.gov.frameworkdemoiselle.template.DelegateCrud;
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
+<intraCodeBlocks>
+</intraCodeBlocks>
 <businessCodeBlockSetProperty>
 <businessCodeBlockSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>position</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>custom</setPropertyValue>
 </businessCodeBlockSetProperty_item>
 </businessCodeBlockSetProperty>
-<intraCodeBlocks>
-</intraCodeBlocks>
 </intraCodeBlocks_item>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
 <businessCodeBlockContent>@BusinessController
-public class AlunoBC extends DelegateCrud<Aluno, Integer, AlunoDAO> {
+public class AlunoBC extends DelegateCrud<Aluno, Long, AlunoDAO> {
 
 	private static final long serialVersionUID = 1L;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCClassDefinitionBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 <intraCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
 <businessCodeBlockContent>	private static final long serialVersionUID = 1L;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>serialVersionUID</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>SerialVersionUIDBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </intraCodeBlocks_item>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCFindByExampleBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>findByExample</businessCodeBlockIdentification>
 <businessCodeBlockContent>	public List<Aluno> findByExample(Aluno example) {
 		return getDelegate().findByExample(example);
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>findByExample</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCFindByExampleBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>findByCriteria</businessCodeBlockIdentification>
 <businessCodeBlockContent>	public List<Aluno> findByCriteria(java.util.Map<String, Object> parameters) {
 		return getDelegate().findByCriteria(parameters);
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>findByCriteria</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCFindByCriteriaBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
-<businessCodeBlockContent>}</businessCodeBlockContent>
 <businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
 <businessCodeUnitSetProperty>
 <businessCodeUnitSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>extends</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>br.gov.frameworkdemoiselle.template.DelegateCrud<[ENTITY], [ID_TYPE], [DAO]></setPropertyValue>
 </businessCodeUnitSetProperty_item>
 <businessCodeUnitSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>src/main/java/controledenotas/business/entity/AlunoBC.java</setPropertyValue>
 </businessCodeUnitSetProperty_item>
 </businessCodeUnitSetProperty>
@@ -185,6 +185,7 @@ public class AlunoBC extends DelegateCrud<Aluno, Integer, AlunoDAO> {
 <businessCodeUnits_item>
 <class>com.egen.tool.business.BusinessCodeUnit</class>
 <businessCodeUnitIdentification>BCTest</businessCodeUnitIdentification>
+<businessCodeUnitTemplate>EntityBCTestUnit</businessCodeUnitTemplate>
 <businessCodeUnitContent>package controledenotas.business.entity;
 
 import controledenotas.domain.entity.Aluno;
@@ -197,6 +198,7 @@ import javax.inject.Inject;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+import controledenotas.domain.entity.Turma;
 
 @RunWith(DemoiselleRunner.class)
 public class AlunoBCTest {
@@ -204,10 +206,13 @@ public class AlunoBCTest {
 	@Inject
 	private AlunoBC alunoBC;
 
+	@Inject
+	private TurmaBC turmaBC;
+
 	@Before
 	public void before() {
 		for (Aluno aluno : alunoBC.findAll()) {
-		  alunoBC.delete(aluno.getMatricula());
+		  alunoBC.delete(aluno.getUser().getId());
 		}
 	}
 
@@ -219,8 +224,6 @@ public class AlunoBCTest {
 	@Test
 	public void insert() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoBC.insert(aluno);
 		List<Aluno> alunoList = alunoBC.findAll();
 		assertNotNull(alunoList);
@@ -230,31 +233,24 @@ public class AlunoBCTest {
 	@Test
 	public void update() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		Turma turma = new Turma();
+		turma.setNome("XXX");
+		turmaBC.insert(turma);
+		aluno.setTurma(turma);
 		alunoBC.insert(aluno);
 		List<Aluno> alunoList = alunoBC.findAll();
 		assertNotNull(alunoList);
 		assertTrue(alunoList.size()>0);
-		Aluno beforeUpdate = alunoList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
-		alunoBC.update(beforeUpdate);
-		alunoList = alunoBC.findAll();
-		Aluno afterUpdate = alunoList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
 	}
 
 	@Test
 	public void delete() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoBC.insert(aluno);
 		List<Aluno> alunoList = alunoBC.findAll();
 		assertNotNull(alunoList);
 		assertEquals(1, alunoList.size());
-		  alunoBC.delete(aluno.getMatricula());
+		  alunoBC.delete(aluno.getUser().getId());
 		alunoList = alunoBC.findAll();
 		assertEquals(0, alunoList.size());
 	}
@@ -262,23 +258,22 @@ public class AlunoBCTest {
 }
 
 </businessCodeUnitContent>
-<businessCodeUnitTemplate>EntityBCTestUnit</businessCodeUnitTemplate>
 <businessCodeBlocks>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
 <businessCodeBlockContent>package controledenotas.business.entity;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>package</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>PackageBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestImportBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
 <businessCodeBlockContent>import controledenotas.domain.entity.Aluno;
 import controledenotas.business.entity.AlunoBC;
 import static org.junit.Assert.assertEquals;
@@ -289,47 +284,86 @@ import javax.inject.Inject;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+import controledenotas.domain.entity.Turma;
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>import</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCTestImportBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>extraImport</businessCodeBlockIdentification>
+<businessCodeBlockContent>import controledenotas.domain.entity.Turma;</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>custom</setPropertyValue>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
 <businessCodeBlockContent>@RunWith(DemoiselleRunner.class)
 public class AlunoBCTest {
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>declaration</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCTestClassDefinitionBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestAttributesBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>attributes</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Inject
 	private AlunoBC alunoBC;
 
+	@Inject
+	private TurmaBC turmaBC;
+
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>attributes</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCTestAttributesBlockTemplate</businessCodeBlockTemplate>
+<intraCodeBlocks>
+<intraCodeBlocks_item>
+<class>com.egen.tool.business.BusinessCodeBlock</class>
+<businessCodeBlockIdentification>extraBC</businessCodeBlockIdentification>
+<businessCodeBlockContent>	@Inject
+	private TurmaBC turmaBC;
+
+</businessCodeBlockContent>
+<businessCodeBlockTemplate></businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+<businessCodeBlockSetProperty_item>
+<class>com.egen.tool.business.BusinessComponentSetProperty</class>
+<setPropertyKey>position</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
+<setPropertyValue>custom</setPropertyValue>
+</businessCodeBlockSetProperty_item>
+</businessCodeBlockSetProperty>
+</intraCodeBlocks_item>
+</intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestSetupBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>setup</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Before
 	public void before() {
 		for (Aluno aluno : alunoBC.findAll()) {
-		  alunoBC.delete(aluno.getMatricula());
+		  alunoBC.delete(aluno.getUser().getId());
 		}
 	}
 
@@ -339,20 +373,18 @@ public class AlunoBCTest {
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>setup</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCTestSetupBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestInsertBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>insert</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Test
 	public void insert() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoBC.insert(aluno);
 		List<Aluno> alunoList = alunoBC.findAll();
 		assertNotNull(alunoList);
@@ -360,85 +392,78 @@ public class AlunoBCTest {
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>insert</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCTestInsertBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestUpdateBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>update</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Test
 	public void update() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
+		Turma turma = new Turma();
+		turma.setNome("XXX");
+		turmaBC.insert(turma);
+		aluno.setTurma(turma);
 		alunoBC.insert(aluno);
 		List<Aluno> alunoList = alunoBC.findAll();
 		assertNotNull(alunoList);
 		assertTrue(alunoList.size()>0);
-		Aluno beforeUpdate = alunoList.get(0);
-		assertEquals("XXXXXXXXXXXXXXXXXXXX", beforeUpdate.getSenha());
-		beforeUpdate.setSenha("YYYYYYYYYYYYYYYYYYYY");
-		alunoBC.update(beforeUpdate);
-		alunoList = alunoBC.findAll();
-		Aluno afterUpdate = alunoList.get(0);
-		assertEquals("YYYYYYYYYYYYYYYYYYYY", afterUpdate.getSenha());
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>update</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCTestUpdateBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>EntityBCTestDeleteBlockTemplate</businessCodeBlockTemplate>
+<businessCodeBlockIdentification>delete</businessCodeBlockIdentification>
 <businessCodeBlockContent>	@Test
 	public void delete() {
 		Aluno aluno = new Aluno();
-		aluno.setNome("XXXXXXXXXXXXXXXXXXXX");
-		aluno.setSenha("XXXXXXXXXXXXXXXXXXXX");
 		alunoBC.insert(aluno);
 		List<Aluno> alunoList = alunoBC.findAll();
 		assertNotNull(alunoList);
 		assertEquals(1, alunoList.size());
-		  alunoBC.delete(aluno.getMatricula());
+		  alunoBC.delete(aluno.getUser().getId());
 		alunoList = alunoBC.findAll();
 		assertEquals(0, alunoList.size());
 	}
 
 </businessCodeBlockContent>
-<businessCodeBlockIdentification>delete</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockTemplate>EntityBCTestDeleteBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 <businessCodeBlocks_item>
 <class>com.egen.tool.business.BusinessCodeBlock</class>
-<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
-<businessCodeBlockContent>}</businessCodeBlockContent>
 <businessCodeBlockIdentification>closing</businessCodeBlockIdentification>
-<businessCodeBlockSetProperty>
-</businessCodeBlockSetProperty>
+<businessCodeBlockContent>}</businessCodeBlockContent>
+<businessCodeBlockTemplate>ClosingCodeBlockTemplate</businessCodeBlockTemplate>
 <intraCodeBlocks>
 </intraCodeBlocks>
+<businessCodeBlockSetProperty>
+</businessCodeBlockSetProperty>
 </businessCodeBlocks_item>
 </businessCodeBlocks>
 <businessCodeUnitSetProperty>
 <businessCodeUnitSetProperty_item>
 <class>com.egen.tool.business.BusinessComponentSetProperty</class>
-<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyKey>file</setPropertyKey>
+<setPropertyEnumeration></setPropertyEnumeration>
 <setPropertyValue>src/test/java/controledenotas/business/entity/AlunoBCTest.java</setPropertyValue>
 </businessCodeUnitSetProperty_item>
 </businessCodeUnitSetProperty>
 </businessCodeUnits_item>
 </businessCodeUnits>
-<outputParameters>
-</outputParameters>
+<businessComponentSetProperties>
+</businessComponentSetProperties>
 </com.egen.tool.business.BusinessComponent>
