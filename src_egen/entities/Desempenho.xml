@@ -6,9 +6,9 @@
 <columns>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>codigo</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -69,9 +69,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>mediaParcial</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -137,9 +137,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>provaFinal</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -205,9 +205,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>mediaFinal</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -273,9 +273,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>situacao</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -320,7 +320,7 @@
 <columnProperties_item>
 <class>java.lang.String</class>
 <$key>columnDefinition</$key>
-<$value>VARCHAR()(10) default REPROVADO</$value>
+<$value>VARCHAR(10) default 'REPROVADO'</$value>
 </columnProperties_item>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -336,9 +336,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>aluno</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -424,9 +424,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>aluno.user</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -517,9 +517,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>true</discard>
 <columnName>aluno.user.id</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>true</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -590,9 +590,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>aluno.user.name</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -663,9 +663,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>aluno.user.password</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -736,9 +736,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>true</discard>
 <columnName>aluno.user.email</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>true</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -809,9 +809,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>true</discard>
 <columnName>aluno.user.active</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>true</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -882,9 +882,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>true</discard>
 <columnName>aluno.user.lastUpdate</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>true</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -955,9 +955,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>aluno.turma</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -1053,9 +1053,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>true</discard>
 <columnName>aluno.turma.codigo</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>true</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -1126,9 +1126,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>aluno.turma.nome</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -1194,9 +1194,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>true</discard>
 <columnName>aluno.turma.alunos</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>true</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -1252,9 +1252,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>false</discard>
 <columnName>aluno.turma.professores</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>false</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -1310,9 +1310,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>true</discard>
 <columnName>aluno.desempenhos</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>true</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -1368,9 +1368,9 @@
 </columns_item>
 <columns_item>
 <class>com.egen.tool.integration.VObjectColumn</class>
-<discard>true</discard>
 <columnName>aluno.desempenhosBimestrais</columnName>
 <columnDomainReference></columnDomainReference>
+<discard>true</discard>
 <columnProperties>
 <columnProperties_item>
 <class>java.lang.String</class>
@@ -1449,7 +1449,7 @@
 <properties_item>
 <class>java.lang.String</class>
 <$key>generateDAO</$key>
-<$value>true</$value>
+<$value>false</$value>
 </properties_item>
 <properties_item>
 <class>java.lang.String</class>
@@ -1469,7 +1469,7 @@
 <properties_item>
 <class>java.lang.String</class>
 <$key>generateBC</$key>
-<$value>true</$value>
+<$value>false</$value>
 </properties_item>
 <properties_item>
 <class>java.lang.String</class>

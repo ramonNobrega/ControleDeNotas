@@ -42,18 +42,27 @@ public class AlunoDAOTest {
 		usuario.setName("Ramon");
 		usuario.setEmail("ramon@ufcg.com.br");
 		usuario.setPassword("12345");
-		Role papel = new Role();
-		papel.setName("aluno");
+		RoleDAO roleDAO = new RoleDAO();
+		//Caso o papel no exista, crie
+		Role papel = roleDAO.load("aluno");
+		if(papel == null){
+			papel = new Role();
+			papel.setName("aluno");
+		}
 		usuario.getRoles().add(papel);
 		aluno.setUser(usuario);
 		
+		// Insira 4 bimestre padroes
 		for (int i = 1; i < 5; i++) {
+			// Botao de insert
 			DesempenhoBimestral bimestral = new DesempenhoBimestral();
 			bimestral.setNumero(i);
 			bimestral.setAluno(aluno);
-			bimestral.setNota1(7.5);
-			bimestral.setNota2(9.0);
-			bimestral.setNota3(10.0);
+			bimestral.setNota1(0.0);
+			bimestral.setNota2(0.0);
+			bimestral.setNota3(0.0);
+			
+			//Botao ediçao
 			Double mediaBimestre = (bimestral.getNota1() + bimestral.getNota2() + bimestral.getNota3())/3;
 			bimestral.setMediaBimestre(mediaBimestre);
 			aluno.getDesempenhosBimestrais().add(bimestral);

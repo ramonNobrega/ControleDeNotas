@@ -27,7 +27,7 @@ public class Desempenho implements Serializable {
 	@Column(name="media_final", columnDefinition="FLOAT(10) default 0")
 	private Double mediaFinal;
 
-	@Column(name="situacao", length=10, columnDefinition="VARCHAR()(10) default REPROVADO")
+	@Column(name="situacao", length=10, columnDefinition="VARCHAR(10) default 'REPROVADO'")
 	private String situacao;
 
 	@ManyToOne
