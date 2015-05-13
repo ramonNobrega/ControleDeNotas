@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+		<h:form id="blocoProfessorForm">
+			<p:focus id="blocoProfessorFocus"/>
+			<p:toolbar id="blocoProfessorToolbar">
+				<p:toolbarGroup id="blocoProfessorLeftToolbarGroup" align="left">
+					<p:commandButton id="save" value="#{messages['button.save']}" action="#{tabProfessorMB.save}" ajax="true" process="@this,blocoProfessorPanel" update="blocoProfessorForm" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
+				</p:toolbarGroup>
+				<p:toolbarGroup id="blocoProfessorRightToolbarGroup" align="right">
+					<ui:include src="/template/exportToolbar.xhtml">
+						<ui:param name="target" value="blocoProfessorDataTable" />
+					</ui:include>
+				</p:toolbarGroup>
+			</p:toolbar>
+			<p:outputPanel id="blocoProfessorPanel">
+				<div class="formrow">
+					<div id="userNameformcell" class="formcell">
+						<p:outputLabel id="userNameLabel" value="#{messages['label.name']}" for="userName" styleClass="text-input"></p:outputLabel>
+						<p:inputText id="userName" value="#{tabProfessorMB.professor.user.name}" required="true" maxlength="60" size="60">
+						</p:inputText>
+					</div>
+				</div>
+				<div class="formrow">
+					<div id="disciplinaformcell" class="formcell">
+						<p:outputLabel id="disciplinaLabel" value="Disciplina" for="disciplina" styleClass="text-input"></p:outputLabel>
+						<p:inputText id="disciplina" value="#{tabProfessorMB.professor.disciplina}" maxlength="100" size="100">
+						</p:inputText>
+					</div>
+				</div>
+				<div class="formrow">
+					<div id="userPasswordformcell" class="formcell">
+						<p:outputLabel id="userPasswordLabel" value="#{messages['label.password']}" for="userPassword" styleClass="text-input"></p:outputLabel>
+						<p:password id="userPassword" value="#{tabProfessorMB.professor.user.password}" size="15"></p:password>
+					</div>
+				</div>
+				<div class="formrow">
+					<div id="userEmailformcell" class="formcell">
+						<p:outputLabel id="userEmailLabel" value="#{messages['label.email']}" for="userEmail" styleClass="text-input"></p:outputLabel>
+						<p:inputText id="userEmail" value="#{tabProfessorMB.professor.user.email}" maxlength="100" size="100">
+						</p:inputText>
+					</div>
+				</div>
+			</p:outputPanel>
+		</h:form>
+</ui:composition>
