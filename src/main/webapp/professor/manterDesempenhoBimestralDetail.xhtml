@@ -20,20 +20,17 @@
 			</div>
 			<p:outputPanel id="editPanel">
 				<div class="formrow">
-					<div id="nu_bimformcell" class="formcell">
-						<h:outputLabel id="nu_bimLabel" for="nu_bim" styleClass="text-input" value="Bimestre"></h:outputLabel>
-						<h:outputText id="nu_bim" value="#{manterDesempenhoBimestralDetailMB.bean.nu_bim}">
-						</h:outputText>
+					<div id="idformcell" class="formcell">
+						<p:outputLabel id="idLabel" value="C&#243;digo" for="id" styleClass="text-input"></p:outputLabel>
+						<p:inputText id="id" value="#{manterDesempenhoBimestralDetailMB.bean.id}" required="true" maxlength="10" size="10" style="text-align:right;">
+						</p:inputText>
 					</div>
-					<div id="alunoMatriculaformcell" class="formcell">
-						<h:outputLabel id="alunoMatriculaLabel" for="alunoMatricula" styleClass="text-input" value="Matr&#237;cula"></h:outputLabel>
-						<h:outputText id="alunoMatricula" value="#{manterDesempenhoBimestralDetailMB.bean.aluno.matricula}">
-						</h:outputText>
-					</div>
-					<div id="alunoNomeformcell" class="formcell">
-						<h:outputLabel id="alunoNomeLabel" for="alunoNome" styleClass="text-input" value="Nome"></h:outputLabel>
-						<h:outputText id="alunoNome" value="#{manterDesempenhoBimestralDetailMB.bean.aluno.nome}">
-						</h:outputText>
+				</div>
+				<div class="formrow">
+					<div id="numeroformcell" class="formcell">
+						<p:outputLabel id="numeroLabel" value="Bimestre" for="numero" styleClass="text-input"></p:outputLabel>
+						<p:inputText id="numero" value="#{manterDesempenhoBimestralDetailMB.bean.numero}" required="true" maxlength="10" size="10" style="text-align:right;">
+						</p:inputText>
 					</div>
 				</div>
 				<div class="formrow">
@@ -42,19 +39,32 @@
 						<p:inputText id="nota1" value="#{manterDesempenhoBimestralDetailMB.bean.nota1}" maxlength="10" size="10" style="text-align:right;">
 						</p:inputText>
 					</div>
+				</div>
+				<div class="formrow">
 					<div id="nota2formcell" class="formcell">
 						<p:outputLabel id="nota2Label" value="Nota 2" for="nota2" styleClass="text-input"></p:outputLabel>
 						<p:inputText id="nota2" value="#{manterDesempenhoBimestralDetailMB.bean.nota2}" maxlength="10" size="10" style="text-align:right;">
 						</p:inputText>
 					</div>
+				</div>
+				<div class="formrow">
 					<div id="nota3formcell" class="formcell">
 						<p:outputLabel id="nota3Label" value="Nota 3" for="nota3" styleClass="text-input"></p:outputLabel>
 						<p:inputText id="nota3" value="#{manterDesempenhoBimestralDetailMB.bean.nota3}" maxlength="10" size="10" style="text-align:right;">
 						</p:inputText>
 					</div>
+				</div>
+				<div class="formrow">
 					<div id="mediaBimestreformcell" class="formcell">
 						<p:outputLabel id="mediaBimestreLabel" value="M&#233;dia Bimestral" for="mediaBimestre" styleClass="text-input"></p:outputLabel>
 						<p:inputText id="mediaBimestre" value="#{manterDesempenhoBimestralDetailMB.bean.mediaBimestre}" maxlength="10" size="10" style="text-align:right;">
+						</p:inputText>
+					</div>
+				</div>
+				<div class="formrow">
+					<div id="alunoUserformcell" class="formcell">
+						<p:outputLabel id="alunoUserLabel" value="Aluno" for="alunoUser" styleClass="text-input"></p:outputLabel>
+						<p:inputText id="alunoUser" value="#{manterDesempenhoBimestralDetailMB.bean.aluno.user}" maxlength="10" size="10" style="text-align:right;">
 						</p:inputText>
 					</div>
 				</div>

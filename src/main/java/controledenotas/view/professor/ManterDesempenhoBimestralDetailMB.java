@@ -26,7 +26,7 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 @ViewController
 @PreviousView("/professor/manterDesempenhoBimestral.xhtml")
 @NextView("/professor/manterDesempenhoBimestralDetail.xhtml")
-public class ManterDesempenhoBimestralDetailMB extends AbstractEditPageBean<DesempenhoBimestral, Integer> {
+public class ManterDesempenhoBimestralDetailMB extends AbstractEditPageBean<DesempenhoBimestral, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -59,7 +59,7 @@ public class ManterDesempenhoBimestralDetailMB extends AbstractEditPageBean<Dese
 	@Override
 	@Transactional
 	public String delete() {
-		this.desempenhoBimestralBC.delete(getBean().getIdBimestre());
+		this.desempenhoBimestralBC.delete(getBean().getId());
 		return getPreviousView();
 	}
 	

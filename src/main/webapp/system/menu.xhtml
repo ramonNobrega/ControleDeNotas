@@ -7,7 +7,12 @@
 				<p:menuitem id="mainmenu_5" value="Manter Usu&#225;rio" url="/system/maintainUser.jsf" ajax="false"></p:menuitem>
 				<p:menuitem id="mainmenu_6" rendered="#{securityContext.hasRole('professor')}" value="Manter Aluno" url="/professor/manterAluno.jsf" ajax="false"></p:menuitem>
 			</p:submenu>
-			<p:menuitem id="mainmenu_7" rendered="#{securityContext.hasRole('professor')}" value="Teste" url="/aluno/perfil.jsf" ajax="false"></p:menuitem>
+			<p:submenu id="mainmenu_7" rendered="#{securityContext.hasRole('professor')}" label="Professor">
+				<p:menuitem id="mainmenu_8" rendered="#{securityContext.hasRole('professor')}" value="Edita Notas" url="/professor/manterDesempenhoBimestral.jsf" ajax="false"></p:menuitem>
+			</p:submenu>
+			<p:submenu id="mainmenu_9" rendered="#{securityContext.hasRole('aluno')}" label="Aluno">
+				<p:menuitem id="mainmenu_10" rendered="#{securityContext.hasRole('aluno')}" value="Perfil" url="/aluno/dadosAluno.jsf" ajax="false"></p:menuitem>
+			</p:submenu>
 		</p:menubar>
 	</h:form>
 </ui:composition>

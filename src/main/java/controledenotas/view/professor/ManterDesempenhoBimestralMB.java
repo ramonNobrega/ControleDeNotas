@@ -26,7 +26,7 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 @ViewController
 @PreviousView("/professor/manterDesempenhoBimestral.xhtml")
 @NextView("/professor/manterDesempenhoBimestralDetail.xhtml")
-public class ManterDesempenhoBimestralMB extends AbstractListPageBean<DesempenhoBimestral, Integer> {
+public class ManterDesempenhoBimestralMB extends AbstractListPageBean<DesempenhoBimestral, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,8 +47,8 @@ public class ManterDesempenhoBimestralMB extends AbstractListPageBean<Desempenho
 	@Transactional
 	public String delete() {
 		boolean delete = false;
-		for (Iterator<Integer> iter = getSelection().keySet().iterator(); iter.hasNext();) {
-			Integer selectedId = iter.next();
+		for (Iterator<Long> iter = getSelection().keySet().iterator(); iter.hasNext();) {
+			Long selectedId = iter.next();
 			delete = getSelection().get(selectedId);
 			if (delete) {
 				desempenhoBimestralBC.delete(selectedId);
