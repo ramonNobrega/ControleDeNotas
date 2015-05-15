@@ -14,7 +14,7 @@
         <properties>
             <property value="com.mysql.jdbc.Driver" name="javax.persistence.jdbc.driver"/>
             <property value="root" name="javax.persistence.jdbc.user"/>
-            <property value="" name="javax.persistence.jdbc.password"/>
+            <property value="admin" name="javax.persistence.jdbc.password"/>
             <property value="jdbc:mysql://localhost:3306/controledenotas" name="javax.persistence.jdbc.url"/>
             <property value="FINE" name="eclipselink.logging.level"/>
             <property value="create-tables" name="eclipselink.ddl-generation"/>

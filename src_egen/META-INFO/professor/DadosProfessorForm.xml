@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <generator>
 <VERSION>v 4</VERSION>
-<module>aluno</module>
-<file_name>DadosAluno</file_name>
-<app_type>Report</app_type>
+<module>professor</module>
+<file_name>DadosProfessor</file_name>
+<app_type>Form</app_type>
 <css></css>
 <table_size>100%</table_size>
 <grid>30</grid>
@@ -26,7 +26,8 @@
 <version></version>
 <since></since>
 <template_file>standard.xhtml</template_file>
-<addImportAction>import controledenotas.business.entity.DesempenhoBimestralBC;
+<addImportAction>import controledenotas.business.entity.ProfessorBC;
+import controledenotas.domain.entity.Professor;
 </addImportAction>
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
@@ -35,7 +36,7 @@
 <blocks>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
-<name>tabDadosAlunoTabForm</name>
+<name>tabPerfilProfessorTabForm</name>
 <title></title>
 <i18n></i18n>
 <database></database>
@@ -51,7 +52,7 @@
 <script_template></script_template>
 <obs></obs>
 <maxRows>0</maxRows>
-<resultSetName>tabDadosAlunoTabFormResultList</resultSetName>
+<resultSetName>resultList</resultSetName>
 <select_clause></select_clause>
 <where_clause></where_clause>
 <order_by></order_by>
@@ -69,7 +70,7 @@
 <role_item></role_item>
 <roleinclude>false</roleinclude>
 <i18n_obs></i18n_obs>
-<tab_pos>tabDadosAluno</tab_pos>
+<tab_pos>tabPerfilProfessor</tab_pos>
 <block_size></block_size>
 <block_position></block_position>
 <displayError></displayError>
@@ -95,14 +96,14 @@
 <formSetProperty>
 <formSetProperty_item>
 <$key>focus_id</$key>
-<$value>tabDadosAlunoTabFormFocus</$value>
+<$value>tabPerfilProfessorTabFormFocus</$value>
 </formSetProperty_item>
 </formSetProperty>
 </form>
 <blockSetProperty>
 <blockSetProperty_item>
 <$key>toolbar_id</$key>
-<$value>tabDadosAlunoTabFormToolbar</$value>
+<$value>tabPerfilProfessorTabFormToolbar</$value>
 </blockSetProperty_item>
 <blockSetProperty_item>
 <$key>exportToolbar</$key>
@@ -114,12 +115,12 @@
 </blockSetProperty_item>
 <blockSetProperty_item>
 <$key>toolbarCode</$key>
-<$value><p:toolbar id="tabDadosAlunoTabFormToolbar">
-	<p:toolbarGroup id="tabDadosAlunoTabFormLeftToolbarGroup" align="left">
+<$value><p:toolbar id="tabPerfilProfessorTabFormToolbar">
+	<p:toolbarGroup id="tabPerfilProfessorTabFormLeftToolbarGroup" align="left">
 	</p:toolbarGroup>
-	<p:toolbarGroup id="tabDadosAlunoTabFormRightToolbarGroup" align="right">
+	<p:toolbarGroup id="tabPerfilProfessorTabFormRightToolbarGroup" align="right">
 		<ui:include src="/template/exportToolbar.xhtml">
-			<ui:param name="target" value="tabDadosAlunoTabFormDataTable" />
+			<ui:param name="target" value="tabPerfilProfessorTabFormDataTable" />
 		</ui:include>
 	</p:toolbarGroup>
 </p:toolbar>
@@ -136,7 +137,7 @@
 </blocks_item>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
-<name>tabDesempenhoBimAlunoTabForm</name>
+<name>tabManterTurmaTabForm</name>
 <title></title>
 <i18n></i18n>
 <database></database>
@@ -152,7 +153,7 @@
 <script_template></script_template>
 <obs></obs>
 <maxRows>0</maxRows>
-<resultSetName>tabDesempenhoBimAlunoTabFormResultList</resultSetName>
+<resultSetName>resultList</resultSetName>
 <select_clause></select_clause>
 <where_clause></where_clause>
 <order_by></order_by>
@@ -170,7 +171,7 @@
 <role_item></role_item>
 <roleinclude>false</roleinclude>
 <i18n_obs></i18n_obs>
-<tab_pos>tabDesempenhoBimAluno</tab_pos>
+<tab_pos>tabManterTurma</tab_pos>
 <block_size></block_size>
 <block_position></block_position>
 <displayError></displayError>
@@ -196,14 +197,14 @@
 <formSetProperty>
 <formSetProperty_item>
 <$key>focus_id</$key>
-<$value>tabDesempenhoBimAlunoTabFormFocus</$value>
+<$value>tabManterTurmaTabFormFocus</$value>
 </formSetProperty_item>
 </formSetProperty>
 </form>
 <blockSetProperty>
 <blockSetProperty_item>
 <$key>toolbar_id</$key>
-<$value>tabDesempenhoBimAlunoTabFormToolbar</$value>
+<$value>tabManterTurmaTabFormToolbar</$value>
 </blockSetProperty_item>
 <blockSetProperty_item>
 <$key>exportToolbar</$key>
@@ -215,12 +216,12 @@
 </blockSetProperty_item>
 <blockSetProperty_item>
 <$key>toolbarCode</$key>
-<$value><p:toolbar id="tabDesempenhoBimAlunoTabFormToolbar">
-	<p:toolbarGroup id="tabDesempenhoBimAlunoTabFormLeftToolbarGroup" align="left">
+<$value><p:toolbar id="tabManterTurmaTabFormToolbar">
+	<p:toolbarGroup id="tabManterTurmaTabFormLeftToolbarGroup" align="left">
 	</p:toolbarGroup>
-	<p:toolbarGroup id="tabDesempenhoBimAlunoTabFormRightToolbarGroup" align="right">
+	<p:toolbarGroup id="tabManterTurmaTabFormRightToolbarGroup" align="right">
 		<ui:include src="/template/exportToolbar.xhtml">
-			<ui:param name="target" value="tabDesempenhoBimAlunoTabFormDataTable" />
+			<ui:param name="target" value="tabManterTurmaTabFormDataTable" />
 		</ui:include>
 	</p:toolbarGroup>
 </p:toolbar>
@@ -237,7 +238,7 @@
 </blocks_item>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
-<name>tabDesempenhoGeralTabForm</name>
+<name>tabManterDesempenhoBimestralTabForm</name>
 <title></title>
 <i18n></i18n>
 <database></database>
@@ -253,7 +254,7 @@
 <script_template></script_template>
 <obs></obs>
 <maxRows>0</maxRows>
-<resultSetName>tabDesempenhoGeralTabFormResultList</resultSetName>
+<resultSetName>resultList</resultSetName>
 <select_clause></select_clause>
 <where_clause></where_clause>
 <order_by></order_by>
@@ -271,7 +272,7 @@
 <role_item></role_item>
 <roleinclude>false</roleinclude>
 <i18n_obs></i18n_obs>
-<tab_pos>tabDesempenhoGeral</tab_pos>
+<tab_pos>tabManterDesempenhoBimestral</tab_pos>
 <block_size></block_size>
 <block_position></block_position>
 <displayError></displayError>
@@ -297,14 +298,14 @@
 <formSetProperty>
 <formSetProperty_item>
 <$key>focus_id</$key>
-<$value>tabDesempenhoGeralTabFormFocus</$value>
+<$value>tabManterDesempenhoBimestralTabFormFocus</$value>
 </formSetProperty_item>
 </formSetProperty>
 </form>
 <blockSetProperty>
 <blockSetProperty_item>
 <$key>toolbar_id</$key>
-<$value>tabDesempenhoGeralTabFormToolbar</$value>
+<$value>tabManterDesempenhoBimestralTabFormToolbar</$value>
 </blockSetProperty_item>
 <blockSetProperty_item>
 <$key>exportToolbar</$key>
@@ -316,12 +317,12 @@
 </blockSetProperty_item>
 <blockSetProperty_item>
 <$key>toolbarCode</$key>
-<$value><p:toolbar id="tabDesempenhoGeralTabFormToolbar">
-	<p:toolbarGroup id="tabDesempenhoGeralTabFormLeftToolbarGroup" align="left">
+<$value><p:toolbar id="tabManterDesempenhoBimestralTabFormToolbar">
+	<p:toolbarGroup id="tabManterDesempenhoBimestralTabFormLeftToolbarGroup" align="left">
 	</p:toolbarGroup>
-	<p:toolbarGroup id="tabDesempenhoGeralTabFormRightToolbarGroup" align="right">
+	<p:toolbarGroup id="tabManterDesempenhoBimestralTabFormRightToolbarGroup" align="right">
 		<ui:include src="/template/exportToolbar.xhtml">
-			<ui:param name="target" value="tabDesempenhoGeralTabFormDataTable" />
+			<ui:param name="target" value="tabManterDesempenhoBimestralTabFormDataTable" />
 		</ui:include>
 	</p:toolbarGroup>
 </p:toolbar>
@@ -346,9 +347,9 @@
 <tabs_gen>
 <tabs_gen_item>
 <class>com.egen.develop.generator.BlockTabs</class>
-<id>tabDadosAluno</id>
-<title>Dados do Aluno</title>
-<src>/aluno/tabDadosAlunoForm.xhtml</src>
+<id>tabPerfilProfessor</id>
+<title>Perfil</title>
+<src>/professor/tabPerfilProfessor.xhtml</src>
 <align></align>
 <space></space>
 <i18n></i18n>
@@ -360,9 +361,9 @@
 </tabs_gen_item>
 <tabs_gen_item>
 <class>com.egen.develop.generator.BlockTabs</class>
-<id>tabDesempenhoBimAluno</id>
-<title>Desempenhos Bimestrais</title>
-<src>/aluno/tabDesempenhoBimestralAluno.xhtml</src>
+<id>tabManterTurma</id>
+<title>Cadastro de Turmas</title>
+<src>/professor/tabManterTurma.xhtml</src>
 <align></align>
 <space></space>
 <i18n></i18n>
@@ -374,9 +375,9 @@
 </tabs_gen_item>
 <tabs_gen_item>
 <class>com.egen.develop.generator.BlockTabs</class>
-<id>tabDesempenhoGeral</id>
-<title>Desempenho Geral</title>
-<src>/aluno/tabDesempenhoGeralAluno.xhtml</src>
+<id>tabManterDesempenhoBimestral</id>
+<title>Editar Notas</title>
+<src>/professor/tabManterDesempenhoBimestral.xhtml</src>
 <align></align>
 <space></space>
 <i18n></i18n>
@@ -398,16 +399,20 @@
 <$value>java.io.Serializable</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
+<$key>extends</$key>
+<$value>AbstractListPageBean<[ENTITY], [ID_TYPE]></$value>
+</generatorSetProperty_item>
+<generatorSetProperty_item>
 <$key>tab_widgetVar</$key>
 <$value></$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>MB_REFERENCE</$key>
-<$value>DadosAlunoMB</$value>
+<$value>DadosProfessorMB</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>NEXT_VIEW</$key>
-<$value>/aluno/dadosAluno.xhtml</$value>
+<$value>/professor/dadosProfessor.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>XHTML_TEMPLATE</$key>
@@ -423,15 +428,15 @@
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>XHTML_REFERENCE</$key>
-<$value>/aluno/dadosAluno.xhtml</$value>
+<$value>/professor/dadosProfessor.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>PREVIOUS_VIEW</$key>
-<$value>/aluno/dadosAluno.xhtml</$value>
+<$value>/professor/dadosProfessor.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>entity</$key>
-<$value>Aluno</$value>
+<$value>Professor</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>tab_styleClass</$key>

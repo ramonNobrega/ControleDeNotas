@@ -32,7 +32,7 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <scope_storage>request</scope_storage>
-<generatorMasterTemplate>CrudListPresentationMasterTemplate</generatorMasterTemplate>
+<generatorMasterTemplate>StandardPresentationMasterTemplate</generatorMasterTemplate>
 <blocks>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>

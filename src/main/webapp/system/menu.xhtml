@@ -1,18 +1,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
 	<h:form id="mainmenuForm">
 		<p:menubar id="mainmenuMenubar" styleClass="mainmenubar">
-			<p:submenu id="mainmenu_2" rendered="#{securityContext.hasRole('professor')}" label="#{messages['mainmenu.maintainsystem']}">
-				<p:menuitem id="mainmenu_3" value="Manter Configura&#231;&#227;o do Sistema" url="/system/maintainParameter.jsf" ajax="false"></p:menuitem>
-				<p:menuitem id="mainmenu_4" value="Manter Papel" url="/system/maintainRole.jsf" ajax="false"></p:menuitem>
-				<p:menuitem id="mainmenu_5" value="Manter Usu&#225;rio" url="/system/maintainUser.jsf" ajax="false"></p:menuitem>
-				<p:menuitem id="mainmenu_6" rendered="#{securityContext.hasRole('professor')}" value="Manter Aluno" url="/professor/manterAluno.jsf" ajax="false"></p:menuitem>
-			</p:submenu>
-			<p:submenu id="mainmenu_7" rendered="#{securityContext.hasRole('professor')}" label="Professor">
-				<p:menuitem id="mainmenu_8" rendered="#{securityContext.hasRole('professor')}" value="Edita Notas" url="/professor/manterDesempenhoBimestral.jsf" ajax="false"></p:menuitem>
-			</p:submenu>
-			<p:submenu id="mainmenu_9" rendered="#{securityContext.hasRole('aluno')}" label="Aluno">
-				<p:menuitem id="mainmenu_10" rendered="#{securityContext.hasRole('aluno')}" value="Perfil" url="/aluno/dadosAluno.jsf" ajax="false"></p:menuitem>
-			</p:submenu>
+			<p:menuitem id="mainmenu_7" rendered="#{securityContext.hasRole('professor')}" value="Acesse seus dados aqui" url="/professor/dadosProfessor.jsf" ajax="false"></p:menuitem>
+			<p:menuitem id="mainmenu_9" rendered="#{securityContext.hasRole('aluno')}" value="Acesse seus dados aqui" url="/aluno/dadosAluno.jsf" ajax="false"></p:menuitem>
 		</p:menubar>
 	</h:form>
 </ui:composition>

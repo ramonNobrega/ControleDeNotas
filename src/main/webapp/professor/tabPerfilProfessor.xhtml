@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+		<h:form id="perfilblockForm">
+			<p:toolbar id="perfilblockToolbar">
+				
+			</p:toolbar>
+			<p:outputPanel id="perfilblockPanel">
+				<p:dataTable id="perfilblockDataTable" value="#{tabPerfilProfessorMB.professorResultList}" var="bean" rows="5" paginator="false" rowIndexVar="rowIndexVar" resizableColumns="true" tableStyle="width:100%">
+					<p:column id="userNameDTColumn" sortBy="#{bean.user.name}" filterBy="#{bean.user.name}" filterMatchMode="contains" exportable="true">
+						<f:facet name="header">
+							<h:outputText value="#{messages['label.name']}"></h:outputText>
+						</f:facet>
+						<h:outputText id="userName" value="#{bean.user.name}">
+						</h:outputText>
+					</p:column>
+					<p:column id="userEmailDTColumn" sortBy="#{bean.user.email}" filterBy="#{bean.user.email}" filterMatchMode="contains" exportable="true">
+						<f:facet name="header">
+							<h:outputText value="#{messages['label.email']}"></h:outputText>
+						</f:facet>
+						<h:outputText id="userEmail" value="#{bean.user.email}">
+						</h:outputText>
+					</p:column>
+					<p:column id="disciplinaDTColumn" sortBy="#{bean.disciplina}" filterBy="#{bean.disciplina}" filterMatchMode="contains" exportable="true">
+						<f:facet name="header">
+							<h:outputText value="Disciplina"></h:outputText>
+						</f:facet>
+						<h:outputText id="disciplina" value="#{bean.disciplina}">
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+		</h:form>
+</ui:composition>

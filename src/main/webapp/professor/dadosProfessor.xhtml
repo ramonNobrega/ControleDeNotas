@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+	<ui:define name="body">
+		<h:form id="wizardForm">
+			<div id="dadosProfessorFormMessages" class="formmessages">
+				<p:messages id="messages" autoUpdate="true" closable="true"/>
+			</div>
+			<p:tabView id="tabView" dynamic="false" styleClass="wizard">
+				<p:tab id="tabPerfilProfessorTab" title="Perfil">
+					<ui:include src="/professor/tabPerfilProfessor.xhtml">
+					</ui:include>
+				</p:tab>
+				<p:tab id="tabManterTurmaTab" title="Cadastro de Turmas">
+					<ui:include src="/professor/tabManterTurma.xhtml">
+					</ui:include>
+				</p:tab>
+				<p:tab id="tabManterDesempenhoBimestralTab" title="Editar Notas">
+					<ui:include src="/professor/tabManterDesempenhoBimestral.xhtml">
+					</ui:include>
+				</p:tab>
+			</p:tabView>
+		</h:form>
+	</ui:define>
+</ui:composition>

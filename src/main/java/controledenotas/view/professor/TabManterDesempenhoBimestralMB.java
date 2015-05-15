@@ -1,0 +1,48 @@
+package controledenotas.view.professor;
+
+import java.util.*;
+
+import javax.annotation.*;
+import javax.inject.Inject;
+
+import br.gov.frameworkdemoiselle.annotation.*;
+import br.gov.frameworkdemoiselle.exception.*;
+import br.gov.frameworkdemoiselle.message.*;
+import br.gov.frameworkdemoiselle.stereotype.*;
+import br.gov.frameworkdemoiselle.template.*;
+import br.gov.frameworkdemoiselle.transaction.*;
+
+import controledenotas.domain.entity.*;
+import controledenotas.domain.enumeration.*;
+import controledenotas.domain.view.*;
+import controledenotas.business.entity.*;
+import controledenotas.business.process.*;
+import controledenotas.constant.*;
+import controledenotas.exception.*;
+
+import controledenotas.business.entity.DesempenhoBimestralBC;
+import controledenotas.domain.entity.DesempenhoBimestral;
+
+@ViewController
+@PreviousView("/professor/dadosProfessor.xhtml")
+@NextView("/professor/tabManterDesempenhoBimestralDetail.xhtml")
+public class TabManterDesempenhoBimestralMB extends AbstractListPageBean<DesempenhoBimestral, Long> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private MessageContext messageContext;
+
+	@Inject
+	@Name("messages")
+	private ResourceBundle bundle;
+
+	@Inject
+	private DesempenhoBimestralBC desempenhoBimestralBC;
+	
+	@Override
+	protected List<DesempenhoBimestral> handleResultList() {
+		return this.desempenhoBimestralBC.findAll();
+	}
+
+}
