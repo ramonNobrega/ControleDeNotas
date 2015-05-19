@@ -28,6 +28,7 @@
 <template_file>standard.xhtml</template_file>
 <addImportAction>import controledenotas.business.entity.DesempenhoBC;
 import controledenotas.domain.entity.Desempenho;
+import controledenotas.security.ContextMB;
 </addImportAction>
 <addImportActionForm>import javax.enterprise.context.RequestScoped;
 </addImportActionForm>
@@ -47,7 +48,7 @@ import controledenotas.domain.entity.Desempenho;
 <modelCode></modelCode>
 <isViewCodeCustomized>false</isViewCodeCustomized>
 <viewCode></viewCode>
-<isControllerCodeCustomized>false</isControllerCodeCustomized>
+<isControllerCodeCustomized>true</isControllerCodeCustomized>
 <controllerCode></controllerCode>
 <script_block></script_block>
 <script_template></script_template>
@@ -1111,8 +1112,10 @@ import controledenotas.domain.entity.Desempenho;
 	for (Desempenho item : desempenhoBC.findAll()) {
 			desempenhoBC.load(item.getCodigo()).getMediaFinal();
 		}
-}</triggerCode>
-<triggerCallCode></triggerCallCode>
+}
+</triggerCode>
+<triggerCallCode>calculaMediaFinal();
+</triggerCallCode>
 <develHelp></develHelp>
 <triggerSetProperty>
 </triggerSetProperty>

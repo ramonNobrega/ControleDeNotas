@@ -11,7 +11,6 @@ import br.gov.frameworkdemoiselle.message.*;
 import br.gov.frameworkdemoiselle.stereotype.*;
 import br.gov.frameworkdemoiselle.template.*;
 import br.gov.frameworkdemoiselle.transaction.*;
-
 import controledenotas.domain.entity.*;
 import controledenotas.domain.enumeration.*;
 import controledenotas.domain.view.*;
@@ -19,7 +18,7 @@ import controledenotas.business.entity.*;
 import controledenotas.business.process.*;
 import controledenotas.constant.*;
 import controledenotas.exception.*;
-
+import controledenotas.security.ContextMB;
 import controledenotas.business.entity.DesempenhoBC;
 import controledenotas.domain.entity.Desempenho;
 
@@ -40,18 +39,23 @@ public class TabManterDesempenhoMB extends AbstractListPageBean<Desempenho, Long
 	@Inject
 	private DesempenhoBC desempenhoBC;
 	
+	@Inject
+	private ContextMB context;
+	
 	@Override
 	protected List<Desempenho> handleResultList() {
-		/* TriggerCall[list.handleResultList.calculaMediaParcial] */
 		calculaMediaParcial();
-		/* TriggerCall[list.handleResultList.calculaMediaParcial] */
-		/* TriggerCall[list.handleResultList.calculaMediaFinal] */
 		calculaMediaFinal();
-		/* TriggerCall[list.handleResultList.calculaMediaFinal] */
-		/* TriggerCall[list.handleResultList.calculaSituacao] */
 		calculaSituacao();
-		/* TriggerCall[list.handleResultList.calculaSituacao] */
-		return this.desempenhoBC.findAll();
+		List<Desempenho> desempenhoList = new ArrayList<Desempenho>();
+		ProfessorBC professorBC = new ProfessorBC();
+		Professor professor = professorBC.load(new Long(context.getUser().getId()));
+		for (Desempenho item : desempenhoBC.findAll()) {
+			if (item.getAluno().getTurma().equals(professor.getTurma())){
+				desempenhoList.add(item);
+			}
+		}
+		return desempenhoList;
 	}
 	
 	/* Trigger[list.handleResultList.calculaMediaParcial] */

@@ -11,7 +11,6 @@ import br.gov.frameworkdemoiselle.message.*;
 import br.gov.frameworkdemoiselle.stereotype.*;
 import br.gov.frameworkdemoiselle.template.*;
 import br.gov.frameworkdemoiselle.transaction.*;
-
 import controledenotas.domain.entity.*;
 import controledenotas.domain.enumeration.*;
 import controledenotas.domain.view.*;
@@ -19,7 +18,7 @@ import controledenotas.business.entity.*;
 import controledenotas.business.process.*;
 import controledenotas.constant.*;
 import controledenotas.exception.*;
-
+import controledenotas.security.ContextMB;
 import controledenotas.business.entity.TurmaBC;
 import controledenotas.domain.entity.Turma;
 
@@ -39,6 +38,9 @@ public class TabManterTurmaMB extends AbstractListPageBean<Turma, Integer> {
 
 	@Inject
 	private TurmaBC turmaBC;
+
+	@Inject
+	private ContextMB context;
 	
 	public String newRecord() {
 		return getNextView();
@@ -63,7 +65,15 @@ public class TabManterTurmaMB extends AbstractListPageBean<Turma, Integer> {
 	
 	@Override
 	protected List<Turma> handleResultList() {
-		return this.turmaBC.findAll();
+		ProfessorBC professorBC = new ProfessorBC();
+		Professor professor = professorBC.load(new Long(context.getUser().getId()));
+		HashMap<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("professor", professor);
+		List<Turma> turmaList = new ArrayList<Turma>();
+		for (Turma turma : turmaBC.findAll()) {
+			if (turma.getProfessores().contains(professor))
+				turmaList.add(turma);
+		}
+		return turmaList;
 	}
-
 }
