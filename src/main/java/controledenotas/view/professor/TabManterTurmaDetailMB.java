@@ -24,7 +24,7 @@ import controledenotas.business.entity.TurmaBC;
 import controledenotas.domain.entity.Turma;
 
 @ViewController
-@PreviousView("/professor/dadosProfessor.xhtml")
+@PreviousView("/professor/tabManterTurma.xhtml")
 @NextView("/professor/dadosProfessor.xhtml")
 public class TabManterTurmaDetailMB extends AbstractEditPageBean<Turma, Integer> {
 
@@ -53,13 +53,6 @@ public class TabManterTurmaDetailMB extends AbstractEditPageBean<Turma, Integer>
 	public String update() {
 		this.turmaBC.update(getBean());
 		messageContext.add(new DefaultMessage("{pages.msg.updatesuccess}"));
-		return getPreviousView();
-	}
-	
-	@Override
-	@Transactional
-	public String delete() {
-		this.turmaBC.delete(getBean().getCodigo());
 		return getPreviousView();
 	}
 	

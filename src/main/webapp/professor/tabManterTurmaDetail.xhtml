@@ -8,11 +8,6 @@
 					<p:commandButton id="back" value="#{messages['button.back']}" action="#{tabManterTurmaDetailMB.getPreviousView}" immediate="true" ajax="true" process="@this,editPanel" update="editForm" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
 					<p:commandButton id="insert" rendered="#{!tabManterTurmaDetailMB.updateMode}" value="#{messages['button.save']}" action="#{tabManterTurmaDetailMB.insert}" ajax="true" process="@this,editPanel" update="editForm" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
 					<p:commandButton id="update" rendered="#{tabManterTurmaDetailMB.updateMode}" value="#{messages['button.save']}" action="#{tabManterTurmaDetailMB.update}" ajax="true" process="@this,editPanel" update="editForm" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
-					<p:commandButton id="delete" rendered="#{tabManterTurmaDetailMB.updateMode}" value="#{messages['button.delete']}" type="button" ajax="true" process="@this,editPanel" update="editForm" onclick="deleteConfirmation.show();" title="#{messages['button.delete']}" icon="ui-icon-trash"></p:commandButton>
-					<p:confirmDialog id="deleteConfirmDialog" widgetVar="deleteConfirmation" message="#{messages['label.confirm.delete']}" header="#{messages['label.dialog.delete']}" severity="alert">
-						<h:commandButton action="#{tabManterTurmaDetailMB.delete}" value="#{messages['button.dialog.yes']}"></h:commandButton>
-						<h:commandButton onclick="deleteConfirmation.hide()" type="button" value="#{messages['button.dialog.no']}"></h:commandButton>
-					</p:confirmDialog>
 				</p:toolbarGroup>
 			</p:toolbar>
 			<div id="editFormMessages" class="formmessages">
