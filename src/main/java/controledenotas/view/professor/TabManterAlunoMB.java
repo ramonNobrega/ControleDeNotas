@@ -20,13 +20,14 @@ import controledenotas.business.process.*;
 import controledenotas.constant.*;
 import controledenotas.exception.*;
 
-import controledenotas.business.entity.ProfessorBC;
-import controledenotas.domain.entity.Professor;
+import controledenotas.business.entity.AlunoBC;
+import controledenotas.domain.entity.Aluno;
+import controledenotas.business.entity.TurmaBC;
 
 @ViewController
-@PreviousView("/professor/dadosProfessor.xhtml")
-@NextView("/professor/dadosProfessor.xhtml")
-public class DadosProfessorMB extends AbstractListPageBean<Professor, Long> {
+@PreviousView("/professor/tabManterAluno.xhtml")
+@NextView("/professor/tabManterAlunoDetail.xhtml")
+public class TabManterAlunoMB extends AbstractListPageBean<Aluno, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +39,7 @@ public class DadosProfessorMB extends AbstractListPageBean<Professor, Long> {
 	private ResourceBundle bundle;
 
 	@Inject
-	private ProfessorBC professorBC;
+	private AlunoBC alunoBC;
 	
 	public String newRecord() {
 		return getNextView();
@@ -51,7 +52,7 @@ public class DadosProfessorMB extends AbstractListPageBean<Professor, Long> {
 			Long selectedId = iter.next();
 			delete = getSelection().get(selectedId);
 			if (delete) {
-				professorBC.delete(selectedId);
+				alunoBC.delete(selectedId);
 				iter.remove();
 			}
 		}
@@ -62,8 +63,8 @@ public class DadosProfessorMB extends AbstractListPageBean<Professor, Long> {
 	}
 	
 	@Override
-	protected List<Professor> handleResultList() {
-		return this.professorBC.findAll();
+	protected List<Aluno> handleResultList() {
+		return this.alunoBC.findAll();
 	}
 
 }

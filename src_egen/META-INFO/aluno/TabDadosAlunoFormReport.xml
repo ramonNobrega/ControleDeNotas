@@ -13,7 +13,7 @@
 <actionFormCode></actionFormCode>
 <actionTemplate>StandardControllerTemplate</actionTemplate>
 <actionCode></actionCode>
-<jspTemplate>TabIncludeViewTemplate</jspTemplate>
+<jspTemplate>StandardViewTemplate</jspTemplate>
 <jspCode></jspCode>
 <help></help>
 <i18nHelp></i18nHelp>
@@ -28,6 +28,7 @@
 <template_file>standard.xhtml</template_file>
 <addImportAction>import controledenotas.business.entity.AlunoBC;
 import controledenotas.domain.entity.Aluno;
+import controledenotas.security.ContextMB;
 </addImportAction>
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
@@ -155,8 +156,26 @@ import controledenotas.domain.entity.Aluno;
 <line_color>default</line_color>
 <highlight_class></highlight_class>
 <click_class></click_class>
-<datasetCodeCustomized>false</datasetCodeCustomized>
-<datasetCode></datasetCode>
+<datasetCodeCustomized>true</datasetCodeCustomized>
+<datasetCode>@Inject
+private AlunoBC alunoBC;
+
+@Inject
+private ContextMB context;
+
+private List<Aluno> alunoResultList;
+
+public List<Aluno> getAlunoResultList() {
+	alunoResultList = new ArrayList<Aluno>();
+	Aluno a = this.alunoBC.load(new Long(context.getUser().getId()));
+	alunoResultList.add(a);
+	return alunoResultList;
+}
+
+public void setAlunoResultList(List<Aluno> alunoResultList) {
+	this.alunoResultList = alunoResultList;
+}
+</datasetCode>
 <columns>
 <columns_item>
 <class>com.egen.develop.generator.report.Column</class>
@@ -466,6 +485,10 @@ import controledenotas.domain.entity.Aluno;
 <generatorSetProperty_item>
 <$key>NEXT_VIEW</$key>
 <$value>/aluno/tabDadosAlunoForm.xhtml</$value>
+</generatorSetProperty_item>
+<generatorSetProperty_item>
+<$key>XHTML_TEMPLATE</$key>
+<$value>/template/main.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>XHTML_REFERENCE</$key>

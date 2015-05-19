@@ -13,7 +13,7 @@
 <actionFormCode></actionFormCode>
 <actionTemplate>StandardControllerTemplate</actionTemplate>
 <actionCode></actionCode>
-<jspTemplate>TabIncludeViewTemplate</jspTemplate>
+<jspTemplate>StandardViewTemplate</jspTemplate>
 <jspCode></jspCode>
 <help></help>
 <i18nHelp></i18nHelp>
@@ -27,6 +27,7 @@
 <since></since>
 <template_file>standard.xhtml</template_file>
 <addImportAction>import controledenotas.business.entity.DesempenhoBimestralBC;
+import controledenotas.security.ContextMB;
 </addImportAction>
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
@@ -154,8 +155,34 @@
 <line_color>default</line_color>
 <highlight_class></highlight_class>
 <click_class></click_class>
-<datasetCodeCustomized>false</datasetCodeCustomized>
-<datasetCode></datasetCode>
+<datasetCodeCustomized>true</datasetCodeCustomized>
+<datasetCode>@Inject
+private DesempenhoBimestralBC desempenhoBimestralBC;
+
+@Inject
+private ContextMB context;
+
+private List<DesempenhoBimestral> desempenhoBimestralResultList;
+
+public List<DesempenhoBimestral> getDesempenhoBimestralResultList() {
+	AlunoBC alunoBc = new AlunoBC();
+	Aluno aluno = alunoBc.load(new Long(context.getUser().getId()));
+	HashMap<String, Object> parameters = new HashMap<String, Object>();
+	parameters.put("aluno", aluno);
+	desempenhoBimestralResultList = desempenhoBimestralBC.findByCriteria(parameters);
+	return desempenhoBimestralResultList;
+}
+
+public void setDesempenhoBimestralResultList(List<DesempenhoBimestral> desempenhoBimestralResultList) {
+	this.desempenhoBimestralResultList = desempenhoBimestralResultList;
+}
+
+public void calculaMediaBimestral() {
+	for (DesempenhoBimestral item : desempenhoBimestralBC.findAll()) {
+		item.setMediaBimestre((item.getNota1() + item.getNota2() + item.getNota3())/3);
+	}
+}
+</datasetCode>
 <columns>
 <columns_item>
 <class>com.egen.develop.generator.report.Column</class>
@@ -651,6 +678,10 @@
 <generatorSetProperty_item>
 <$key>NEXT_VIEW</$key>
 <$value>/aluno/tabDesempenhoBimestralAluno.xhtml</$value>
+</generatorSetProperty_item>
+<generatorSetProperty_item>
+<$key>XHTML_TEMPLATE</$key>
+<$value>/template/main.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>XHTML_REFERENCE</$key>

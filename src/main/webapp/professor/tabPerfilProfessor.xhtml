@@ -1,10 +1,12 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
-		<h:form id="perfilblockForm">
-			<p:toolbar id="perfilblockToolbar">
-				
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+	<ui:define name="body">
+		<h:form id="blockPerfilProfessorForm">
+			<div id="blockPerfilProfessorTitle" class="blocktitle">Perfil do Professor</div>
+			<p:toolbar id="blockPerfilProfessorToolbar">
+			
 			</p:toolbar>
-			<p:outputPanel id="perfilblockPanel">
-				<p:dataTable id="perfilblockDataTable" value="#{tabPerfilProfessorMB.professorResultList}" var="bean" rows="5" paginator="false" rowIndexVar="rowIndexVar" resizableColumns="true" tableStyle="width:100%">
+			<p:outputPanel id="blockPerfilProfessorPanel">
+				<p:dataTable id="blockPerfilProfessorDataTable" value="#{tabPerfilProfessorMB.professorResultList}" var="bean" rows="5" paginator="false" rowIndexVar="rowIndexVar" resizableColumns="false" tableStyle="width:100%">
 					<p:column id="userNameDTColumn" sortBy="#{bean.user.name}" filterBy="#{bean.user.name}" filterMatchMode="contains" exportable="true">
 						<f:facet name="header">
 							<h:outputText value="#{messages['label.name']}"></h:outputText>
@@ -29,4 +31,5 @@
 				</p:dataTable>
 			</p:outputPanel>
 		</h:form>
+	</ui:define>
 </ui:composition>

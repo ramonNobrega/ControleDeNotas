@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+	<ui:define name="body">
+		<h:form id="editForm">
+			<p:focus id="editFocus"/>
+			<div id="editTitle" class="blocktitle">#{messages['pages.app.edit']}</div>
+			<p:toolbar id="editToolbar">
+				<p:toolbarGroup id="editLeftToolbarGroup" align="left">
+					<p:commandButton id="back" value="#{messages['button.back']}" action="#{tabManterAlunoDetailMB.getPreviousView}" immediate="true" ajax="false" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
+					<p:commandButton id="insert" rendered="#{!tabManterAlunoDetailMB.updateMode}" value="#{messages['button.save']}" action="#{tabManterAlunoDetailMB.insert}" ajax="false" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
+					<p:commandButton id="update" rendered="#{tabManterAlunoDetailMB.updateMode}" value="#{messages['button.save']}" action="#{tabManterAlunoDetailMB.update}" ajax="false" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
+				</p:toolbarGroup>
+			</p:toolbar>
+			<div id="editFormMessages" class="formmessages">
+				<p:messages id="editMessages" autoUpdate="true" closable="true"/>
+			</div>
+			<p:outputPanel id="editPanel">
+				<div class="formrow">
+					<div id="userNameformcell" class="formcell">
+						<h:outputLabel id="userNameLabel" for="userName" styleClass="text-input" value="#{messages['label.name']}"></h:outputLabel>
+						<h:outputText id="userName" value="#{tabManterAlunoDetailMB.bean.user.name}">
+						</h:outputText>
+					</div>
+				</div>
+				<div class="formrow">
+					<div id="turmaformcell" class="formcell">
+						<p:outputLabel id="turmaLabel" value="Turma" for="turma" styleClass="text-input"></p:outputLabel>
+						<p:selectOneMenu id="turma" value="#{tabManterAlunoDetailMB.bean.turma}" converter="#{turmaConverter}">
+							<f:selectItem itemLabel="Selecione a turma" itemValue=""/>
+							<f:selectItems itemLabel="#{turmaItem.nome}" itemValue="#{turmaItem}" value="#{tabManterAlunoDetailMB.turmaList}" var="turmaItem"/>
+						</p:selectOneMenu>
+					</div>
+				</div>
+			</p:outputPanel>
+		</h:form>
+	</ui:define>
+</ui:composition>

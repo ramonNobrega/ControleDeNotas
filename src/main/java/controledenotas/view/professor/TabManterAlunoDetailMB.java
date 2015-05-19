@@ -22,11 +22,12 @@ import controledenotas.exception.*;
 
 import controledenotas.business.entity.AlunoBC;
 import controledenotas.domain.entity.Aluno;
+import controledenotas.business.entity.TurmaBC;
 
 @ViewController
-@PreviousView("/professor/manterAluno.xhtml")
-@NextView("/professor/manterAlunoDetail.xhtml")
-public class ManterAlunoDetailMB extends AbstractEditPageBean<Aluno, Long> {
+@PreviousView("/professor/tabManterAluno.xhtml")
+@NextView("/professor/tabManterAlunoDetail.xhtml")
+public class TabManterAlunoDetailMB extends AbstractEditPageBean<Aluno, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,6 +40,17 @@ public class ManterAlunoDetailMB extends AbstractEditPageBean<Aluno, Long> {
 
 	@Inject
 	private AlunoBC alunoBC;
+	
+	@Inject
+	private TurmaBC turmaBC;
+	
+	public List<Turma> getTurmaList() {
+		List<Turma> list = turmaBC.findAll();
+		if (list == null) {
+			list = new ArrayList<Turma>();
+		}
+		return list;
+	}
 	
 	@Override
 	@Transactional
@@ -53,13 +65,6 @@ public class ManterAlunoDetailMB extends AbstractEditPageBean<Aluno, Long> {
 	public String update() {
 		this.alunoBC.update(getBean());
 		messageContext.add(new DefaultMessage("{pages.msg.updatesuccess}"));
-		return getPreviousView();
-	}
-	
-	@Override
-	@Transactional
-	public String delete() {
-		this.alunoBC.delete(getBean().getUser().getId());
 		return getPreviousView();
 	}
 	

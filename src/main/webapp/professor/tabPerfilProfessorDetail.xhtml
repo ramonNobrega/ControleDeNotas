@@ -5,12 +5,12 @@
 			<div id="editTitle" class="blocktitle">#{messages['pages.app.edit']}</div>
 			<p:toolbar id="editToolbar">
 				<p:toolbarGroup id="editLeftToolbarGroup" align="left">
-					<p:commandButton id="back" value="#{messages['button.back']}" action="#{dadosProfessorDetailMB.getPreviousView}" immediate="true" ajax="false" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
-					<p:commandButton id="insert" rendered="#{!dadosProfessorDetailMB.updateMode}" value="#{messages['button.save']}" action="#{dadosProfessorDetailMB.insert}" ajax="false" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
-					<p:commandButton id="update" rendered="#{dadosProfessorDetailMB.updateMode}" value="#{messages['button.save']}" action="#{dadosProfessorDetailMB.update}" ajax="false" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
-					<p:commandButton id="delete" rendered="#{dadosProfessorDetailMB.updateMode}" value="#{messages['button.delete']}" type="button" ajax="false" onclick="deleteConfirmation.show();" title="#{messages['button.delete']}" icon="ui-icon-trash"></p:commandButton>
+					<p:commandButton id="back" value="#{messages['button.back']}" action="#{tabPerfilProfessorDetailMB.getPreviousView}" immediate="true" ajax="false" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
+					<p:commandButton id="insert" rendered="#{!tabPerfilProfessorDetailMB.updateMode}" value="#{messages['button.save']}" action="#{tabPerfilProfessorDetailMB.insert}" ajax="false" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
+					<p:commandButton id="update" rendered="#{tabPerfilProfessorDetailMB.updateMode}" value="#{messages['button.save']}" action="#{tabPerfilProfessorDetailMB.update}" ajax="false" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
+					<p:commandButton id="delete" rendered="#{tabPerfilProfessorDetailMB.updateMode}" value="#{messages['button.delete']}" type="button" ajax="false" onclick="deleteConfirmation.show();" title="#{messages['button.delete']}" icon="ui-icon-trash"></p:commandButton>
 					<p:confirmDialog id="deleteConfirmDialog" widgetVar="deleteConfirmation" message="#{messages['label.confirm.delete']}" header="#{messages['label.dialog.delete']}" severity="alert">
-						<h:commandButton action="#{dadosProfessorDetailMB.delete}" value="#{messages['button.dialog.yes']}"></h:commandButton>
+						<h:commandButton action="#{tabPerfilProfessorDetailMB.delete}" value="#{messages['button.dialog.yes']}"></h:commandButton>
 						<h:commandButton onclick="deleteConfirmation.hide()" type="button" value="#{messages['button.dialog.no']}"></h:commandButton>
 					</p:confirmDialog>
 				</p:toolbarGroup>
@@ -22,14 +22,14 @@
 				<div class="formrow">
 					<div id="userIdformcell" class="formcell">
 						<p:outputLabel id="userIdLabel" value="Professor" for="userId" styleClass="text-input"></p:outputLabel>
-						<p:inputText id="userId" value="#{dadosProfessorDetailMB.bean.user.id}" required="true" maxlength="10" size="10" style="text-align:right;">
+						<p:inputText id="userId" value="#{tabPerfilProfessorDetailMB.bean.user.id}" required="true" maxlength="10" size="10" style="text-align:right;">
 						</p:inputText>
 					</div>
 				</div>
 				<div class="formrow">
 					<div id="disciplinaformcell" class="formcell">
 						<p:outputLabel id="disciplinaLabel" value="Disciplina" for="disciplina" styleClass="text-input"></p:outputLabel>
-						<p:inputText id="disciplina" value="#{dadosProfessorDetailMB.bean.disciplina}" maxlength="100" size="100">
+						<p:inputText id="disciplina" value="#{tabPerfilProfessorDetailMB.bean.disciplina}" maxlength="100" size="100">
 						</p:inputText>
 					</div>
 				</div>

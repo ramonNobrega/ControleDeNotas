@@ -13,7 +13,7 @@
 <actionFormCode></actionFormCode>
 <actionTemplate>StandardControllerTemplate</actionTemplate>
 <actionCode></actionCode>
-<jspTemplate>TabIncludeViewTemplate</jspTemplate>
+<jspTemplate>StandardViewTemplate</jspTemplate>
 <jspCode></jspCode>
 <help></help>
 <i18nHelp></i18nHelp>
@@ -163,6 +163,11 @@ import controledenotas.domain.entity.Turma;
 			<h:commandButton action="#{tabManterTurmaMB.delete}" actionListener="#{tabManterTurmaMB.clear}" value="#{messages['button.dialog.yes']}"></h:commandButton>
 			<h:commandButton onclick="deleteConfirmation.hide()" type="button" value="#{messages['button.dialog.no']}"></h:commandButton>
 		</p:confirmDialog>
+	</p:toolbarGroup>
+	<p:toolbarGroup id="listRightToolbarGroup" align="right">
+		<ui:include src="/template/exportToolbar.xhtml">
+			<ui:param name="target" value="listDataTable" />
+		</ui:include>
 	</p:toolbarGroup>
 </p:toolbar>
 </$value>
@@ -592,9 +597,9 @@ import controledenotas.domain.entity.Turma;
 <validate_maxlength></validate_maxlength>
 <validate_regex></validate_regex>
 <src>ui-icon-search</src>
-<select_allowed>false</select_allowed>
+<select_allowed>true</select_allowed>
 <update_allowed>true</update_allowed>
-<insert_allowed>false</insert_allowed>
+<insert_allowed>true</insert_allowed>
 <isCustomized>false</isCustomized>
 <labelStyle></labelStyle>
 <labelTitle></labelTitle>
@@ -1058,6 +1063,10 @@ import controledenotas.domain.entity.Turma;
 <generatorSetProperty_item>
 <$key>NEXT_VIEW</$key>
 <$value>/professor/tabManterTurmaDetail.xhtml</$value>
+</generatorSetProperty_item>
+<generatorSetProperty_item>
+<$key>XHTML_TEMPLATE</$key>
+<$value>/template/main.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>XHTML_REFERENCE</$key>

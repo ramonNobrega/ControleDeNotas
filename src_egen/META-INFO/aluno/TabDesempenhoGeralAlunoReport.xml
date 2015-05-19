@@ -13,7 +13,7 @@
 <actionFormCode></actionFormCode>
 <actionTemplate>StandardControllerTemplate</actionTemplate>
 <actionCode></actionCode>
-<jspTemplate>TabIncludeViewTemplate</jspTemplate>
+<jspTemplate>StandardViewTemplate</jspTemplate>
 <jspCode></jspCode>
 <help></help>
 <i18nHelp></i18nHelp>
@@ -27,6 +27,7 @@
 <since></since>
 <template_file>standard.xhtml</template_file>
 <addImportAction>import controledenotas.business.entity.DesempenhoBC;
+import controledenotas.security.ContextMB;
 </addImportAction>
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
@@ -52,7 +53,7 @@
 		<p:dataTable id="desempenhoblockDataTable" value="#{tabDesempenhoGeralAlunoMB.desempenhoResultList}" var="bean" rows="5" paginator="false" rowIndexVar="rowIndexVar" resizableColumns="false" tableStyle="width:100%">
 			<p:column id="mediaParcialDTColumn" style="text-align:right;" sortBy="#{bean.mediaParcial}" filterBy="#{bean.mediaParcial}" filterMatchMode="contains" exportable="true">
 				<f:facet name="header">
-					<h:outputText value="M\u00e9dia Parcial"></h:outputText>
+					<h:outputText value="M&#233;dia Parcial"></h:outputText>
 				</f:facet>
 				<h:outputText id="mediaParcial" value="#{bean.mediaParcial}">
 					<f:convertNumber pattern="##,##0.00"/>
@@ -68,7 +69,7 @@
 			</p:column>
 			<p:column id="mediaFinalDTColumn" style="text-align:right;" sortBy="#{bean.mediaFinal}" filterBy="#{bean.mediaFinal}" filterMatchMode="contains" exportable="true">
 				<f:facet name="header">
-					<h:outputText value="M\u00e9dia Final"></h:outputText>
+					<h:outputText value="M&#233;dia Final"></h:outputText>
 				</f:facet>
 				<h:outputText id="mediaFinal" value="#{bean.mediaFinal}">
 					<f:convertNumber pattern="##,##0.00"/>
@@ -76,7 +77,7 @@
 			</p:column>
 			<p:column id="situacaoDTColumn" sortBy="#{bean.situacao}" filterBy="#{bean.situacao}" filterMatchMode="contains" exportable="true">
 				<f:facet name="header">
-					<h:outputText value="Situa\u00e7\u00e3o"></h:outputText>
+					<h:outputText value="Situa&#231;&#227;o"></h:outputText>
 				</f:facet>
 				<h:outputText id="situacao" value="#{bean.situacao}">
 				</h:outputText>
@@ -194,8 +195,29 @@
 <line_color>default</line_color>
 <highlight_class></highlight_class>
 <click_class></click_class>
-<datasetCodeCustomized>false</datasetCodeCustomized>
-<datasetCode></datasetCode>
+<datasetCodeCustomized>true</datasetCodeCustomized>
+<datasetCode>@Inject
+private DesempenhoBC desempenhoBC;
+
+@Inject
+private ContextMB context;
+
+private List<Desempenho> desempenhoResultList;
+	
+public List<Desempenho> getDesempenhoResultList() {
+	AlunoBC alunoBc = new AlunoBC();
+	Aluno aluno = alunoBc.load(new Long(context.getUser().getId()));
+	HashMap<String, Object> parameters = new HashMap<String, Object>();
+	parameters.put("aluno", aluno);
+	desempenhoResultList = desempenhoBC.findByCriteria(parameters);
+	return desempenhoResultList;
+}
+
+public void setDesempenhoResultList(List<Desempenho> desempenhoResultList) {
+	this.desempenhoResultList = desempenhoResultList;
+}
+
+</datasetCode>
 <columns>
 <columns_item>
 <class>com.egen.develop.generator.report.Column</class>
@@ -598,6 +620,10 @@
 <generatorSetProperty_item>
 <$key>NEXT_VIEW</$key>
 <$value>/aluno/tabDesempenhoGeralAluno.xhtml</$value>
+</generatorSetProperty_item>
+<generatorSetProperty_item>
+<$key>XHTML_TEMPLATE</$key>
+<$value>/template/main.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>XHTML_REFERENCE</$key>

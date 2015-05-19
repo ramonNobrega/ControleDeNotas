@@ -13,7 +13,7 @@
 <actionFormCode></actionFormCode>
 <actionTemplate>StandardControllerTemplate</actionTemplate>
 <actionCode></actionCode>
-<jspTemplate>TabIncludeViewTemplate</jspTemplate>
+<jspTemplate>StandardViewTemplate</jspTemplate>
 <jspCode></jspCode>
 <help></help>
 <i18nHelp></i18nHelp>
@@ -36,7 +36,7 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <blocks>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
-<name>dbList</name>
+<name>list</name>
 <title>pages.app.list</title>
 <i18n>messages</i18n>
 <database>pool</database>
@@ -96,7 +96,7 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <formSetProperty>
 <formSetProperty_item>
 <$key>focus_id</$key>
-<$value>dbListFocus</$value>
+<$value>listFocus</$value>
 </formSetProperty_item>
 </formSetProperty>
 </form>
@@ -156,11 +156,11 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <blockSetProperty_item>
 <$key>toolbarCode</$key>
 <$value><p:toolbar id="listToolbar">
-	<p:toolbarGroup id="dbListLeftToolbarGroup" align="left">
+	<p:toolbarGroup id="listLeftToolbarGroup" align="left">
 	</p:toolbarGroup>
-	<p:toolbarGroup id="dbListRightToolbarGroup" align="right">
+	<p:toolbarGroup id="listRightToolbarGroup" align="right">
 		<ui:include src="/template/exportToolbar.xhtml">
-			<ui:param name="target" value="dbListDataTable" />
+			<ui:param name="target" value="listDataTable" />
 		</ui:include>
 	</p:toolbarGroup>
 </p:toolbar>
@@ -240,8 +240,8 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <validate_regex></validate_regex>
 <src></src>
 <select_allowed>true</select_allowed>
-<update_allowed>true</update_allowed>
-<insert_allowed>true</insert_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
 <isCustomized>false</isCustomized>
 <labelStyle></labelStyle>
 <labelTitle></labelTitle>
@@ -359,8 +359,8 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <validate_regex></validate_regex>
 <src></src>
 <select_allowed>true</select_allowed>
-<update_allowed>true</update_allowed>
-<insert_allowed>true</insert_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
 <isCustomized>false</isCustomized>
 <labelStyle></labelStyle>
 <labelTitle></labelTitle>
@@ -1051,7 +1051,7 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <validate_minlength></validate_minlength>
 <validate_maxlength></validate_maxlength>
 <validate_regex></validate_regex>
-<src>../img/edit.ico</src>
+<src>ui-icon-search</src>
 <select_allowed>false</select_allowed>
 <update_allowed>true</update_allowed>
 <insert_allowed>false</insert_allowed>
@@ -1114,7 +1114,7 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 </fieldSetProperty_item>
 <fieldSetProperty_item>
 <$key>styleClass</$key>
-<$value>ui-button ui-icon ../img/edit.ico</$value>
+<$value>ui-button ui-icon ui-icon-search</$value>
 </fieldSetProperty_item>
 <fieldSetProperty_item>
 <$key>param_name</$key>
@@ -1192,7 +1192,28 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <group_by_clause></group_by_clause>
 <having_clause></having_clause>
 <button_db_object></button_db_object>
-<triggers></triggers>
+<triggers>
+<triggers_item>
+<class>com.egen.develop.generator.form.Trigger</class>
+<name>calculaMediaBimestral</name>
+<type>pre</type>
+<connectionType>pool</connectionType>
+<transact>false</transact>
+<businessProcess></businessProcess>
+<triggerTemplate></triggerTemplate>
+<triggerCode>public void calculaMediaBimestral() {
+	for (DesempenhoBimestral item : desempenhoBimestralBC.findAll()) {
+		item.setMediaBimestre((item.getNota1() + item.getNota2() + item.getNota3())/3);
+	}
+}
+</triggerCode>
+<triggerCallCode>calculaMediaBimestral();
+</triggerCallCode>
+<develHelp></develHelp>
+<triggerSetProperty>
+</triggerSetProperty>
+</triggers_item>
+</triggers>
 <template>CrudHandleResultListCommandTemplate</template>
 <action_code></action_code>
 <property></property>
@@ -1204,10 +1225,6 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <onmouseup></onmouseup>
 <baseButtonSetProperty>
 <baseButtonSetProperty_item>
-<$key>process</$key>
-<$value>@this,dbListPanel</$value>
-</baseButtonSetProperty_item>
-<baseButtonSetProperty_item>
 <$key>methodReturn</$key>
 <$value>List<DesempenhoBimestral></$value>
 </baseButtonSetProperty_item>
@@ -1216,16 +1233,8 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <$value>@Override</$value>
 </baseButtonSetProperty_item>
 <baseButtonSetProperty_item>
-<$key>update</$key>
-<$value>dbListForm</$value>
-</baseButtonSetProperty_item>
-<baseButtonSetProperty_item>
 <$key>methodAccessModifier</$key>
 <$value>protected</$value>
-</baseButtonSetProperty_item>
-<baseButtonSetProperty_item>
-<$key>ajax</$key>
-<$value>true</$value>
 </baseButtonSetProperty_item>
 </baseButtonSetProperty>
 </buttons_item>
@@ -1263,12 +1272,16 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <$value>TabManterDesempenhoBimestralMB</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
+<$key>XHTML_TEMPLATE</$key>
+<$value>/template/main.xhtml</$value>
+</generatorSetProperty_item>
+<generatorSetProperty_item>
 <$key>XHTML_REFERENCE</$key>
 <$value>/professor/tabManterDesempenhoBimestral.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>PREVIOUS_VIEW</$key>
-<$value>/professor/dadosProfessor.xhtml</$value>
+<$value>/professor/tabManterDesempenhoBimestral.xhtml</$value>
 </generatorSetProperty_item>
 <generatorSetProperty_item>
 <$key>entity</$key>
