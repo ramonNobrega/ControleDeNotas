@@ -70,8 +70,8 @@ public class TabManterDesempenhoMB extends AbstractListPageBean<Desempenho, Long
 	/* Trigger[list.handleResultList.calculaMediaFinal] */
 	public void calculaMediaFinal() {
 		for (Desempenho item : desempenhoBC.findAll()) {
-				desempenhoBC.load(item.getCodigo()).getMediaFinal();
-			}
+			desempenhoBC.load(item.getCodigo()).getMediaFinal();
+		}
 	}
 	/* Trigger[list.handleResultList.calculaMediaFinal] */
 	

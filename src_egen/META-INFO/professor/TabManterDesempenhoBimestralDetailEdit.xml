@@ -32,7 +32,7 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <scope_storage>request</scope_storage>
-<generatorMasterTemplate>CrudEditPresentationMasterTemplate</generatorMasterTemplate>
+<generatorMasterTemplate>StandardPresentationMasterTemplate</generatorMasterTemplate>
 <blocks>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
@@ -739,6 +739,27 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 }
 </triggerCode>
 <triggerCallCode>calculaMediaBimestral();
+</triggerCallCode>
+<develHelp></develHelp>
+<triggerSetProperty>
+</triggerSetProperty>
+</triggers_item>
+<triggers_item>
+<class>com.egen.develop.generator.form.Trigger</class>
+<name>calculaMediaFinal</name>
+<type>pos</type>
+<connectionType>pool</connectionType>
+<transact>false</transact>
+<businessProcess></businessProcess>
+<triggerTemplate></triggerTemplate>
+<triggerCode>public void calculaMediaFinal() {
+	DesempenhoBC desempenhoBC = new DesempenhoBC();
+	Double media = getBean().getMediaBimestre();
+	Double atual = desempenhoBC.load(new Long(getBean().getAluno().getDesempenhos().get(0).getCodigo())).getMediaParcial();
+	desempenhoBC.load(new Long(getBean().getAluno().getDesempenhos().get(0).getCodigo())).setMediaParcial(atual + media/4);;		
+}
+</triggerCode>
+<triggerCallCode>calculaMediaFinal();
 </triggerCallCode>
 <develHelp></develHelp>
 <triggerSetProperty>

@@ -52,7 +52,6 @@ public class TabManterDesempenhoBimestralMB extends AbstractListPageBean<Desempe
 			}
 		}
 		calculaMediaBimestral();
-		//calculaMediaFinal();
 		return desempenhoBimestralList;
 	}
 	
@@ -63,13 +62,4 @@ public class TabManterDesempenhoBimestralMB extends AbstractListPageBean<Desempe
 		}
 	}
 	/* Trigger[list.handleResultList.calculaMediaBimestral] */
-	
-	public void calculaMediaFinal(){
-		DesempenhoBC desempenhoBC = new DesempenhoBC();
-		for (DesempenhoBimestral item : desempenhoBimestralBC.findAll()) {
-			Desempenho desempenho = desempenhoBC.load(new Long(item.getAluno().getUser().getId()));
-			desempenho.setMediaParcial(item.getMediaBimestre()/4);
-			desempenhoBC.update(desempenho);
-		}
-	}
 }

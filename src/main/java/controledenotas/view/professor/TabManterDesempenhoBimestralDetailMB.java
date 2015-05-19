@@ -53,15 +53,31 @@ public class TabManterDesempenhoBimestralDetailMB extends AbstractEditPageBean<D
 	public String update() {
 		this.desempenhoBimestralBC.update(getBean());
 		messageContext.add(new DefaultMessage("{pages.msg.updatesuccess}"));
+		/* TriggerCall[edit.update.calculaMediaBimestral] */
+		calculaMediaBimestral();
+		/* TriggerCall[edit.update.calculaMediaBimestral] */
+		/* TriggerCall[edit.update.calculaMediaFinal] */
+		calculaMediaFinal();
+		/* TriggerCall[edit.update.calculaMediaFinal] */
 		return getPreviousView();
 	}
 	
-	@Override
-	@Transactional
-	public String delete() {
-		this.desempenhoBimestralBC.delete(getBean().getId());
-		return getPreviousView();
+	/* Trigger[edit.update.calculaMediaBimestral] */
+	public void calculaMediaBimestral() {
+			Double media = (getBean().getNota1() + getBean().getNota2() + getBean().getNota3())/3;
+			desempenhoBimestralBC.load(getId()).setMediaBimestre(media);
 	}
+	
+	/* Trigger[edit.update.calculaMediaBimestral] */
+	
+	/* Trigger[edit.update.calculaMediaFinal] */
+	public void calculaMediaFinal() {
+		DesempenhoBC desempenhoBC = new DesempenhoBC();
+		Double media = getBean().getMediaBimestre();
+		Double atual = desempenhoBC.load(new Long(getBean().getAluno().getDesempenhos().get(0).getCodigo())).getMediaParcial();
+		desempenhoBC.load(new Long(getBean().getAluno().getDesempenhos().get(0).getCodigo())).setMediaParcial(atual + media/4);;		
+	}
+	/* Trigger[edit.update.calculaMediaFinal] */
 	
 	@Override
 	protected void handleLoad() {
