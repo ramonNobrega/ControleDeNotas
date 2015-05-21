@@ -22,20 +22,20 @@
 				<div class="formrow">
 					<div id="disciplinaformcell" class="formcell">
 						<p:outputLabel id="disciplinaLabel" value="Disciplina" for="disciplina" styleClass="text-input"></p:outputLabel>
-						<p:inputText id="disciplina" value="#{tabProfessorMB.professor.disciplina}" maxlength="100" size="100">
+						<p:inputText id="disciplina" value="#{tabProfessorMB.professor.disciplina}" required="true" maxlength="100" size="100">
 						</p:inputText>
 					</div>
 				</div>
 				<div class="formrow">
 					<div id="userPasswordformcell" class="formcell">
 						<p:outputLabel id="userPasswordLabel" value="#{messages['label.password']}" for="userPassword" styleClass="text-input"></p:outputLabel>
-						<p:password id="userPassword" value="#{tabProfessorMB.professor.user.password}" size="15"></p:password>
+						<p:password id="userPassword" value="#{tabProfessorMB.professor.user.password}" required="true" size="15"></p:password>
 					</div>
 				</div>
 				<div class="formrow">
 					<div id="userEmailformcell" class="formcell">
 						<p:outputLabel id="userEmailLabel" value="#{messages['label.email']}" for="userEmail" styleClass="text-input"></p:outputLabel>
-						<p:inputText id="userEmail" value="#{tabProfessorMB.professor.user.email}" maxlength="100" size="100">
+						<p:inputText id="userEmail" value="#{tabProfessorMB.professor.user.email}" required="true" maxlength="100" size="100">
 						</p:inputText>
 					</div>
 				</div>

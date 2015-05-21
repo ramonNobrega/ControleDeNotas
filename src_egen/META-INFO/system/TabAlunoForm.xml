@@ -290,7 +290,7 @@ import controledenotas.persistence.entity.RoleDAO;</addImportAction>
 <label_bold>false</label_bold>
 <label_italic>false</label_italic>
 <justification></justification>
-<not_null>false</not_null>
+<not_null>true</not_null>
 <type>java.lang.String</type>
 <validate_message></validate_message>
 <validate_message_user></validate_message_user>
@@ -303,7 +303,7 @@ import controledenotas.persistence.entity.RoleDAO;</addImportAction>
 <validate_type>false</validate_type>
 <validate_group>false</validate_group>
 <validate_email>false</validate_email>
-<validate_not_null>false</validate_not_null>
+<validate_not_null>true</validate_not_null>
 <validate_minlength></validate_minlength>
 <validate_maxlength></validate_maxlength>
 <validate_regex></validate_regex>
@@ -402,7 +402,7 @@ import controledenotas.persistence.entity.RoleDAO;</addImportAction>
 <label_bold>false</label_bold>
 <label_italic>false</label_italic>
 <justification></justification>
-<not_null>false</not_null>
+<not_null>true</not_null>
 <type>java.lang.String</type>
 <validate_message></validate_message>
 <validate_message_user></validate_message_user>
@@ -415,7 +415,7 @@ import controledenotas.persistence.entity.RoleDAO;</addImportAction>
 <validate_type>false</validate_type>
 <validate_group>false</validate_group>
 <validate_email>false</validate_email>
-<validate_not_null>false</validate_not_null>
+<validate_not_null>true</validate_not_null>
 <validate_minlength></validate_minlength>
 <validate_maxlength></validate_maxlength>
 <validate_regex></validate_regex>

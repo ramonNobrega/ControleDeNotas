@@ -32,13 +32,13 @@ import controledenotas.domain.entity.Desempenho;
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <scope_storage>request</scope_storage>
-<generatorMasterTemplate>CrudEditPresentationMasterTemplate</generatorMasterTemplate>
+<generatorMasterTemplate>StandardPresentationMasterTemplate</generatorMasterTemplate>
 <blocks>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
 <name>edit</name>
-<title>pages.app.edit</title>
-<i18n>messages</i18n>
+<title>Editar Situa\u00e7\u00e3o Final</title>
+<i18n></i18n>
 <database>pool</database>
 <db_object>Desempenho</db_object>
 <blockTemplate>StandardFormTemplate</blockTemplate>

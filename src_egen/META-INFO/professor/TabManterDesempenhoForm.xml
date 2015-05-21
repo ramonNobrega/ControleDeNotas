@@ -39,8 +39,8 @@ import controledenotas.security.ContextMB;
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
 <name>list</name>
-<title>pages.app.list</title>
-<i18n>messages</i18n>
+<title>Lista de Situa\u00e7\u00f5es</title>
+<i18n></i18n>
 <database>pool</database>
 <db_object>Desempenho</db_object>
 <blockTemplate>GridFormTemplate</blockTemplate>

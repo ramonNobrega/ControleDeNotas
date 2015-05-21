@@ -37,8 +37,8 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
 <name>edit</name>
-<title>pages.app.edit</title>
-<i18n>messages</i18n>
+<title>Editar Notas Bimestrais</title>
+<i18n></i18n>
 <database>pool</database>
 <db_object>DesempenhoBimestral</db_object>
 <blockTemplate>StandardFormTemplate</blockTemplate>
@@ -735,7 +735,8 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <triggerTemplate></triggerTemplate>
 <triggerCode>public void calculaMediaBimestral() {
 		Double media = (getBean().getNota1() + getBean().getNota2() + getBean().getNota3())/3;
-		desempenhoBimestralBC.load(getId()).setMediaBimestre(media);
+		//desempenhoBimestralBC.load(getId()).setMediaBimestre(media);
+		getBean().setMediaBimestre(media);
 }
 </triggerCode>
 <triggerCallCode>calculaMediaBimestral();
@@ -754,9 +755,20 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <triggerTemplate></triggerTemplate>
 <triggerCode>public void calculaMediaFinal() {
 	DesempenhoBC desempenhoBC = new DesempenhoBC();
-	Double media = getBean().getMediaBimestre();
-	Double atual = desempenhoBC.load(new Long(getBean().getAluno().getDesempenhos().get(0).getCodigo())).getMediaParcial();
-	desempenhoBC.load(new Long(getBean().getAluno().getDesempenhos().get(0).getCodigo())).setMediaParcial(atual + media/4);;		
+	Double mediaParcial = 0.0;
+	List <DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralBC.findAll();
+	for (DesempenhoBimestral bimestre : desempenhoBimestralList) {
+		mediaParcial+= getBean().getMediaBimestre();
+	}
+	Desempenho desempenho = getBean().getAluno().getDesempenhos().get(0);
+	mediaParcial = mediaParcial/ desempenhoBimestralList.size();
+	desempenho.setMediaParcial(mediaParcial);
+	if(mediaParcial > 7){
+		desempenho.setSituacao("Aprovado");
+	}else{
+		desempenho.setSituacao("Reprovado");
+	}
+	desempenhoBC.update(desempenho);	
 }
 </triggerCode>
 <triggerCallCode>calculaMediaFinal();

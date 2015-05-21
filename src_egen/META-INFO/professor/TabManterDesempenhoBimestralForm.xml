@@ -37,8 +37,8 @@ import controledenotas.security.ContextMB;</addImportAction>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
 <name>list</name>
-<title>pages.app.list</title>
-<i18n>messages</i18n>
+<title>Lista de Notas</title>
+<i18n></i18n>
 <database>pool</database>
 <db_object>DesempenhoBimestral</db_object>
 <blockTemplate>GridFormTemplate</blockTemplate>

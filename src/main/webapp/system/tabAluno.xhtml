@@ -22,13 +22,13 @@
 				<div class="formrow">
 					<div id="userPasswordformcell" class="formcell">
 						<p:outputLabel id="userPasswordLabel" value="#{messages['label.password']}" for="userPassword" styleClass="text-input"></p:outputLabel>
-						<p:password id="userPassword" value="#{tabAlunoMB.aluno.user.password}" size="15"></p:password>
+						<p:password id="userPassword" value="#{tabAlunoMB.aluno.user.password}" required="true" size="15"></p:password>
 					</div>
 				</div>
 				<div class="formrow">
 					<div id="userEmailformcell" class="formcell">
 						<p:outputLabel id="userEmailLabel" value="#{messages['label.email']}" for="userEmail" styleClass="text-input"></p:outputLabel>
-						<p:inputText id="userEmail" value="#{tabAlunoMB.aluno.user.email}" maxlength="100" size="100">
+						<p:inputText id="userEmail" value="#{tabAlunoMB.aluno.user.email}" required="true" maxlength="100" size="100">
 						</p:inputText>
 					</div>
 				</div>

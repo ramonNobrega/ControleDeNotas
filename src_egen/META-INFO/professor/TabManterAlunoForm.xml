@@ -38,8 +38,8 @@ import controledenotas.business.entity.TurmaBC;
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
 <name>list</name>
-<title>pages.app.list</title>
-<i18n>messages</i18n>
+<title>Lista de Turmas</title>
+<i18n></i18n>
 <database>pool</database>
 <db_object>Aluno</db_object>
 <blockTemplate>GridFormTemplate</blockTemplate>

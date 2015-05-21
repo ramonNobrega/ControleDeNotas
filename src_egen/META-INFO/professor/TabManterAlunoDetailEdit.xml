@@ -33,13 +33,13 @@ import controledenotas.business.entity.TurmaBC;
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <scope_storage>request</scope_storage>
-<generatorMasterTemplate>StandardPresentationMasterTemplate</generatorMasterTemplate>
+<generatorMasterTemplate>CrudEditPresentationMasterTemplate</generatorMasterTemplate>
 <blocks>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>
 <name>edit</name>
-<title>pages.app.edit</title>
-<i18n>messages</i18n>
+<title>Editar Turma do Aluno</title>
+<i18n></i18n>
 <database>pool</database>
 <db_object>Aluno</db_object>
 <blockTemplate>StandardFormTemplate</blockTemplate>
