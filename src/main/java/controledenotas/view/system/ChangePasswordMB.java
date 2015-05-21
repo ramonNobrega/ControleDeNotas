@@ -38,7 +38,7 @@ public class ChangePasswordMB extends AbstractPageBean {
 	@Name("messages")
 	private ResourceBundle bundle;
 
-	private User user;
+	private User user = new User();
 	
 	public User getUser() {
 		return this.user;
