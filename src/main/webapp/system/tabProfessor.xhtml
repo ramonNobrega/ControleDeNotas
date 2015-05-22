@@ -3,6 +3,7 @@
 			<p:focus id="blocoProfessorFocus"/>
 			<p:toolbar id="blocoProfessorToolbar">
 				<p:toolbarGroup id="blocoProfessorLeftToolbarGroup" align="left">
+					<p:commandButton id="back" value="#{messages['button.back']}" action="#{tabProfessorMB.getPreviousView}" immediate="true" ajax="true" process="@this,blocoProfessorPanel" update="blocoProfessorForm" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
 					<p:commandButton id="save" value="#{messages['button.save']}" action="#{tabProfessorMB.save}" ajax="true" process="@this,blocoProfessorPanel" update="blocoProfessorForm" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
 				</p:toolbarGroup>
 				<p:toolbarGroup id="blocoProfessorRightToolbarGroup" align="right">

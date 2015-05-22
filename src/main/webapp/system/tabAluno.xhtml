@@ -3,6 +3,7 @@
 			<p:focus id="blocoAlunoFocus"/>
 			<p:toolbar id="blocoAlunoToolbar">
 				<p:toolbarGroup id="blocoAlunoLeftToolbarGroup" align="left">
+					<p:commandButton id="back" value="#{messages['button.back']}" action="#{tabAlunoMB.getPreviousView}" immediate="true" ajax="true" process="@this,blocoAlunoPanel" update="blocoAlunoForm" title="#{messages['button.back']}" icon="ui-icon-arrowthick-1-w"></p:commandButton>
 					<p:commandButton id="salvarAluno" value="#{messages['button.save']}" action="#{tabAlunoMB.salvarAluno}" ajax="true" process="@this,blocoAlunoPanel" update="blocoAlunoForm" title="#{messages['button.save']}" icon="ui-icon-disk"></p:commandButton>
 				</p:toolbarGroup>
 				<p:toolbarGroup id="blocoAlunoRightToolbarGroup" align="right">

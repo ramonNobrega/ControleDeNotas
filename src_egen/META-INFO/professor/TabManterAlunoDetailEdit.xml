@@ -33,7 +33,7 @@ import controledenotas.business.entity.TurmaBC;
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <scope_storage>request</scope_storage>
-<generatorMasterTemplate>CrudEditPresentationMasterTemplate</generatorMasterTemplate>
+<generatorMasterTemplate>StandardPresentationMasterTemplate</generatorMasterTemplate>
 <blocks>
 <blocks_item>
 <class>com.egen.develop.generator.form.BlockForm</class>

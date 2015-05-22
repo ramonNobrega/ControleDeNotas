@@ -24,7 +24,7 @@ import controledenotas.domain.entity.Aluno;
 import controledenotas.business.entity.AlunoBC;
 import controledenotas.persistence.entity.RoleDAO;
 @ViewController
-@PreviousView("/system/tabAluno.xhtml")
+@PreviousView("/system/login.xhtml")
 @NextView("/system/tabAluno.xhtml")
 public class TabAlunoMB extends AbstractPageBean {
 

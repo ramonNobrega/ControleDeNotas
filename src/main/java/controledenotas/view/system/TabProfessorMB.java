@@ -25,7 +25,7 @@ import controledenotas.business.entity.ProfessorBC;
 import controledenotas.persistence.entity.RoleDAO;
 
 @ViewController
-@PreviousView("/system/tabProfessor.xhtml")
+@PreviousView("/system/login.xhtml")
 @NextView("/system/tabProfessor.xhtml")
 public class TabProfessorMB extends AbstractPageBean {
 

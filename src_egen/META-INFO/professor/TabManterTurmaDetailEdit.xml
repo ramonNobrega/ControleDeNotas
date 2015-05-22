@@ -291,7 +291,7 @@ import controledenotas.security.ContextMB;</addImportAction>
 <domainReference></domainReference>
 <property></property>
 <value></value>
-<size>3</size>
+<size>15</size>
 <label>Turma</label>
 <label_pos></label_pos>
 <label_bg_color></label_bg_color>
@@ -372,7 +372,7 @@ import controledenotas.security.ContextMB;</addImportAction>
 </fieldSetProperty>
 <codeItem></codeItem>
 <readonly>false</readonly>
-<maxlength>3</maxlength>
+<maxlength>30</maxlength>
 </fields_item>
 </fields>
 <buttons>
