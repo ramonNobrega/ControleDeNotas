@@ -926,9 +926,9 @@ import controledenotas.security.ContextMB;</addImportAction>
 <case_restriction></case_restriction>
 <break_line>true</break_line>
 <lovObject></lovObject>
-<lowest_value></lowest_value>
-<highest_value></highest_value>
-<validate_value>false</validate_value>
+<lowest_value>0.0</lowest_value>
+<highest_value>10.0</highest_value>
+<validate_value>true</validate_value>
 <validate_type>true</validate_type>
 <validate_group>false</validate_group>
 <validate_email>false</validate_email>
@@ -947,7 +947,7 @@ import controledenotas.security.ContextMB;</addImportAction>
 <i18nLabelTitleKey></i18nLabelTitleKey>
 <fieldGridSize></fieldGridSize>
 <queryOperator></queryOperator>
-<round_value></round_value>
+<round_value>UP</round_value>
 <field_prefix></field_prefix>
 <field_sufix></field_sufix>
 <write>true</write>
