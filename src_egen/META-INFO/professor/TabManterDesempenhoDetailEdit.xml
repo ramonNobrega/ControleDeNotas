@@ -506,14 +506,16 @@ import controledenotas.domain.entity.Desempenho;
 <triggers_item>
 <class>com.egen.develop.generator.form.Trigger</class>
 <name>calculaMediaFinal</name>
-<type>pos</type>
+<type>pre</type>
 <connectionType>pool</connectionType>
 <transact>false</transact>
 <businessProcess></businessProcess>
 <triggerTemplate></triggerTemplate>
 <triggerCode>public void calculaMediaFinal() {
-	Double media = getBean().getMediaParcial()*(0.6) + getBean().getProvaFinal()*(0.4);
-	desempenhoBC.load(getId()).setMediaFinal(media);
+		Desempenho desempenho = getBean().getAluno().getDesempenhos().get(0);
+		Double media = getBean().getMediaParcial()*(0.6) + getBean().getProvaFinal()*(0.4);
+		desempenho.setMediaFinal(media);
+		desempenhoBC.update(desempenho);
 }
 </triggerCode>
 <triggerCallCode>calculaMediaFinal();
@@ -525,19 +527,22 @@ import controledenotas.domain.entity.Desempenho;
 <triggers_item>
 <class>com.egen.develop.generator.form.Trigger</class>
 <name>calculaSituacao</name>
-<type>pos</type>
+<type>pre</type>
 <connectionType>pool</connectionType>
 <transact>false</transact>
 <businessProcess></businessProcess>
 <triggerTemplate></triggerTemplate>
 <triggerCode>public void calculaSituacao() {
+	Desempenho desempenho = getBean().getAluno().getDesempenhos().get(0);
 			String situacao = "";
 			if ((getBean().getMediaFinal() >= 5.0)) {
 				situacao = "APROVADO";
 			} else {
 				situacao = "REPROVADO";
 			}
-			desempenhoBC.load(getId()).setSituacao(situacao);
+			
+		desempenho.setSituacao(situacao);
+		desempenhoBC.update(desempenho);
 		}
 </triggerCode>
 <triggerCallCode>calculaSituacao();

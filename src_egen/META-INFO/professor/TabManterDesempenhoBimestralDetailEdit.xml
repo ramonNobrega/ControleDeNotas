@@ -759,22 +759,24 @@ import controledenotas.domain.entity.DesempenhoBimestral;
 <triggerCode>public void calculaMediaFinal() {
 	DesempenhoBC desempenhoBC = new DesempenhoBC();
 		Double mediaParcial = 0.0;
-		DesempenhoBimestral example = new DesempenhoBimestral();
-		example.setAluno(getBean().getAluno());
-		List<DesempenhoBimestral> desempenhoBimestralList = desempenhoBimestralBC.findByExample(example);
+		List<DesempenhoBimestral> desempenhoBimestralList = getBean().getAluno().getDesempenhosBimestrais();
 		for (DesempenhoBimestral bimestre : desempenhoBimestralList) {
 			if(bimestre.getMediaBimestre() != null){
 				mediaParcial += bimestre.getMediaBimestre();
 			}
 		}
+		
 		Desempenho desempenho = getBean().getAluno().getDesempenhos().get(0);
 		mediaParcial = mediaParcial / desempenhoBimestralList.size();
 		desempenho.setMediaParcial(mediaParcial);
-		if (mediaParcial > 7) {
-			desempenho.setSituacao("Aprovado");
-		} else {
-			desempenho.setSituacao("Reprovado");
+		if (mediaParcial >= 7) {
+			desempenho.setSituacao("APROVADO");
+		} else if( mediaParcial < 7 && mediaParcial >= 4){
+			desempenho.setSituacao("FINAL");
+		}else {
+			desempenho.setSituacao("REPROVADO");
 		}
+		
 		desempenhoBC.update(desempenho);
 }
 </triggerCode>

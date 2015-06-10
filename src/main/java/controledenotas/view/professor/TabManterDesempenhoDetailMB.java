@@ -51,35 +51,39 @@ public class TabManterDesempenhoDetailMB extends AbstractEditPageBean<Desempenho
 	@Override
 	@Transactional
 	public String update() {
+		calculaMediaFinal();
+		calculaSituacao();
 		this.desempenhoBC.update(getBean());
 		messageContext.add(new DefaultMessage("{pages.msg.updatesuccess}"));
-		/* TriggerCall[edit.update.calculaMediaFinal] */
-		calculaMediaFinal();
-		/* TriggerCall[edit.update.calculaMediaFinal] */
-		/* TriggerCall[edit.update.calculaSituacao] */
-		calculaSituacao();
-		/* TriggerCall[edit.update.calculaSituacao] */
+		
 		return getPreviousView();
 	}
 	
 	/* Trigger[edit.update.calculaMediaFinal] */
 	public void calculaMediaFinal() {
+		
+		Desempenho desempenho = getBean().getAluno().getDesempenhos().get(0);
 		Double media = getBean().getMediaParcial()*(0.6) + getBean().getProvaFinal()*(0.4);
-		desempenhoBC.load(getId()).setMediaFinal(media);
+		desempenho.setMediaFinal(media);
+		desempenhoBC.update(desempenho);
 	}
 	
 	/* Trigger[edit.update.calculaMediaFinal] */
 	
 	/* Trigger[edit.update.calculaSituacao] */
 	public void calculaSituacao() {
-				String situacao = "";
-				if ((getBean().getMediaFinal() >= 5.0)) {
-					situacao = "APROVADO";
-				} else {
-					situacao = "REPROVADO";
-				}
-				desempenhoBC.load(getId()).setSituacao(situacao);
-			}
+		Desempenho desempenho = getBean().getAluno().getDesempenhos().get(0);
+		String situacao = "";
+		if ((getBean().getMediaFinal() >= 5.0)) {
+			situacao = "APROVADO";
+		} 
+		else {
+			situacao = "REPROVADO";
+		}
+		
+		desempenho.setSituacao(situacao);
+		desempenhoBC.update(desempenho);
+	}
 	
 	/* Trigger[edit.update.calculaSituacao] */
 	
@@ -87,5 +91,4 @@ public class TabManterDesempenhoDetailMB extends AbstractEditPageBean<Desempenho
 	protected void handleLoad() {
 		setBean(this.desempenhoBC.load(getId()));
 	}
-
 }

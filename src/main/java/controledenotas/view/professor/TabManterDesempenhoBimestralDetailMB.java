@@ -54,21 +54,13 @@ public class TabManterDesempenhoBimestralDetailMB extends
 		calculaMediaFinal();
 		this.desempenhoBimestralBC.update(getBean());
 		messageContext.add(new DefaultMessage("{pages.msg.updatesuccess}"));
-		/* TriggerCall[edit.update.calculaMediaBimestral] */
-
-		/* TriggerCall[edit.update.calculaMediaBimestral] */
-		/* TriggerCall[edit.update.calculaMediaFinal] */
-		/* TriggerCall[edit.update.calculaMediaFinal] */
+		
 		return getPreviousView();
 	}
 
 	/* Trigger[edit.update.calculaMediaBimestral] */
 	public void calculaMediaBimestral() {
-		/*
-		 * Double media = (getBean().getNota1() + getBean().getNota2() +
-		 * getBean().getNota3())/3;
-		 * desempenhoBimestralBC.load(getId()).setMediaBimestre(media);
-		 */
+		
 		if (getBean().getNota1() != null && getBean().getNota2() != null
 				&& getBean().getNota3() != null) {
 			Double media = (getBean().getNota1() + getBean().getNota2() + getBean()
@@ -94,18 +86,14 @@ public class TabManterDesempenhoBimestralDetailMB extends
 		Desempenho desempenho = getBean().getAluno().getDesempenhos().get(0);
 		mediaParcial = mediaParcial / desempenhoBimestralList.size();
 		desempenho.setMediaParcial(mediaParcial);
-		if (mediaParcial > 7) {
-			desempenho.setProvaFinal(0.0);
-			desempenho.setMediaFinal(mediaParcial);
-			//desempenho.setSituacao("APROVADO");
+		if (mediaParcial >= 7) {
+			desempenho.setSituacao("APROVADO");
 		} else if( mediaParcial < 7 && mediaParcial >= 4){
-			desempenho.setMediaFinal(mediaParcial);
 			desempenho.setSituacao("FINAL");
 		}else {
-			desempenho.setMediaFinal(mediaParcial);
-			desempenho.setProvaFinal(0.0);
-			//desempenho.setSituacao("REPROVADO");
+			desempenho.setSituacao("REPROVADO");
 		}
+		
 		desempenhoBC.update(desempenho);
 	}
 
